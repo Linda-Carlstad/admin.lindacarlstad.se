@@ -1,1 +1,1 @@
-body{font-family:'Nunito', sans-serif}.content{min-height:90vh !important}
+body{max-height:100vh;font-family:'Nunito', sans-serif}.content{min-height:90vh !important;overflow-y:scroll}

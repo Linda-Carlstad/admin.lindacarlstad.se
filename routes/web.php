@@ -30,19 +30,35 @@ Route::group( [ 'middleware' => 'auth' ], function ()
     Route::get( '/', function () {
         return view( 'index' );
     });
-    Route::get( '/medlemmar', function () {
-        return view( 'members' );
-    })->name( 'members' );
+
     Route::get( '/overaller', function () {
-        return view( 'overalls' );
-    })->name( 'overalls' );
+        return view( 'overall' );
+    })->name( 'overall' );
+
     Route::get( '/nollning', function () {
         return view( 'initiation' );
     })->name( 'initiation' );
+
     Route::get( '/styrelsen', function () {
         return view( 'board' );
     })->name( 'board' );
+
     Route::get( '/dokument', function () {
         return view( 'documents' );
     })->name( 'documents' );
+
+    Route::get( '/medlem', function()
+    {
+        return view( 'member.index' );
+    } )->name( 'member.index' );
+
+    Route::get( '/medlem/redigera', function()
+    {
+        return view( 'member.{id}.edit' );
+    } );
+    
+    Route::get( '/medlem/visa', function()
+    {
+        return view( 'member.{id}' );
+    } );
 });

@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="text-center">
-        <h2>Medlemmar</h2>
+        <h2>Medlem</h2>
     </div>
 
 @endsection
