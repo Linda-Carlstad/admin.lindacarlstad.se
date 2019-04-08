@@ -26,16 +26,13 @@ Route::group( [ 'middleware' => 'auth' ], function ()
         return view( 'initiation' );
     })->name( 'initiation' );
 
-    Route::get( '/styrelsen', function () {
-        return view( 'board' );
-    })->name( 'board' );
-
     Route::get( '/dokument', function () {
         return view( 'documents' );
     })->name( 'documents' );
 
     Route::resources([
         'member' => 'MemberController',
-        'overall' => 'OverallController'
+        'overall' => 'OverallController',
+        'board' => 'BoardController',
     ]);
 });

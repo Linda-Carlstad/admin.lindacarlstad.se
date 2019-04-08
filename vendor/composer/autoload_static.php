@@ -360,6 +360,7 @@ class ComposerStaticInitd8a550e08e93f27e3b43a777e1d958c2
     );
 
     public static $classMap = array (
+        'App\\BoardMember' => __DIR__ . '/../..' . '/app/BoardMember.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -378,6 +379,7 @@ class ComposerStaticInitd8a550e08e93f27e3b43a777e1d958c2
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\InitiationDay' => __DIR__ . '/../..' . '/app/InitiationDay.php',
         'App\\Member' => __DIR__ . '/../..' . '/app/Member.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -389,6 +391,7 @@ class ComposerStaticInitd8a550e08e93f27e3b43a777e1d958c2
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
         'BeyondCode\\DumpServer\\RequestContextProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/RequestContextProvider.php',
+        'BoardMembersSeeder' => __DIR__ . '/../..' . '/database/seeds/BoardMembersSeeder.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
         'Carbon\\CarbonInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterface.php',

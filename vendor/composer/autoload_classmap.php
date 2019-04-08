@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\BoardMember' => $baseDir . '/app/BoardMember.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -24,6 +25,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\InitiationDay' => $baseDir . '/app/InitiationDay.php',
     'App\\Member' => $baseDir . '/app/Member.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
@@ -35,6 +37,7 @@ return array(
     'BeyondCode\\DumpServer\\DumpServerServiceProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
     'BeyondCode\\DumpServer\\Dumper' => $vendorDir . '/beyondcode/laravel-dump-server/src/Dumper.php',
     'BeyondCode\\DumpServer\\RequestContextProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/RequestContextProvider.php',
+    'BoardMembersSeeder' => $baseDir . '/database/seeds/BoardMembersSeeder.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonImmutable' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
     'Carbon\\CarbonInterface' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterface.php',

@@ -15,6 +15,10 @@ class CreateBoardMembersTable extends Migration
     {
         Schema::create('board_members', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('position');
+            $table->string('name');
+            $table->string('email');
+            $table->string('description');
             $table->timestamps();
         });
     }

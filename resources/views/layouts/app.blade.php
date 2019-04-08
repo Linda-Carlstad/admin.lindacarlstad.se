@@ -37,7 +37,7 @@
                         <a class="nav-link" href="{{ route( 'initiation' ) }}">Nollning</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'board' ) }}">Styrelsen</a>
+                        <a class="nav-link" href="{{ route( 'board.index' ) }}">Styrelsen</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route( 'documents' ) }}">Dokument</a>
