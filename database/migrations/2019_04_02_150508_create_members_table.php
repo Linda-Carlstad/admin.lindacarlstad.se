@@ -14,7 +14,12 @@ class CreateMembersTable extends Migration
     public function up()
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('name');
+            $table->string('id_number')->unique()->nullable()->default(NULL);
+            $table->string('email')->unique();
+            $table->string('membership')->nullable()->default('none');
+            $table->integer('start')->default( '0' );
             $table->timestamps();
         });
     }

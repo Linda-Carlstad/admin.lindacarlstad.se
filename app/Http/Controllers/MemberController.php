@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Member;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -13,6 +14,8 @@ class MemberController extends Controller
      */
     public function index()
     {
+        $members = Members::get();
+
         return view( 'index' );
     }
 

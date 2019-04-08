@@ -8,15 +8,20 @@ class Member extends Model
 {
     protected $table = 'members';
 
+    public static function fetchMembers()
+    {
+        return $this->get()->all();
+    }
+
     public static function createMember( $count )
     {
         for( $i=0; $i < $count; $i++ )
         {
             Member::create([
                 'name' => 'Ny medlem',
-                'idNumber' => 'xxxxxx-xxxx',
-                'start' => date("Y"),
+                'id_number' => 'xxxxxx-xxxx',
                 'membership' => 'Livstid',
+                'start' => date( "Y" ),
             ]);
         }
     }
