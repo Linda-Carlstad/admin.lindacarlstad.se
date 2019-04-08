@@ -51,7 +51,7 @@
             <tr>
                 <th>Namn</th>
                 <th>Personnummer</th>
-                <th>Mail</th>
+                <th>Email</th>
                 <th>Medlemskap</th>
                 <th>#</th>
             </tr>
