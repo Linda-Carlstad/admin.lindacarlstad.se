@@ -75,4 +75,11 @@
     </table>
     {{ $members->links() }}
 
+    @if( isset( $search ) )
+        <hr>
+        <div class="text-center">
+            <a class="btn btn-primary" href="{{ route( 'member.index' ) }}">Visa alla</a>
+        </div>
+    @endif
+
 @endsection

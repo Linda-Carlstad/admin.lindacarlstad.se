@@ -75,7 +75,7 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
+        abort( 404 );
     }
 
     /**
@@ -130,6 +130,9 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $member = Member::findOrFail( $id );
+        $member->delete();
+
+        return redirect( 'member' )->with( 'success', 'Medlem borttagen.' );
     }
 }
