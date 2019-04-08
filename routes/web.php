@@ -12,18 +12,9 @@
 */
 
 
-Route::get( '/inloggning', [
-  'uses' => 'Auth\LoginController@showLoginForm'
-] )->name( 'login' );
-
-Route::post( 'login', [
-  'as' => '',
-  'uses' => 'Auth\LoginController@login'
-] )->name( 'loginLogic' );
-
-Route::post( '/utloggning', [
-  'uses' => 'Auth\LoginController@logout'
-] )->name( 'logout' );
+Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
+Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
+Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 Route::group( [ 'middleware' => 'auth' ], function ()
 {
@@ -43,23 +34,8 @@ Route::group( [ 'middleware' => 'auth' ], function ()
         return view( 'documents' );
     })->name( 'documents' );
 
-    Route::get( '/medlem', function()
-    {
-        return view( 'member.index' );
-    } )->name( 'member.index' );
-
-    Route::get( '/medlem/redigera', function()
-    {
-        return view( 'member.{id}.edit' );
-    } );
-
-    Route::get( '/medlem/visa', function()
-    {
-        return view( 'member.{id}' );
-    } );
-
-    Route::get( '/overaller', function()
-    {
-        return view( 'overall.index' );
-    } )->name( 'overall' );
+    Route::resources([
+        'member' => 'MemberController',
+        'overall' => 'OverallController'
+    ]);
 });

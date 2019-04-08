@@ -14,9 +14,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Members::get();
-
-        return view( 'index' );
+        $members = Member::orderBy('id', 'desc')->paginate(20);
+        return view( 'member.index' )->with( 'members', $members );
     }
 
     /**
@@ -59,7 +58,10 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
-        //
+        $member = Member::findOrFail( $id );
+
+        return view( 'member.edit' )
+            ->with( 'member', $member  );
     }
 
     /**

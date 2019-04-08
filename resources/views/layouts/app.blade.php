@@ -30,7 +30,7 @@
                         <a class="nav-link" href="{{ route( 'member.index' ) }}">Medlemmar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'overall' ) }}">Overaller</a>
+                        <a class="nav-link" href="{{ route( 'overall.index' ) }}">Overaller</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route( 'initiation' ) }}">Nollning</a>
@@ -59,7 +59,7 @@
     </nav>
     <main class="container py-4">
         <div class="content d-flex align-items-center justify-content-center">
-            <div class="col-md-10 col-lg-8">
+            <div class="col-md-10">
                 @yield( 'content' )
             </div>
         </div>

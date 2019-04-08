@@ -8,11 +8,6 @@ class Member extends Model
 {
     protected $table = 'members';
 
-    public static function fetchMembers()
-    {
-        return $this->get()->all();
-    }
-
     public static function createMember( $count )
     {
         for( $i=0; $i < $count; $i++ )
