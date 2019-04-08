@@ -12,9 +12,15 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
-        $members = Member::orderBy('id', 'desc')->paginate(20);
+        if( isset( $request->search ) )
+        {
+            $search = $request->search;
+            dd( $members );
+        }
+
+        $members = Member::orderBy('id', 'desc')->paginate( 20 );
         return view( 'member.index' )->with( 'members', $members );
     }
 
@@ -25,7 +31,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view( 'member.create' );
     }
 
     /**
@@ -34,9 +40,23 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( Request $request )
     {
-        //
+        switch( $request->type )
+        {
+            case 'file':
+                return back()->with( 'error', 'Function not yet implemented!' );
+                break;
+
+            case 'manual':
+                $result = Member::create( $request );
+                break;
+            default:
+                abort(403);
+                break;
+        }
+
+        return redirect( 'member' )->with( 'success', $result[ 'success' ] );
     }
 
     /**
@@ -71,9 +91,27 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Request $request, $id )
     {
-        //
+        $request->validate( [
+            'firstName'  => 'required|string',
+            'lastName'   => 'required|string',
+            'id_number'  => 'required|string',
+            'email'      => 'required|email',
+            'membership' => 'required|string',
+            'start'      => 'required|string',
+        ] );
+
+        $member = Member::findOrFail( $id );
+        $member->firstName = $request->firstName;
+        $member->lastName = $request->lastName;
+        $member->id_number = $request->id_number;
+        $member->email = $request->email;
+        $member->membership = $request->membership;
+        $member->start = $request->start;
+        $member->save();
+
+        return redirect( 'member' )->with( 'success', 'Medlem har uppdaterats!' );
     }
 
     /**

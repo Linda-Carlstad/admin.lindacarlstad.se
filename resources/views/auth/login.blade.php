@@ -22,8 +22,8 @@
 
                 <div class="form-group row">
                     <div class="col">
-                        <label class="text-white" for="email" class="">E-Mail Address</label>
-                        <input id="email" type="text" placeholder="E-Mail Addres" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email' ) }}" required autofocus>
+                        <label class="text-white" for="email" class="">Email</label>
+                        <input id="email" type="text" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email' ) }}" required autofocus>
 
                         @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
@@ -35,8 +35,8 @@
 
                 <div class="form-group row">
                     <div class="col">
-                        <label class="text-white" for="password" class="">Password</label>
-                        <input id="password" type="password" placeholder="Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                        <label class="text-white" for="password" class="">Lösenord</label>
+                        <input id="password" type="password" placeholder="Lösenord" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                         @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                 <div class="form-group row mb-0">
                     <div class="col">
                         <button type="submit" class="btn btn-primary ml-0">
-                            Login
+                            Logga in
                         </button>
                     </div>
                 </div>
