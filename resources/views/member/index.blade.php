@@ -30,7 +30,7 @@
 
             <div class="form-group row">
                 <div class="input-group">
-                    <input id="search" type="text" placeholder="Sök.." class="form-control{{ $errors->has('search') ? ' is-invalid' : '' }}" name="search" autofocus required>
+                    <input id="search" type="text" placeholder="Sök.." class="form-control{{ $errors->has('search') ? ' is-invalid' : '' }}" name="search" value="{{ isset( $search ) ? $search : "" }}" autofocus required>
                     @if ($errors->has('search'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('search' ) }}</strong>
@@ -43,6 +43,9 @@
             </div>
         </form>
     </div>
+    @if( isset( $search ) )
+        <h4>Du sökte på: <i>{{ $search }}</i></h4>
+    @endif
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>

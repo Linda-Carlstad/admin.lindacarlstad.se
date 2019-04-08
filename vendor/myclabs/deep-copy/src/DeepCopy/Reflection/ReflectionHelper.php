@@ -1,14 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace DeepCopy\Reflection;
 
-use DeepCopy\Exception\PropertyException;
 use ReflectionClass;
-use ReflectionException;
-use ReflectionObject;
 use ReflectionProperty;
 
-class ReflectionHelper
+final class ReflectionHelper
 {
     /**
      * Retrieves all properties (including private ones), from object and all its ancestors.
@@ -16,63 +13,33 @@ class ReflectionHelper
      * Standard \ReflectionClass->getProperties() does not return private properties from ancestor classes.
      *
      * @author muratyaman@gmail.com
-     * @see http://php.net/manual/en/reflectionclass.getproperties.php
+     * @see https://secure.php.net/manual/en/reflectionclass.getproperties.php
      *
-     * @param ReflectionClass $ref
+     * @param ReflectionClass $reflectionClass
      *
      * @return ReflectionProperty[]
      */
-    public static function getProperties(ReflectionClass $ref)
+    public static function getProperties(ReflectionClass $reflectionClass): array
     {
-        $props = $ref->getProperties();
-        $propsArr = array();
+        $reflectionProperties = $reflectionClass->getProperties();
+        $reflectionPropertiesByName = [];
 
-        foreach ($props as $prop) {
-            $propertyName = $prop->getName();
-            $propsArr[$propertyName] = $prop;
+        foreach ($reflectionProperties as $reflectionProperty) {
+            $propertyName = $reflectionProperty->getName();
+            $reflectionPropertiesByName[$propertyName] = $reflectionProperty;
         }
 
-        if ($parentClass = $ref->getParentClass()) {
-            $parentPropsArr = self::getProperties($parentClass);
-            foreach ($propsArr as $key => $property) {
-                $parentPropsArr[$key] = $property;
+        if ($parentClass = $reflectionClass->getParentClass()) {
+            $parentReflectionPropertiesByName = self::getProperties($parentClass);
+
+            foreach ($reflectionPropertiesByName as $name => $reflectionProperty) {
+                // When a property collides by name, the child one takes precedence
+                $parentReflectionPropertiesByName[$name] = $reflectionProperty;
             }
 
-            return $parentPropsArr;
+            return $parentReflectionPropertiesByName;
         }
 
-        return $propsArr;
-    }
-
-    /**
-     * Retrieves property by name from object and all its ancestors.
-     *
-     * @param object|string $object
-     * @param string $name
-     *
-     * @throws PropertyException
-     * @throws ReflectionException
-     *
-     * @return ReflectionProperty
-     */
-    public static function getProperty($object, $name)
-    {
-        $reflection = is_object($object) ? new ReflectionObject($object) : new ReflectionClass($object);
-
-        if ($reflection->hasProperty($name)) {
-            return $reflection->getProperty($name);
-        }
-
-        if ($parentClass = $reflection->getParentClass()) {
-            return self::getProperty($parentClass->getName(), $name);
-        }
-
-        throw new PropertyException(
-            sprintf(
-                'The class "%s" doesn\'t have a property with the given name: "%s".',
-                is_object($object) ? get_class($object) : $object,
-                $name
-            )
-        );
+        return $reflectionPropertiesByName;
     }
 }

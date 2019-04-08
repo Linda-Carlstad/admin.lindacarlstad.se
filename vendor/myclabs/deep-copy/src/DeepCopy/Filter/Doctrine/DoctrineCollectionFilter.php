@@ -1,25 +1,22 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace DeepCopy\Filter\Doctrine;
 
 use DeepCopy\Filter\Filter;
-use DeepCopy\Reflection\ReflectionHelper;
+use Doctrine\Common\Collections\Collection;
+use ReflectionProperty;
 
-/**
- * @final
- */
-class DoctrineCollectionFilter implements Filter
+final class DoctrineCollectionFilter implements Filter
 {
     /**
      * Copies the object property doctrine collection.
      *
      * {@inheritdoc}
      */
-    public function apply($object, $property, $objectCopier)
+    public function apply(object $object, ReflectionProperty $reflectionProperty, callable $objectCopier): void
     {
-        $reflectionProperty = ReflectionHelper::getProperty($object, $property);
-
         $reflectionProperty->setAccessible(true);
+        /** @var Collection $oldCollection */
         $oldCollection = $reflectionProperty->getValue($object);
 
         $newCollection = $oldCollection->map(
