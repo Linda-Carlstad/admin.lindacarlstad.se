@@ -12,28 +12,24 @@
 */
 
 
-Route::get( 'login', [
-  'as' => 'login',
+Route::get( '/inloggning', [
   'uses' => 'Auth\LoginController@showLoginForm'
-] );
+] )->name( 'login' );
+
 Route::post( 'login', [
   'as' => '',
   'uses' => 'Auth\LoginController@login'
-] );
-Route::post( 'logout', [
-  'as' => 'logout',
+] )->name( 'loginLogic' );
+
+Route::post( '/utloggning', [
   'uses' => 'Auth\LoginController@logout'
-] );
+] )->name( 'logout' );
 
 Route::group( [ 'middleware' => 'auth' ], function ()
 {
     Route::get( '/', function () {
         return view( 'index' );
     });
-
-    Route::get( '/overaller', function () {
-        return view( 'overall' );
-    })->name( 'overall' );
 
     Route::get( '/nollning', function () {
         return view( 'initiation' );
@@ -56,9 +52,14 @@ Route::group( [ 'middleware' => 'auth' ], function ()
     {
         return view( 'member.{id}.edit' );
     } );
-    
+
     Route::get( '/medlem/visa', function()
     {
         return view( 'member.{id}' );
     } );
+
+    Route::get( '/overaller', function()
+    {
+        return view( 'overall.index' );
+    } )->name( 'overall' );
 });
