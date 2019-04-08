@@ -13,7 +13,7 @@ class OverallController extends Controller
      */
     public function index()
     {
-        //
+        return view( 'overall.index' );
     }
 
     /**

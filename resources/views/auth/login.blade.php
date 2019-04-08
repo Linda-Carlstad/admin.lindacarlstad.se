@@ -17,7 +17,7 @@
                 <img src="{{ asset('/img/logo.png' ) }}" class="img-fluid">
             </div>
             <br>
-            <form method="POST" action="{{ route('login' ) }}">
+            <form method="POST" action="{{ route( 'loginLogic' ) }}">
                 @csrf
 
                 <div class="form-group row">
