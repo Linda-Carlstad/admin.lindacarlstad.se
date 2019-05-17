@@ -1,18 +1,23 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace DeepCopy\Filter;
 
-use ReflectionProperty;
+use DeepCopy\Reflection\ReflectionHelper;
 
-final class SetNullFilter implements Filter
+/**
+ * @final
+ */
+class SetNullFilter implements Filter
 {
     /**
      * Sets the object property to null.
      *
      * {@inheritdoc}
      */
-    public function apply(object $object, ReflectionProperty $reflectionProperty, callable $objectCopier): void
+    public function apply($object, $property, $objectCopier)
     {
+        $reflectionProperty = ReflectionHelper::getProperty($object, $property);
+
         $reflectionProperty->setAccessible(true);
         $reflectionProperty->setValue($object, null);
     }

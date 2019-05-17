@@ -22,17 +22,16 @@ Route::group( [ 'middleware' => 'auth' ], function ()
         return view( 'index' );
     });
 
-    Route::get( '/nollning', function () {
-        return view( 'initiation' );
-    })->name( 'initiation' );
-
     Route::get( '/dokument', function () {
         return view( 'documents' );
     })->name( 'documents' );
 
+    Route::get( '/overaller', 'FetchOveralls' )->name( 'overalls' );
+    Route::patch( 'updateOveralls', 'UpdateOverallCount' );
+
     Route::resources([
         'member' => 'MemberController',
-        'overall' => 'OverallController',
         'board' => 'BoardController',
+        'initiation' => 'InitiationDaysController'
     ]);
 });

@@ -13,6 +13,7 @@ class CreateMembersTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('members');
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
             $table->string('firstName');

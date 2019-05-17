@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\InitiationDay;
+
 use Illuminate\Http\Request;
 
-class OverallController extends Controller
+class InitiationDaysController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,9 @@ class OverallController extends Controller
      */
     public function index()
     {
-        return view( 'overall.index' );
+        $initiationDays = InitiationDay::orderBy('order', 'desc')->get();
+
+        return view( 'initiation.index' )->with( 'initiationDays', $initiationDays );
     }
 
     /**
@@ -23,7 +27,7 @@ class OverallController extends Controller
      */
     public function create()
     {
-        //
+        return view( 'initiation.create' );
     }
 
     /**
@@ -32,9 +36,10 @@ class OverallController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( Request $request )
     {
-        //
+        InitiationDay::create( $request );
+        return redirect( 'initiation' )->with( 'success', 'Ny dag skapad!' );
     }
 
     /**
@@ -45,7 +50,7 @@ class OverallController extends Controller
      */
     public function show($id)
     {
-        //
+        abort( 404 );
     }
 
     /**
@@ -56,7 +61,10 @@ class OverallController extends Controller
      */
     public function edit($id)
     {
-        //
+        $initiationDay = InitiationDay::findOrFail( $id );
+
+        return view( 'initiation.edit' )
+            ->with( 'initiationDay', $initiationDay  );
     }
 
     /**
@@ -66,9 +74,12 @@ class OverallController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Request $request, $id )
     {
-        //
+        $day = InitiationDay::findOrFail( $id );
+        InitiationDay::updateInfo( $day, $request );
+
+        return redirect( 'initiation' )->with( 'success', 'Nollningsdag uppdaterad.' );
     }
 
     /**
@@ -77,8 +88,11 @@ class OverallController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id )
     {
-        //
+        $day = InitiationDay::findOrFail( $id );
+        $day->delete();
+
+        return redirect( 'initiation' )->with( 'success', 'Dag borttagen.' );
     }
 }

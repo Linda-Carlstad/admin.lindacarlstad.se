@@ -15,7 +15,7 @@ class BoardController extends Controller
      */
     public function index()
     {
-        $boardMembers = BoardMember::get()->all();
+        $boardMembers = BoardMember::all();
         return view( 'board.index' )->with( 'boardMembers', $boardMembers );
     }
 
@@ -26,7 +26,8 @@ class BoardController extends Controller
      */
     public function create()
     {
-        abort( 404 );
+        return view( 'board.create' );
+
     }
 
     /**
@@ -37,7 +38,8 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        abort( 403 );
+        BoardMember::create( $request );
+        return redirect( 'board' )->with( 'success', 'Ny styrelseposition tillagd!' );
     }
 
     /**
@@ -74,20 +76,8 @@ class BoardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate( [
-            'position' => 'required|string',
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'description' => 'required|string',
-        ] );
-
         $boardMember = BoardMember::findOrFail( $id );
-        $boardMember->position = $request->position;
-        $boardMember->name = $request->name;
-        $boardMember->email = $request->email;
-        $boardMember->description = $request->description;
-        $boardMember->save();
-
+        BoardMember::updateInfo( $boardMember, $request );
         return redirect( 'board' )->with( 'success', 'Styrelseposition uppdaterad.' );
     }
 
@@ -99,6 +89,9 @@ class BoardController extends Controller
      */
     public function destroy($id)
     {
-        abort( 403 );
+        $boardMember = BoardMember::findOrFail( $id );
+        $boardMember->delete();
+
+        return redirect( 'board' )->with( 'success', 'Styrelseposition borttagen.' );
     }
 }

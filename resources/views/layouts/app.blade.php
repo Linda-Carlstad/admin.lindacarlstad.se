@@ -31,10 +31,10 @@
                         <a class="nav-link" href="{{ route( 'member.index' ) }}">Medlemmar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'overall.index' ) }}">Overaller</a>
+                        <a class="nav-link" href="{{ route( 'overalls' ) }}">Overaller</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'initiation' ) }}">Nollning</a>
+                        <a class="nav-link" href="{{ route( 'initiation.index' ) }}">Nollning</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route( 'board.index' ) }}">Styrelsen</a>

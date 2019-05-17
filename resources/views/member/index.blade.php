@@ -23,9 +23,7 @@
         <h2>Medlemmar</h2>
         <hr>
         <a class="btn btn-primary m-1" href="{{ route( 'member.create' ) }}">Lägg till medlem</a>
-        <br>
-        <br>
-        <form class="col-md-8 offset-md-2" action="{{ '/member' }}" method="get">
+        <form class="col-md-8 offset-md-2 mt-2" action="{{ '/member' }}" method="get">
             @csrf
 
             <div class="form-group row">

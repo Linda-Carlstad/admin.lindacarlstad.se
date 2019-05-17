@@ -1,10 +1,16 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace DeepCopy\TypeFilter;
 
-final class ReplaceFilter implements TypeFilter
+/**
+ * @final
+ */
+class ReplaceFilter implements TypeFilter
 {
-    private $callback;
+    /**
+     * @var callable
+     */
+    protected $callback;
 
     /**
      * @param callable $callable Will be called to get the new value for each element to replace
@@ -17,8 +23,8 @@ final class ReplaceFilter implements TypeFilter
     /**
      * {@inheritdoc}
      */
-    public function apply($value)
+    public function apply($element)
     {
-        return ($this->callback)($value);
+        return call_user_func($this->callback, $element);
     }
 }

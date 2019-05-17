@@ -1,22 +1,21 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace DeepCopy\Filter\Doctrine;
 
-use DeepCopy\Filter\ChainableFilter;
-use Doctrine\Common\Persistence\Proxy;
-use ReflectionProperty;
+use DeepCopy\Filter\Filter;
 
-final class DoctrineProxyFilter implements ChainableFilter
+/**
+ * @final
+ */
+class DoctrineProxyFilter implements Filter
 {
     /**
      * Triggers the magic method __load() on a Doctrine Proxy class to load the
      * actual entity from the database.
      *
      * {@inheritdoc}
-     *
-     * @param Proxy $object
      */
-    public function apply(object $object, ReflectionProperty $reflectionProperty, callable $objectCopier): void
+    public function apply($object, $property, $objectCopier)
     {
         $object->__load();
     }

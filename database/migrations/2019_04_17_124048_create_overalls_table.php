@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInitiationDaysTable extends Migration
+class CreateOverallsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateInitiationDaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('initiation_days', function (Blueprint $table) {
+        Schema::dropIfExists('overalls');
+        Schema::create('overalls', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('header');
-            $table->string('description');
-            $table->string('location');
+            $table->string('size');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateInitiationDaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('initiation_days');
+        Schema::dropIfExists('overalls');
     }
 }

@@ -13,12 +13,14 @@ class CreateBoardMembersTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('board_members');
         Schema::create('board_members', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('position');
+            $table->string('title');
             $table->string('name');
             $table->string('email');
-            $table->string('description');
+            $table->longText('description');
+            $table->integer('order');
             $table->timestamps();
         });
     }

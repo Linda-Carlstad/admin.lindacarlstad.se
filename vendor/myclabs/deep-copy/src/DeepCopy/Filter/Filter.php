@@ -1,13 +1,18 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace DeepCopy\Filter;
-
-use ReflectionProperty;
 
 /**
  * Filter to apply to a property while copying an object
  */
 interface Filter
 {
-    public function apply(object $object, ReflectionProperty $reflectionProperty, callable $objectCopier): void;
+    /**
+     * Applies the filter to the object.
+     *
+     * @param object   $object
+     * @param string   $property
+     * @param callable $objectCopier
+     */
+    public function apply($object, $property, $objectCopier);
 }
