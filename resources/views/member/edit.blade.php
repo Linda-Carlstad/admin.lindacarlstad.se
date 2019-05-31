@@ -30,7 +30,7 @@
         <input type="text" name="type" value="manual" hidden>
         <div class="form-group row">
             <label for="firstName">Förnamn</label>
-            <input id="firstName" type="text" placeholder="Förnamn" class="form-control{{ $errors->has('firstName') ? ' is-invalid' : '' }}" name="firstName" value="{{ $member->firstName }}" required>
+            <input id="firstName" type="text" placeholder="Förnamn" class="form-control{{ $errors->has('firstName') ? ' is-invalid' : '' }}" name="firstName" value="{{ $member->firstName }}" required autofocus>
 
             @if ($errors->has('firstName'))
             <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group row">
             <label for="email">Email</label>
-            <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $member->email }}" required>
+            <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $member->email }}" >
 
             @if ($errors->has('email'))
             <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
         </div>
         <div class="form-group row">
             <label for="membership" class="text-muted">Medlemskap</label>
-            <select class="form-control" id="membership" name="membership">
+            <select class="form-control" id="membership" name="membership" required>
                 <option value="Livstid">Livstid</option>
                 <option value="Tillfälligt">Tillfälligt</option>
             </select>

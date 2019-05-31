@@ -28,7 +28,7 @@
 
             <div class="form-group row">
                 <div class="input-group">
-                    <input id="search" type="text" placeholder="Sök.." class="form-control{{ $errors->has('search') ? ' is-invalid' : '' }}" name="search" value="{{ isset( $search ) ? $search : "" }}" autofocus required>
+                    <input id="search" type="text" placeholder="Sök.." class="form-control{{ $errors->has('search') ? ' is-invalid' : '' }}" name="search" value="{{ isset( $search ) ? $search : "" }}" required autofocus>
                     @if ($errors->has('search'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('search' ) }}</strong>

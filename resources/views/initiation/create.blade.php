@@ -27,7 +27,7 @@
         @csrf
         <div class="form-group row">
             <label for="title" class="">Titel</label>
-            <input id="title" type="text" placeholder="Namn på dagen" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title' ) }}" required>
+            <input id="title" type="text" placeholder="Namn på dagen" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title' ) }}" >
 
             @if ($errors->has('title'))
             <span class="invalid-feedback" role="alert">

@@ -29,21 +29,11 @@
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
             <label for="title">Position</label>
-            <input id="title" type="text" placeholder="Position" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $boardMember->title }}" required>
+            <input id="title" type="text" placeholder="Position" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $boardMember->title }}" required autofocus>
 
             @if ($errors->has('title'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('title' ) }}</strong>
-                </span>
-            @endif
-        </div>
-        <div class="form-group row">
-            <label for="email">Email</label>
-            <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $boardMember->email }}" required>
-
-            @if ($errors->has('email'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('email' ) }}</strong>
                 </span>
             @endif
         </div>
@@ -58,8 +48,20 @@
             @endif
         </div>
         <div class="form-group row">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $boardMember->email }}" >
+
+            @if ($errors->has('email'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('email' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group row">
             <label for="description">Beskrivning</label>
-            <input id="description" type="text" placeholder="Beskrivning" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="{{ $boardMember->description }}" required>
+            <textarea rows="3" id="description" type="text" placeholder="{{ $boardMember->description }}" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
+                {{ $boardMember->description }}
+            </textarea>
 
             @if ($errors->has('description'))
                 <span class="invalid-feedback" role="alert">
@@ -70,7 +72,7 @@
 
         <div class="form-group row">
             <label for="order">Order</label>
-            <input id="order" type="number" placeholder="Order" class="form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ $boardMember->order }}" required>
+            <input id="order" type="number" placeholder="Order" class="form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ $boardMember->order }}" >
 
             @if ($errors->has('order'))
                 <span class="invalid-feedback" role="alert">

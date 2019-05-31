@@ -15,7 +15,7 @@ class Member extends Model
             'firstName'  => 'required|string',
             'lastName'   => 'required|string',
             'id_number'  => 'required|string',
-            'email'      => 'required|email',
+            'email'      => 'email',
             'membership' => 'required|string',
             'start'      => 'required|string',
         ] );
@@ -30,5 +30,25 @@ class Member extends Model
         $member->save();
 
         return [ 'success' => 'Ny medlem skapad!' ];
+    }
+
+    public static function updateInfo( Member $member, Request $request )
+    {
+        $request->validate( [
+            'firstName'  => 'required|string',
+            'lastName'   => 'required|string',
+            'id_number'  => 'required|string',
+            'email'      => 'required|email',
+            'membership' => 'required|string',
+            'start'      => 'required|string',
+        ] );
+
+        $member->firstName = $request->firstName;
+        $member->lastName = $request->lastName;
+        $member->id_number = $request->id_number;
+        $member->email = $request->email;
+        $member->membership = $request->membership;
+        $member->start = $request->start;
+        $member->save();
     }
 }

@@ -29,15 +29,17 @@
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
             <label for="title">Title</label>
-            <input id="title" type="text" placeholder="Position" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $initiationDay->title }}" required>
+            <input id="title" type="text" placeholder="Position" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $initiationDay->title }}" required autofocus>
         </div>
         <div class="form-group row">
             <label for="description">Beskrivning</label>
-            <input id="description" type="text" placeholder="Beskrivning" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="{{ $initiationDay->description }}" required>
+            <textarea rows="4" id="description" type="text" placeholder="{{ $initiationDay->description }}" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
+                {{ $initiationDay->description }}
+            </textarea>
         </div>
         <div class="form-group row">
             <label for="date">Datum</label>
-            <input id="date" type="text" placeholder="Datum" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ $initiationDay->date }}" required>
+            <input id="date" type="text" placeholder="Datum" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ $initiationDay->date }}">
 
             @if ($errors->has('date'))
                 <span class="invalid-feedback" role="alert">
@@ -47,7 +49,7 @@
         </div>
         <div class="form-group row">
             <label for="time">Tid</label>
-            <input id="time" type="text" placeholder="Tid" class="form-control{{ $errors->has('time') ? ' is-invalid' : '' }}" name="time" value="{{ $initiationDay->time }}" required>
+            <input id="time" type="text" placeholder="Tid" class="form-control{{ $errors->has('time') ? ' is-invalid' : '' }}" name="time" value="{{ $initiationDay->time }}">
 
             @if ($errors->has('time'))
                 <span class="invalid-feedback" role="alert">
@@ -57,7 +59,7 @@
         </div>
         <div class="form-group row">
             <label for="location">Plats</label>
-            <input id="location" type="text" placeholder="Plats" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="{{ $initiationDay->location }}" required>
+            <input id="location" type="text" placeholder="Plats" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="{{ $initiationDay->location }}">
 
             @if ($errors->has('location'))
                 <span class="invalid-feedback" role="alert">
@@ -67,7 +69,7 @@
         </div>
         <div class="form-group row">
             <label for="order">Order</label>
-            <input id="order" type="number" placeholder="Order" class="form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ $initiationDay->order }}" required>
+            <input id="order" type="number" placeholder="Order" class="form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ $initiationDay->order }}">
 
             @if ($errors->has('order'))
                 <span class="invalid-feedback" role="alert">

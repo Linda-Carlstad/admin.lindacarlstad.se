@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\InitiationDay;
+use App\InitiationKeyPerson;
 
 use Illuminate\Http\Request;
 
@@ -15,9 +16,10 @@ class InitiationDaysController extends Controller
      */
     public function index()
     {
-        $initiationDays = InitiationDay::orderBy('order', 'desc')->get();
+        $days = InitiationDay::orderBy('order', 'desc')->get();
+        $keyPeople = InitiationKeyPerson::all();
 
-        return view( 'initiation.index' )->with( 'initiationDays', $initiationDays );
+        return view( 'initiation.index' )->with( 'days', $days )->with( 'keyPeople', $keyPeople );
     }
 
     /**

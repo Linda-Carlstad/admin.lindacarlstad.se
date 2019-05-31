@@ -22,17 +22,48 @@
     <div class="text-center mb-2">
         <h2>Nollning</h2>
         <hr>
-
-        @if( $initiationDays->isEmpty() )
-            <p>
-                Inga dagar skapade, skapa en nu!
-            </p>
-        @endif
-
         <a class="btn btn-primary m-1" href="{{ route( 'initiation.create' ) }}">Lägg till dag</a>
+        <a class="btn btn-primary m-1" href="{{ route( 'person.create' ) }}">Lägg till nyckelperson</a>
+        <a class="btn btn-primary m-1" href="{{ route( 'information.edit' ) }}">Uppdatera information</a>
     </div>
 
-    @if( !$initiationDays->isEmpty() )
+    @if( $keyPeople->isEmpty() )
+        <p class="text-center">
+            Inga nyckelpersoner tillagda, lägg till en nu!
+        </p>
+    @else
+        <h4 class="text-center">Nyckelpersoner: {{ $keyPeople->count() }}</h4>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Namn</th>
+                    <th>Rank</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($keyPeople as $keyPerson)
+                    <tr>
+                        <td>{{ $keyPerson->name }}</td>
+                        <td>{{ $keyPerson->rank }}</td>
+                        <td>
+                            <a href="{{ url( 'person/' . $keyPerson->id . '/edit') }}" class="btn btn-link">
+                                Redigera
+                            </a>
+                        </td>
+                    </tr>
+
+                @endforeach
+            </tbody>
+        </table>
+    @endif
+    <hr>
+    @if( $days->isEmpty() )
+        <p class="text-center">
+            Inga dagar skapade, skapa en nu!
+        </p>
+    @else
+        <h4 class="text-center">Dagar: {{ $days->count() }}</h4>
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -43,13 +74,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($initiationDays as $initiationDay)
+                @foreach ($days as $day)
                     <tr>
-                        <td>{{ $initiationDay->title }}</td>
-                        <td>{{ $initiationDay->date }}</td>
-                        <td>{{ $initiationDay->order }}</td>
+                        <td>{{ $day->title }}</td>
+                        <td>{{ $day->date }}</td>
+                        <td>{{ $day->order }}</td>
                         <td>
-                            <a href="{{ url( 'initiation/' . $initiationDay->id . '/edit') }}" class="btn btn-link">
+                            <a href="{{ url( 'initiation/' . $day->id . '/edit') }}" class="btn btn-link">
                                 Redigera
                             </a>
                         </td>

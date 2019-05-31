@@ -28,10 +28,14 @@ Route::group( [ 'middleware' => 'auth' ], function ()
 
     Route::get( '/overaller', 'FetchOveralls' )->name( 'overalls' );
     Route::patch( 'updateOveralls', 'UpdateOverallCount' );
+    Route::get( '/initiation/information', 'FetchInitiationInformation' )->name( 'information.edit' );
+    Route::patch( 'informationUpdate', 'UpdateInitiationInformation' );
 
     Route::resources([
         'member' => 'MemberController',
         'board' => 'BoardController',
-        'initiation' => 'InitiationDaysController'
+        'initiation' => 'InitiationDaysController',
+        'person' => 'InitiationKeyPeopleController',
+
     ]);
 });

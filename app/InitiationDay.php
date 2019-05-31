@@ -40,11 +40,11 @@ class InitiationDay extends Model
     {
         $request->validate( [
             'title' => 'string|required',
-            'description' => 'string|required',
-            'date' => 'string|required',
-            'time' => 'string|required',
-            'location' => 'string|required',
-            'order' => 'integer|required',
+            'description' => 'string',
+            'date' => 'string',
+            'time' => 'string',
+            'location' => 'string',
+            'order' => 'integer',
         ] );
 
         $day->title = $request->title;

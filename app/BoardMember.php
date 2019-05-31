@@ -11,9 +11,9 @@ class BoardMember extends Model
     {
         $request->validate( [
             'title' => 'string|required',
-            'name' => 'string',
+            'name' => 'string|required',
+            'email' => 'email',
             'description' => 'string',
-            'email' => 'email|required',
             'order' => 'integer',
         ] );
 
@@ -26,16 +26,16 @@ class BoardMember extends Model
         $boardMember->save();
     }
 
-    public function updateInfo( BoardMember $boardMember, Request $request )
+    public static function updateInfo( BoardMember $boardMember, Request $request )
     {
         $request->validate( [
-            'title' => 'required|string',
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'description' => 'required|string',
-            'order' => 'required|integer',
+            'title' => 'string|required',
+            'name' => 'string|required',
+            'email' => 'email',
+            'description' => 'string',
+            'order' => 'integer',
         ] );
-
+        
         $boardMember->title = $request->title;
         $boardMember->name = $request->name;
         $boardMember->email = $request->email;
