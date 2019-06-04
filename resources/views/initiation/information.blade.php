@@ -40,9 +40,18 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="price">Pris</label>
-            <input id="price" type="number" placeholder="Tid" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" value="{{ $information->price }}" required>
+            <label for="price">
+                Pris <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Klicka i för att visa priset på webbsidan"></i>
+            </label>
 
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input id="showPrice" name="showPrice" type="checkbox" value="1" aria-label="Checkbox for following text input" {{ $information->showPrice === 1 ? 'checked' : '' }}>
+                    </div>
+                </div>
+                <input id="price" type="number" placeholder="Tid" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" value="{{ $information->price }}" required>
+            </div>
             @if ($errors->has('price'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('price' ) }}</strong>

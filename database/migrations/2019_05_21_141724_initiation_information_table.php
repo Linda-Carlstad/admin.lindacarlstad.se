@@ -18,6 +18,7 @@ class InitiationInformationTable extends Migration
             $table->increments('id');
             $table->longText('description');
             $table->integer('price');
+            $table->boolean('showPrice')->nullable();
             $table->string('facebookGroup');
             $table->timestamps();
         });

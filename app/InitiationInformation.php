@@ -11,6 +11,14 @@ class InitiationInformation extends Model
 
     public static function updateInfo( Request $request )
     {
+        if( $request->has( 'showPrice' ) )
+        {
+            $request->showPrice = 1;
+        }
+        else {
+            $request->showPrice = 0;
+        }
+
         $request->validate( [
             'description' => 'string|required',
             'price' => 'integer|required',
@@ -20,6 +28,7 @@ class InitiationInformation extends Model
         $information = InitiationInformation::first();
         $information->description = $request->description;
         $information->price = $request->price;
+        $information->showPrice = $request->showPrice;
         $information->facebookGroup = $request->facebookGroup;
         $information->save();
     }

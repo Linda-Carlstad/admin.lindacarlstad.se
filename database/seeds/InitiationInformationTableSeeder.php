@@ -14,6 +14,7 @@ class InitiationInformationTableSeeder extends Seeder
         DB::table('initiation_information')->insert([
             'description' => 'test test test',
             'price' => 200,
+            'showPrice' => true,
             'facebookGroup' => 'https://www.facebook.com/linda.carlstad/',
        ]);
     }
