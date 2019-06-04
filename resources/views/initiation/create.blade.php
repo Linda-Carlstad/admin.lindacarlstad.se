@@ -37,7 +37,9 @@
         </div>
         <div class="form-group row">
             <label for="description" class="">Beskrivning</label>
-            <input id="description" type="text" placeholder="Beskrivning på dagen" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="{{ old('description' ) }}">
+            <textarea rows="4" id="description" type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
+                {{ old('description' ) }}
+            </textarea>
 
             @if ($errors->has('description'))
             <span class="invalid-feedback" role="alert">
@@ -46,8 +48,18 @@
             @endif
         </div>
         <div class="form-group row">
+            <label for="extra" class="">Extra information</label>
+            <input id="extra" type="text" placeholder="Extra information till dagen" class="form-control{{ $errors->has('extra') ? ' is-invalid' : '' }}" name="extra" value="{{ old('extra' ) }}">
+
+            @if ($errors->has('extra'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('extra' ) }}</strong>
+            </span>
+            @endif
+        </div>
+        <div class="form-group row">
             <label for="date" class="">Datum</label>
-            <input id="date" type="text" placeholder="e.x 09-10 " class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ old('date' ) }}">
+            <input id="date" type="text" placeholder="e.x 12 augusti" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ old('date' ) }}">
 
             @if ($errors->has('date'))
             <span class="invalid-feedback" role="alert">

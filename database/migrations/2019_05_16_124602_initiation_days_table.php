@@ -18,11 +18,12 @@ class InitiationDaysTable extends Migration
             $table->increments('id');
             $table->string('title')->unique();
             $table->string('slug')->unique();
-            $table->longText('description');
-            $table->string('date');
-            $table->string('time');
-            $table->longText('location');
-            $table->string('order');
+            $table->longText('description')->nullable();
+            $table->string('extra')->nullable();;
+            $table->string('date')->nullable();;
+            $table->string('time')->nullable();;
+            $table->longText('location')->nullable();;
+            $table->string('order')->nullable();;
             $table->timestamps();
         });
     }

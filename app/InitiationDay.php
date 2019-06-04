@@ -20,6 +20,7 @@ class InitiationDay extends Model
         $request->validate( [
             'title' => 'string|required',
             'description' => 'string',
+            'extra' => 'string',
             'date' => 'string',
             'time' => 'string',
             'location' => 'string',
@@ -29,6 +30,7 @@ class InitiationDay extends Model
         $day = new InitiationDay;
         $day->title = $request->title;
         $day->description = $request->description;
+        $day->extra = $request->extra;
         $day->date = $request->date;
         $day->time = $request->time;
         $day->location = $request->location;
@@ -41,6 +43,7 @@ class InitiationDay extends Model
         $request->validate( [
             'title' => 'string|required',
             'description' => 'string',
+            'extra' => 'string',
             'date' => 'string',
             'time' => 'string',
             'location' => 'string',
@@ -49,6 +52,7 @@ class InitiationDay extends Model
 
         $day->title = $request->title;
         $day->description = $request->description;
+        $day->extra = $request->extra;
         $day->date = $request->date;
         $day->time = $request->time;
         $day->location = $request->location;
