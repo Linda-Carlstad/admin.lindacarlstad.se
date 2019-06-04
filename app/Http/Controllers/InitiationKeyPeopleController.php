@@ -40,7 +40,7 @@ class InitiationKeyPeopleController extends Controller
     {
         InitiationKeyPerson::create( $request );
 
-        return redirect()->action('InitiationDaysController@index')->with( 'success', 'Ny nyckelperson skapad!' );
+        return redirect()->action('InitiationKeyPeople@index')->with( 'success', 'Ny nyckelperson skapad!' );
     }
 
     /**
@@ -79,7 +79,8 @@ class InitiationKeyPeopleController extends Controller
      {
          $keyPerson = InitiationKeyPerson::findOrFail( $id );
          InitiationKeyPerson::updateInfo( $keyPerson, $request );
-         return redirect()->action('InitiationDaysController@index')->with( 'success', 'Nyckelperson uppdaterad.' );
+
+         return redirect()->action('InitiationKeyPeople@index')->with( 'success', 'Nyckelperson uppdaterad.' );
      }
 
      /**
@@ -93,6 +94,6 @@ class InitiationKeyPeopleController extends Controller
          $keyPerson = InitiationKeyPerson::findOrFail( $id );
          $keyPerson->delete();
 
-         return redirect()->action('InitiationDaysController@index')->with( 'success', 'Nyckelperson borttagen.' );
+         return redirect()->action('InitiationKeyPeople@index')->with( 'success', 'Nyckelperson borttagen.' );
      }
 }
