@@ -22,7 +22,11 @@ Route::group( [ 'middleware' => 'auth' ], function ()
         return view( 'index' );
     });
 
-    Route::get( '/dokument', function () {
+    Route::get( '/initiation-handler', function() {
+        return view( 'initiationHandle' );
+    } )->name( 'initiationHandle' );
+
+    Route::get( '/document', function () {
         return view( 'documents' );
     })->name( 'documents' );
 
@@ -30,6 +34,7 @@ Route::group( [ 'middleware' => 'auth' ], function ()
     Route::patch( 'updateOveralls', 'UpdateOverallCount' );
     Route::get( '/initiation/information', 'FetchInitiationInformation' )->name( 'information.edit' );
     Route::patch( 'informationUpdate', 'UpdateInitiationInformation' );
+
 
     Route::resources([
         'member' => 'MemberController',

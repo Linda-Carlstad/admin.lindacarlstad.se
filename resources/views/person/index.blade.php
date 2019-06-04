@@ -20,34 +20,32 @@
     @endif
 
     <div class="text-center mb-2">
-        <h2>Nollning - Dagar</h2>
+        <h2>Nollning - Nyckelpersoner</h2>
         <hr>
-        <a class="btn btn-primary m-1" href="{{ route( 'initiation.create' ) }}">Lägg till dag</a>
+        <a class="btn btn-primary m-1" href="{{ route( 'person.create' ) }}">Lägg till nyckelperson</a>
     </div>
 
-    @if( $days->isEmpty() )
+    @if( $people->isEmpty() )
         <p class="text-center">
-            Inga dagar skapade, skapa en nu!
+            Inga nyckelpersoner tillagda, lägg till en nu!
         </p>
     @else
-        <h4 class="text-center">Dagar: {{ $days->count() }}</h4>
+        <h4 class="text-center">Nyckelpersoner: {{ $people->count() }}</h4>
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>Titel</th>
-                    <th>Datum</th>
-                    <th>Order</th>
+                    <th>Namn</th>
+                    <th>Rank</th>
                     <th>#</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($days as $day)
+                @foreach ($people as $person)
                     <tr>
-                        <td>{{ $day->title }}</td>
-                        <td>{{ $day->date }}</td>
-                        <td>{{ $day->order }}</td>
+                        <td>{{ $person->name }}</td>
+                        <td>{{ $person->rank }}</td>
                         <td>
-                            <a href="{{ url( 'initiation/' . $day->id . '/edit') }}" class="btn btn-link">
+                            <a href="{{ url( 'person/' . $person->id . '/edit') }}" class="btn btn-link">
                                 Redigera
                             </a>
                         </td>

@@ -17,9 +17,8 @@ class InitiationDaysController extends Controller
     public function index()
     {
         $days = InitiationDay::orderBy('order', 'desc')->get();
-        $keyPeople = InitiationKeyPerson::all();
 
-        return view( 'initiation.index' )->with( 'days', $days )->with( 'keyPeople', $keyPeople );
+        return view( 'initiation.index' )->with( 'days', $days );
     }
 
     /**

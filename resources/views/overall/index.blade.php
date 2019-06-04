@@ -26,9 +26,9 @@
     <form class="" action="{{ 'updateOveralls' }}" method="post">
         @csrf
         {{ method_field( 'patch' ) }}
-        <div class="d-flex flex-row justify-content-center">
+        <div class="d-block row d-md-flex justify-content-center">
             @foreach( $overalls as $overall )
-                <div class="col-2 text-center">
+                <div class="col-12 col-md-4 text-center">
                     <input type="text" name="{{ $overall->size }}" value="{{ $overall->quantity }}" class="overall-input form-control">
                     <br>
                     <p class="overall-size-{{ $overall->size }}">

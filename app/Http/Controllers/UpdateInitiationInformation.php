@@ -18,6 +18,6 @@ class UpdateInitiationInformation extends Controller
     {
         InitiationInformation::updateInfo( $request );
 
-        return redirect()->action('InitiationDaysController@index')->with( 'success', 'Information uppdaterad.' );
+        return redirect()->route( 'initiationHandle' )->with( 'success', 'Information uppdaterad.' );
     }
 }

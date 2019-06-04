@@ -15,7 +15,9 @@ class InitiationKeyPeopleController extends Controller
      */
     public function index()
     {
-        abort( 404 );
+        $people = InitiationKeyPerson::all();
+
+        return view( 'person.index' )->with( 'people', $people );
     }
 
     /**
