@@ -29,9 +29,7 @@
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
             <label for="description">Information</label>
-            <textarea rows="3" id="description" type="text" placeholder="{{ $information->description }}" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" required autofocus>
-                {{ $information->description }}
-            </textarea>
+            <textarea rows="3" id="description" type="text" placeholder="{{ $information->description }}" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" required autofocus>{{ $information->description }}</textarea>
 
             @if ($errors->has('description'))
                 <span class="invalid-feedback" role="alert">

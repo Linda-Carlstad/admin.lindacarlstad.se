@@ -33,9 +33,7 @@
         </div>
         <div class="form-group row">
             <label for="description">Beskrivning</label>
-            <textarea rows="4" id="description" type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
-                {{ $initiationDay->description }}
-            </textarea>
+            <textarea rows="4" id="description" type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ $initiationDay->description }}</textarea>
         </div>
         <div class="form-group row">
             <label for="extra" class="">Extra information</label>

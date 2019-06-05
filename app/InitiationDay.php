@@ -63,9 +63,9 @@ class InitiationDay extends Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug')
-            ->usingSeparator('-');
+            ->generateSlugsFrom( 'title' )
+            ->saveSlugsTo( 'slug' )
+            ->usingSeparator( '-' );
     }
 
     public function getRouteKeyName()
