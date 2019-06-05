@@ -38,6 +38,7 @@ Route::group( [ 'middleware' => 'auth' ], function ()
 
     Route::resources([
         'member' => 'MemberController',
+        'song' => 'SongController',
         'board' => 'BoardController',
         'initiation' => 'InitiationDaysController',
         'person' => 'InitiationKeyPeopleController',

@@ -401,6 +401,7 @@ class ComposerStaticInitd8a550e08e93f27e3b43a777e1d958c2
         'App\\Http\\Controllers\\InitiationDaysController' => __DIR__ . '/../..' . '/app/Http/Controllers/InitiationDaysController.php',
         'App\\Http\\Controllers\\InitiationKeyPeopleController' => __DIR__ . '/../..' . '/app/Http/Controllers/InitiationKeyPeopleController.php',
         'App\\Http\\Controllers\\MemberController' => __DIR__ . '/../..' . '/app/Http/Controllers/MemberController.php',
+        'App\\Http\\Controllers\\SongController' => __DIR__ . '/../..' . '/app/Http/Controllers/SongController.php',
         'App\\Http\\Controllers\\UpdateInitiationInformation' => __DIR__ . '/../..' . '/app/Http/Controllers/UpdateInitiationInformation.php',
         'App\\Http\\Controllers\\UpdateOverallCount' => __DIR__ . '/../..' . '/app/Http/Controllers/UpdateOverallCount.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

@@ -49,6 +49,9 @@
                     <!--<li class="nav-item">
                         <a class="nav-link" href="{{ route( 'documents' ) }}">Dokument</a>
                     </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route( 'song.index' ) }}">Sånger</a>
+                    </li>
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
