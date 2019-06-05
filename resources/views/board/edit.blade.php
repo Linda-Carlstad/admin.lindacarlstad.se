@@ -59,9 +59,7 @@
         </div>
         <div class="form-group row">
             <label for="description">Beskrivning</label>
-            <textarea rows="3" id="description" type="text" placeholder="{{ $boardMember->description }}" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">
-                {{ $boardMember->description }}
-            </textarea>
+            <textarea rows="3" id="description" type="text" placeholder="{{ $boardMember->description }}" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ $boardMember->description }}</textarea>
 
             @if ($errors->has('description'))
                 <span class="invalid-feedback" role="alert">

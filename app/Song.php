@@ -23,7 +23,6 @@ class Song extends Model
         ] );
 
         $song = new Song;
-
         $song->title = $request->title;
         $song->text = $request->text;
         $song->melody = $request->melody;
