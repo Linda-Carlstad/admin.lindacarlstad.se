@@ -21,7 +21,6 @@
 
     <div class="text-center mb-2">
         <h2>Nollning</h2>
-        <hr>
         <p>
             Nu vill jag hantera...
         </p>
