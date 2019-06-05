@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
 Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
 Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
@@ -35,11 +34,11 @@ Route::group( [ 'middleware' => 'auth' ], function ()
     Route::get( '/initiation/information', 'FetchInitiationInformation' )->name( 'information.edit' );
     Route::patch( 'informationUpdate', 'UpdateInitiationInformation' );
 
-
     Route::resources([
         'song' => 'SongController',
         'board' => 'BoardController',
         'member' => 'MemberController',
+        'partner' => 'PartnerController',
         'initiation' => 'InitiationDaysController',
         'person' => 'InitiationKeyPeopleController',
 

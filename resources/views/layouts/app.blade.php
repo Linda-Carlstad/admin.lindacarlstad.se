@@ -46,6 +46,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route( 'board.index' ) }}">Styrelsen</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route( 'partner.index' ) }}">Partners</a>
+                    </li>
                     <!--<li class="nav-item">
                         <a class="nav-link" href="{{ route( 'documents' ) }}">Dokument</a>
                     </li>-->

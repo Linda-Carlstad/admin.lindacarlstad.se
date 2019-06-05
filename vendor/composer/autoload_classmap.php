@@ -21,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\InitiationDaysController' => $baseDir . '/app/Http/Controllers/InitiationDaysController.php',
     'App\\Http\\Controllers\\InitiationKeyPeopleController' => $baseDir . '/app/Http/Controllers/InitiationKeyPeopleController.php',
     'App\\Http\\Controllers\\MemberController' => $baseDir . '/app/Http/Controllers/MemberController.php',
+    'App\\Http\\Controllers\\PartnerController' => $baseDir . '/app/Http/Controllers/PartnerController.php',
     'App\\Http\\Controllers\\SongController' => $baseDir . '/app/Http/Controllers/SongController.php',
     'App\\Http\\Controllers\\UpdateInitiationInformation' => $baseDir . '/app/Http/Controllers/UpdateInitiationInformation.php',
     'App\\Http\\Controllers\\UpdateOverallCount' => $baseDir . '/app/Http/Controllers/UpdateOverallCount.php',
