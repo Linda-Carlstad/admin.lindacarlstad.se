@@ -30,7 +30,7 @@
             Inga nyckelpersoner tillagda, lägg till en nu!
         </p>
     @else
-        <h4 class="text-center">Nyckelpersoner: {{ $people->count() }}</h4>
+        <h4 class="text-center">Antal: {{ $people->count() }}</h4>
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>

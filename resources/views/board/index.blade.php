@@ -22,7 +22,6 @@
     <div class="text-center mb-2">
         <h2>Styrelsen</h2>
         <hr>
-
         @if( $boardMembers->isEmpty() )
             <p>
                 Inga dagar skapade, skapa en nu!
@@ -32,6 +31,7 @@
         <a class="btn btn-primary m-1" href="{{ route( 'board.create' ) }}">Lägg till styrelseposition</a>
     </div>
     @if( !$boardMembers->isEmpty() )
+        <h4 class="text-center">Antal: {{ $boardMembers->count() }}</h4>
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
