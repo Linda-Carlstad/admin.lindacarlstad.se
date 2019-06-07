@@ -18,6 +18,7 @@ class CreatePartnersTable extends Migration
             $table->string( 'name' );
             $table->string( 'slug' );
             $table->longText( 'description' )->nullable();
+            $table->string( 'link' )->nullable();
             $table->string( 'type' );
             $table->boolean( 'frontPage' );
             $table->string( 'phone' )->nullable();

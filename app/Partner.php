@@ -19,6 +19,7 @@ class Partner extends Model
         $request->validate([
             'name' => 'required|string',
             'description' => 'nullable|string',
+            'link' => 'nullable|string',
             'type' => 'required|string',
             'frontPage' => 'required|boolean',
             'phone' => 'nullable|string',
@@ -29,6 +30,7 @@ class Partner extends Model
         $partner = new Partner;
         $partner->name = $request->name;
         $partner->description = $request->description;
+        $partner->link = $request->link;
         $partner->type = $request->type;
         $partner->frontPage = $request->frontPage;
         $partner->phone = $request->phone;
@@ -42,6 +44,7 @@ class Partner extends Model
         $request->validate([
             'name' => 'required|string',
             'description' => 'nullable|string',
+            'link' => 'nullable|string',
             'type' => 'required|string',
             'frontPage' => 'required|boolean',
             'phone' => 'nullable|string',
@@ -51,6 +54,7 @@ class Partner extends Model
 
         $partner->name = $request->name;
         $partner->description = $request->description;
+        $partner->link = $request->link;
         $partner->type = $request->type;
         $partner->frontPage = $request->frontPage;
         $partner->phone = $request->phone;

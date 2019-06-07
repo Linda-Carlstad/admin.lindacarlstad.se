@@ -59,6 +59,16 @@
             @endif
         </div>
         <div class="form-group row">
+            <label for="started" class="">Startår</label>
+            <input id="started" type="number" placeholder="Startår" class="form-control{{ $errors->has('started') ? ' is-invalid' : '' }}" name="started" value="{{ $partner->started }}">
+
+            @if ($errors->has('started'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('started' ) }}</strong>
+            </span>
+            @endif
+        </div>
+        <div class="form-group row">
             <label for="frontPage" class="">Framsidan</label>
             <select class="form-control" id="frontPage" name="frontPage" required>
                 <option value="1" {{ old( 'type', $partner->frontPage ) == '1' ? 'selected' : '' }}>Ja</option>
@@ -91,16 +101,15 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="started" class="">Startår</label>
-            <input id="started" type="number" placeholder="Startår" class="form-control{{ $errors->has('started') ? ' is-invalid' : '' }}" name="started" value="{{ $partner->started }}">
+            <label for="link" class="">Länk</label>
+            <input id="link" type="text" placeholder="Länk" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link" value="{{ $partner->link }}">
 
-            @if ($errors->has('started'))
+            @if ($errors->has('link'))
             <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('started' ) }}</strong>
+                <strong>{{ $errors->first('link' ) }}</strong>
             </span>
             @endif
         </div>
-
         <div class="form-group row">
             <a class="btn btn-secondary mr-1" href="{{ route( 'partner.index' ) }}">Avbryt</a>
             <button type="submit" class="btn btn-primary ml-0">
