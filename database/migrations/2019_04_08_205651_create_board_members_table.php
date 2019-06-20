@@ -18,6 +18,7 @@ class CreateBoardMembersTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('name');
+            $table->string('image')->nullable();
             $table->string('email');
             $table->longText('description');
             $table->integer('order');

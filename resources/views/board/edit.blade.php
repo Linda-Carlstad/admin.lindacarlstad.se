@@ -24,7 +24,7 @@
         <hr>
     </div>
 
-    <form class="col-md-6 offset-md-3" action="{{ '/board/' . $boardMember->id }}" method="post">
+    <form class="col-md-6 offset-md-3" action="{{ '/board/' . $boardMember->id }}" method="post"  enctype="multipart/form-data">
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
@@ -44,6 +44,16 @@
             @if ($errors->has('name'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('name' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group row">
+            <label for="image" class="">Logga</label>
+            <input type="file" class="filestyle" name="image" id="fileInput"
+                accept="image/*" data-text="Välj bild" data-btnClass="btn-primary btn-file">
+            @if ($errors->has('image'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('image' ) }}</strong>
                 </span>
             @endif
         </div>

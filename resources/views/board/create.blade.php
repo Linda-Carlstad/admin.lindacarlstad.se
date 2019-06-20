@@ -24,7 +24,7 @@
         <hr>
     </div>
 
-    <form class="col-md-6 offset-md-3" action="{{ '/board' }}" method="post">
+    <form class="col-md-6 offset-md-3" action="{{ '/board' }}" method="post"  enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
             <label for="title">Position</label>
@@ -47,6 +47,16 @@
             @endif
         </div>
         <div class="form-group row">
+            <label for="image" class="">Logga</label>
+            <input type="file" class="filestyle" name="image" id="fileInput"
+                accept="image/*" data-text="Välj bild" data-btnClass="btn-primary btn-file">
+            @if ($errors->has('image'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('image' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group row">
             <label for="email">Email</label>
             <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old( 'email' ) }}" required>
 
@@ -56,7 +66,6 @@
                 </span>
             @endif
         </div>
-
         <div class="form-group row">
             <label for="description">Beskrivning</label>
             <textarea rows="3" type="text" placeholder="Beskrivning" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="{{ old( 'description' ) }}" ></textarea>
