@@ -23,7 +23,7 @@
         <h2>Lägg till partner</h2>
         <br>
     </div>
-    <form class="col-md-6 offset-md-3" action="{{ '/partner' }}" method="post">
+    <form class="col-md-6 offset-md-3" action="{{ '/partner' }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
             <label for="name" class="">Namn</label>
@@ -44,6 +44,13 @@
                 <strong>{{ $errors->first('description' ) }}</strong>
             </span>
             @endif
+        </div>
+
+        <div class="form-group row">
+            <label for="image" class="">Logga</label>
+            <input type="file" class="filestyle" name="image" id="fileInput"
+                accept="image/*" data-text="Välj bild" data-btnClass="btn-primary btn-file">
+
         </div>
         <div class="form-group row">
             <label for="type" class="">Typ</label>

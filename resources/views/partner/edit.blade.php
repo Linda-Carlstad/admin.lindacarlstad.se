@@ -23,7 +23,7 @@
         <h2>{{ $partner->name }}</h2>
         <br>
     </div>
-    <form class="col-md-6 offset-md-3" action="{{ '/partner/' . $partner->id }}" method="post">
+    <form class="col-md-6 offset-md-3" action="{{ '/partner/' . $partner->id }}" method="post" enctype="multipart/form-data">
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
@@ -31,9 +31,9 @@
             <input id="name" type="text" placeholder="Namn" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $partner->name }}" required autofocus>
 
             @if ($errors->has('name'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('name' ) }}</strong>
-            </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('name' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
@@ -41,9 +41,19 @@
             <textarea rows="3" id="description" type="text" placeholder="" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ $partner->description }}</textarea>
 
             @if ($errors->has('description'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('description' ) }}</strong>
-            </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('description' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group row">
+            <label for="image" class="">Logga</label>
+            <input type="file" class="filestyle" name="image" id="fileInput"
+                accept="image/*" data-text="Välj bild" data-btnClass="btn-primary btn-file">
+            @if ($errors->has('image'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('image' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
@@ -53,9 +63,9 @@
                 <option value="Samarbetspartner" {{ old( 'type', $partner->type ) == 'Samarbetspartner' ? 'selected' : '' }}>Samarbetspartner</option>
             </select>
             @if ($errors->has('type'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('type' ) }}</strong>
-            </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('type' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
@@ -63,9 +73,9 @@
             <input id="started" type="number" placeholder="Startår" class="form-control{{ $errors->has('started') ? ' is-invalid' : '' }}" name="started" value="{{ $partner->started }}">
 
             @if ($errors->has('started'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('started' ) }}</strong>
-            </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('started' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
@@ -75,9 +85,9 @@
                 <option value="0" {{ old( 'type', $partner->frontPage ) == '0' ? 'selected' : '' }}>Nej</option>
             </select>
             @if ($errors->has('frontPage'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('frontPage' ) }}</strong>
-            </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('frontPage' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
@@ -85,9 +95,9 @@
             <input id="phone" type="text" placeholder="Telefonnummer" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $partner->phone }}">
 
             @if ($errors->has('phone'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('phone' ) }}</strong>
-            </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('phone' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
@@ -95,9 +105,9 @@
             <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $partner->email }}">
 
             @if ($errors->has('email'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('email' ) }}</strong>
-            </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('email' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
@@ -105,9 +115,9 @@
             <input id="link" type="text" placeholder="Länk" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link" value="{{ $partner->link }}">
 
             @if ($errors->has('link'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('link' ) }}</strong>
-            </span>
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('link' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
