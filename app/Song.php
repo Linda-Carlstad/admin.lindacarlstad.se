@@ -16,27 +16,28 @@ class Song extends Model
 
     public static function create( Request $request )
     {
-        $request->validate( [
-            'title'  => 'required|string',
-            'text'   => 'required|string',
-            'melody'  => 'required|string',
-        ] );
-
+        Song::validateRequest( $request );
         $song = new Song;
-        $song->title = $request->title;
-        $song->text = $request->text;
-        $song->melody = $request->melody;
-        $song->save();
+        Song::addValuesToObject( $song, $request );
     }
 
     public static function updateInfo( Song $song, Request $request )
+    {
+        Partner::validateRequest( $request );
+        Partner::addValuesToObject( $song, $request );
+    }
+
+    private static function validateRequest( Request $request )
     {
         $request->validate( [
             'title'  => 'required|string',
             'text'   => 'required|string',
             'melody'  => 'required|string',
         ] );
+    }
 
+    private static function addValuesToObject( Song $song, Request $request )
+    {
         $song->title = $request->title;
         $song->text = $request->text;
         $song->melody = $request->melody;

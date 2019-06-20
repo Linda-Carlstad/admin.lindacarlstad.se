@@ -11,28 +11,20 @@ class Member extends Model
 
     public static function create( Request $request )
     {
-        $request->validate( [
-            'firstName'  => 'required|string',
-            'lastName'   => 'required|string',
-            'id_number'  => 'required|string',
-            'email'      => 'email',
-            'membership' => 'required|string',
-            'start'      => 'required|string',
-        ] );
-
+        Member::validateRequest( $request );
         $member = new Member;
-        $member->firstName = $request->firstName;
-        $member->lastName = $request->lastName;
-        $member->id_number = $request->id_number;
-        $member->email = $request->email;
-        $member->membership = $request->membership;
-        $member->start = $request->start;
-        $member->save();
+        Member::addValuesToObject( $member, $request );
 
         return [ 'success' => 'Ny medlem skapad!' ];
     }
 
     public static function updateInfo( Member $member, Request $request )
+    {
+        Member::validateRequest( $request );
+        Member::addValuesToObject( $member, $request );
+    }
+
+    private static function validateRequest( Request $request )
     {
         $request->validate( [
             'firstName'  => 'required|string',
@@ -42,7 +34,10 @@ class Member extends Model
             'membership' => 'required|string',
             'start'      => 'required|string',
         ] );
+    }
 
+    private static function addValuesToObject( Member $member, Request $request )
+    {
         $member->firstName = $request->firstName;
         $member->lastName = $request->lastName;
         $member->id_number = $request->id_number;
