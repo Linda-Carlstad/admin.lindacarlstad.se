@@ -57,7 +57,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <a class="btn btn-secondary mr-1" href="{{ route( 'board.index' ) }}">Avbryt</a>
+            <a class="btn btn-secondary mr-1" href="{{ route( 'song.index' ) }}">Avbryt</a>
             <button type="submit" class="btn btn-primary ml-0">
                 Spara
             </button>

@@ -20,7 +20,7 @@ class InitiationDay extends Model
         $request->validate( [
             'title' => 'string|required',
             'description' => 'string',
-            'extra' => 'string',
+            'extra' => 'nullable|string',
             'date' => 'string',
             'time' => 'string',
             'location' => 'string',
@@ -43,7 +43,7 @@ class InitiationDay extends Model
         $request->validate( [
             'title' => 'string|required',
             'description' => 'string',
-            'extra' => 'string',
+            'extra' => 'nullable|string',
             'date' => 'string',
             'time' => 'string',
             'location' => 'string',

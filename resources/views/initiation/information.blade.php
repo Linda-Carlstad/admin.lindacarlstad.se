@@ -45,7 +45,7 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input id="showPrice" name="showPrice" type="checkbox" value="1" aria-label="Checkbox for following text input" {{ $information->showPrice === 1 ? 'checked' : '' }}>
+                        <input id="showPrice" name="showPrice" type="checkbox" value="1" aria-label="Checkbox for following text input" {{ $information->showPrice == 1 ? 'checked' : '' }}>
                     </div>
                 </div>
                 <input id="price" type="number" placeholder="Tid" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" value="{{ $information->price }}" required>
@@ -67,7 +67,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <a class="btn btn-secondary mr-1" href="{{ route( 'initiation.index' ) }}">Avbryt</a>
+            <a class="btn btn-secondary mr-1" href="{{ route( 'initiationHandle' ) }}">Avbryt</a>
             <button type="submit" class="btn btn-primary ml-0">
                 Spara
             </button>
