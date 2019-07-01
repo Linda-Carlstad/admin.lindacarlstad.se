@@ -18,6 +18,14 @@ Follow this excellent guide to run a Laravel project on your Windows based compu
 
 [Codementor guide](https://www.codementor.io/magarrent/how-to-install-laravel-5-xampp-windows-du107u9ji)
 
+## Software
+Recommended apps to get going fast:
+- Atom/Sublime/PHPStorm
+- MAMP
+- Sequal Pro
+- Google Chrome/Mozilla FireFox
+- Sketch (design tool)
+
 ## Usage
 As mentioned earlier, the website is a fully custom CRM system. 
 
