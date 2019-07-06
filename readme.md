@@ -4,7 +4,7 @@
 
 ## Description
 This app is used to handle the content on [Linda Carsltad](https://lindacarlstad.se). 
-It is a fully custom CRM system using techniques like CRUD and MVC to handle objects and events.
+It is a fully custom CMS system using techniques like CRUD and MVC to handle objects and events.
 
 ## Installation
 
@@ -27,7 +27,7 @@ Recommended apps to get going fast:
 - Sketch (design tool)
 
 ## Usage
-As mentioned earlier, the website is a fully custom CRM system. 
+As mentioned earlier, the website is a fully custom CMS system. 
 
 (add pictures of app)
 
