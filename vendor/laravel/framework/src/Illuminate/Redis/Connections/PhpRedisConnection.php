@@ -100,7 +100,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      *
      * @param  string  $key
      * @param  dynamic  $dictionary
-     * @return int
+     * @return array
      */
     public function hmget($key, ...$dictionary)
     {
@@ -149,7 +149,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      *
      * @param  string  $key
      * @param  int  $count
-     * @param  $value  $value
+     * @param  mixed  $value
      * @return int|false
      */
     public function lrem($key, $count, $value)
@@ -223,7 +223,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      * @param  mixed  $min
      * @param  mixed  $max
      * @param  array  $options
-     * @return int
+     * @return array
      */
     public function zrangebyscore($key, $min, $max, $options = [])
     {
@@ -244,7 +244,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      * @param  mixed  $min
      * @param  mixed  $max
      * @param  array  $options
-     * @return int
+     * @return array
      */
     public function zrevrangebyscore($key, $min, $max, $options = [])
     {
