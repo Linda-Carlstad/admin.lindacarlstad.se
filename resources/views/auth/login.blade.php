@@ -8,6 +8,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="{{ asset('css/login.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+    <script defer src="{{ asset( 'js/landing.js' ) }}"></script>
 </head>
 
 <body class="login d-flex align-items-center justify-content-center">
@@ -15,8 +18,9 @@
         <div class="bg-dark p-3 p-md-5">
             <div class="text-center">
                 <img src="{{ asset('/img/logo.png' ) }}" class="img-fluid">
+                <p id="landing-message" class="my-3"></p>
             </div>
-            <br>
+            <hr>
             <form method="POST" action="{{ route( 'login.post' ) }}">
                 @csrf
 
@@ -32,7 +36,6 @@
                         @endif
                     </div>
                 </div>
-
                 <div class="form-group row">
                     <div class="col">
                         <label class="text-white" for="password" class="">Lösenord</label>
