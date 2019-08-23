@@ -22,55 +22,58 @@
 
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="{{ url( '/' ) }}">
-            <img src="{{ asset( 'img/logo.svg' ) }}" width="30" height="30" alt="Linda Carlstad logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url( '/' ) }}">Start</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'member.index' ) }}">Medlemmar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'overalls' ) }}">Overaller</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'initiationHandle' ) }}">Nollning</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'board.index' ) }}">Styrelsen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'partner.index' ) }}">Partners</a>
-                    </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'documents' ) }}">Dokument</a>
-                    </li>-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'song.index' ) }}">Sånger</a>
-                    </li>
-                </ul>
+        @auth
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="{{ url( '/' ) }}">
+                <img src="{{ asset( 'img/logo.svg' ) }}" width="30" height="30" alt="Linda Carlstad logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url( '/' ) }}">Start</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route( 'member.index' ) }}">Medlemmar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route( 'overalls' ) }}">Overaller</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route( 'initiationHandle' ) }}">Nollning</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route( 'board.index' ) }}">Styrelsen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route( 'partner.index' ) }}">Partners</a>
+                        </li>
+                        <!--<li class="nav-item">
+                            <a class="nav-link" href="{{ route( 'documents' ) }}">Dokument</a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route( 'song.index' ) }}">Sånger</a>
+                        </li>
+                    </ul>
 
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route( 'logout' ) }}" onclick="event.preventDefault();
-                                           document.getElementById( 'logout-form' ).submit();">
-                            Logga ut
-                        </a>
-                        <form id="logout-form" action="{{ route( 'logout' ) }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route( 'logout' ) }}" onclick="event.preventDefault();
+                                               document.getElementById( 'logout-form' ).submit();">
+                                Logga ut
+                            </a>
+                            <form id="logout-form" action="{{ route( 'logout' ) }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    @endauth
+
     <main class="container py-4">
         <div class="content d-flex align-items-center justify-content-center">
             <div class="col-md-10">
