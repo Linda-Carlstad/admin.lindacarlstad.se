@@ -19,28 +19,36 @@ class Partner extends Model
         Partner::validateRequest( $request );
         if( empty( $request->image ) )
         {
-            $imageName = '/img/logo.png';
+            $image = '/img/logo.png';
         }
         else
         {
-            $imageName = Partner::setImageName( $request );
+            $image = Partner::setImageName( $request );
         }
         $partner = new Partner;
-        Partner::addValuesToObject( $partner, $request, $imageName );
+        Partner::addValuesToObject( $partner, $request, $image );
     }
 
     public static function updateInfo( Partner $partner, Request $request )
     {
         Partner::validateRequest( $request );
-        if( empty( $request->image ) )
+        if( empty( $partner->image ) )
         {
-            $imageName = '/img/logo.png';
+            if( empty( $request->image ) )
+            {
+                $image = '/img/logo.png';
+            }
+            else
+            {
+                $image = Partner::setImageName( $request );
+            }
         }
         else
         {
-            $imageName = Partner::setImageName( $request );
+            $image = $partner->image;
         }
-        Partner::addValuesToObject( $partner, $request, $imageName );
+
+        Partner::addValuesToObject( $partner, $request, $image );
     }
 
     public static function validateRequest( Request $request )
@@ -63,16 +71,16 @@ class Partner extends Model
         $name = str_slug( $request->name ) . '-' . time() . '.' . $request->image->getClientOriginalExtension();
         $folder = '/img/partners/';
         $request->image->move( public_path( $folder ), $name );
-        $imageName = $folder . $name;
-        return $imageName;
+        $image = $folder . $name;
+        return $image;
     }
 
-    public static function addValuesToObject( Partner $partner, Request $request, $imageName )
+    public static function addValuesToObject( Partner $partner, Request $request, $image )
     {
         $partner->name = $request->name;
         $partner->description = $request->description;
         $partner->link = $request->link;
-        $partner->image = $imageName;
+        $partner->image = $image;
         $partner->type = $request->type;
         $partner->frontPage = $request->frontPage;
         $partner->phone = $request->phone;

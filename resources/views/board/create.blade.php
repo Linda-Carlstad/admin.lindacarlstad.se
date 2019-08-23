@@ -47,7 +47,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="image" class="">Logga</label>
+            <label for="image" class="">Bild</label>
             <input type="file" class="filestyle" name="image" id="fileInput"
                 accept="image/*" data-text="Välj bild" data-btnClass="btn-primary btn-file">
             @if ($errors->has('image'))
