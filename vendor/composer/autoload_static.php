@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd3e527bc59332e9254015ddc70faa5ec
+class ComposerStaticInitc230ad00086cb3df7dc2936ad17c4b19
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -1972,6 +1972,7 @@ class ComposerStaticInitd3e527bc59332e9254015ddc70faa5ec
         'Illuminate\\Translation\\TranslationServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Translation/TranslationServiceProvider.php',
         'Illuminate\\Translation\\Translator' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Translation/Translator.php',
         'Illuminate\\Validation\\ClosureValidationRule' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/ClosureValidationRule.php',
+        'Illuminate\\Validation\\Concerns\\FilterEmailValidation' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Concerns/FilterEmailValidation.php',
         'Illuminate\\Validation\\Concerns\\FormatsMessages' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Concerns/FormatsMessages.php',
         'Illuminate\\Validation\\Concerns\\ReplacesAttributes' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Concerns/ReplacesAttributes.php',
         'Illuminate\\Validation\\Concerns\\ValidatesAttributes' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php',
@@ -4154,10 +4155,10 @@ class ComposerStaticInitd3e527bc59332e9254015ddc70faa5ec
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd3e527bc59332e9254015ddc70faa5ec::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd3e527bc59332e9254015ddc70faa5ec::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitd3e527bc59332e9254015ddc70faa5ec::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitd3e527bc59332e9254015ddc70faa5ec::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc230ad00086cb3df7dc2936ad17c4b19::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc230ad00086cb3df7dc2936ad17c4b19::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc230ad00086cb3df7dc2936ad17c4b19::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitc230ad00086cb3df7dc2936ad17c4b19::$classMap;
 
         }, null, ClassLoader::class);
     }
