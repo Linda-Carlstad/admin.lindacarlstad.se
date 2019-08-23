@@ -1,5 +1,11 @@
-@extends('errors::minimal')
+@extends( 'layouts.app' )
+@section( 'title', '401' )
+@section( 'content' )
 
-@section('title', __('Service Unavailable'))
-@section('code', '503')
-@section('message', __($exception->getMessage() ?: 'Service Unavailable'))
+    <div class="text-center">
+        <h1>{{ $exception->getStatusCode() }}</h1>
+        <p>Något gick fel.</p>
+        <a href="#" class="btn btn-primary" onclick="history.back()">Gå tillbaka</a>
+    </div>
+
+@endsection

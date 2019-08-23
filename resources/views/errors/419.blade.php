@@ -1,5 +1,10 @@
-@extends('errors::minimal')
+@extends( 'layouts.app' )
+@section( 'title', '401' )
+@section( 'content' )
 
-@section('title', __('Page Expired'))
-@section('code', '419')
-@section('message', __('Page Expired'))
+    <div class="text-center">
+        <h1>{{ $exception->getStatusCode() }}</h1>
+        <p>Något gick fel.</p>
+    </div>
+
+@endsection
