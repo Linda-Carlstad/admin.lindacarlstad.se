@@ -17,28 +17,18 @@ class InitiationDay extends Model
 
     public static function create( Request $request )
     {
-        $request->validate( [
-            'title' => 'string|required',
-            'description' => 'string',
-            'extra' => 'nullable|string',
-            'date' => 'string',
-            'time' => 'string',
-            'location' => 'string',
-            'order' => 'integer',
-        ] );
-
+        InitiationDay::validateRequest( $request );
         $day = new InitiationDay;
-        $day->title = $request->title;
-        $day->description = $request->description;
-        $day->extra = $request->extra;
-        $day->date = $request->date;
-        $day->time = $request->time;
-        $day->location = $request->location;
-        $day->order = $request->order;
-        $day->save();
+        InitiationDay::addValuesToObject( $day, $request );
     }
 
     public static function updateInfo( InitiationDay $day, Request $request )
+    {
+        InitiationDay::validateRequest( $request );
+        InitiationDay::addValuesToObject( $day, $request );
+    }
+
+    public static function validateRequest( Request $request )
     {
         $request->validate( [
             'title' => 'string|required',
@@ -49,7 +39,10 @@ class InitiationDay extends Model
             'location' => 'string',
             'order' => 'integer',
         ] );
+    }
 
+    public static function addValuesToObject( InitiationDay $day, Request $request )
+    {
         $day->title = $request->title;
         $day->description = $request->description;
         $day->extra = $request->extra;

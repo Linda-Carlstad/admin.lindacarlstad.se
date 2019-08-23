@@ -11,22 +11,18 @@ class InitiationKeyPerson extends Model
 
     public static function create( Request $request )
     {
-        $request->validate( [
-            'name' => 'string|required',
-            'rank' => 'string|required',
-            'email' => 'string',
-            'phone' => 'string',
-        ] );
-
+        InitiationKeyPerson::validateRequest( $request );
         $person = new InitiationKeyPerson;
-        $person->name = $request->name;
-        $person->rank = $request->rank;
-        $person->email = $request->email;
-        $person->phone = $request->phone;
-        $person->save();
+        InitiationKeyPerson::addValuesToObject( $person, $request );
     }
 
     public static function updateInfo( InitiationKeyPerson $person, Request $request )
+    {
+        InitiationKeyPerson::validateRequest( $request );
+        InitiationKeyPerson::addValuesToObject( $person, $request );
+    }
+
+    public static function validateRequest( Request $request )
     {
         $request->validate( [
             'name' => 'string|required',
@@ -34,7 +30,10 @@ class InitiationKeyPerson extends Model
             'email' => 'email',
             'phone' => 'string',
         ] );
+    }
 
+    public static function addValuesToObject( InitiationKeyPerson $person, Request $request )
+    {
         $person->name = $request->name;
         $person->rank = $request->rank;
         $person->email = $request->email;
