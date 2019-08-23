@@ -1566,6 +1566,7 @@ return array(
     'Illuminate\\Translation\\TranslationServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Translation/TranslationServiceProvider.php',
     'Illuminate\\Translation\\Translator' => $vendorDir . '/laravel/framework/src/Illuminate/Translation/Translator.php',
     'Illuminate\\Validation\\ClosureValidationRule' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/ClosureValidationRule.php',
+    'Illuminate\\Validation\\Concerns\\FilterEmailValidation' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/Concerns/FilterEmailValidation.php',
     'Illuminate\\Validation\\Concerns\\FormatsMessages' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/Concerns/FormatsMessages.php',
     'Illuminate\\Validation\\Concerns\\ReplacesAttributes' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/Concerns/ReplacesAttributes.php',
     'Illuminate\\Validation\\Concerns\\ValidatesAttributes' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php',
