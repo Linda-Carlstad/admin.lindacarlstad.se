@@ -23,8 +23,8 @@ class Song extends Model
 
     public static function updateInfo( Song $song, Request $request )
     {
-        Partner::validateRequest( $request );
-        Partner::addValuesToObject( $song, $request );
+        Song::validateRequest( $request );
+        Song::addValuesToObject( $song, $request );
     }
 
     private static function validateRequest( Request $request )
