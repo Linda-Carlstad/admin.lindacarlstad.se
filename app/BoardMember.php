@@ -16,7 +16,7 @@ class BoardMember extends Model
         }
         else
         {
-            $image = Partner::setImageName( $request );
+            $image = BoardMember::setImageName( $request );
         }
         $boardMember = new BoardMember;
         BoardMember::addValuesToObject( $boardMember, $request, $image );
@@ -38,7 +38,7 @@ class BoardMember extends Model
         }
         else
         {
-            $image = $partner->image;
+            $image = $boardMember->image;
         }
 
         BoardMember::addValuesToObject( $boardMember, $request, $image );
