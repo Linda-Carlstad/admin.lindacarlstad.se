@@ -32,18 +32,16 @@ class Member extends Model
             'id_number'  => 'required|string',
             'email'      => 'required|email',
             'membership' => 'required|string',
-            'start'      => 'required|string',
         ] );
     }
 
-    private static function addValuesToObject( Member $member, Request $request )
+    private static function addValuesToObject( $member, $request )
     {
         $member->firstName = $request->firstName;
         $member->lastName = $request->lastName;
         $member->id_number = $request->id_number;
         $member->email = $request->email;
         $member->membership = $request->membership;
-        $member->start = $request->start;
         $member->save();
     }
 }

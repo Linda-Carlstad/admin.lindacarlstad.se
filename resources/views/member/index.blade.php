@@ -28,7 +28,7 @@
 
             <div class="form-group row">
                 <div class="input-group">
-                    <input id="search" type="text" placeholder="Sök.." class="form-control{{ $errors->has('search') ? ' is-invalid' : '' }}" name="search" value="{{ isset( $search ) ? $search : "" }}" required autofocus>
+                    <input id="search" type="text" placeholder="Sök.." class="form-control{{ $errors->has('search') ? ' is-invalid' : '' }}" name="search" value="{{ isset( $search ) ? $search : "" }}" autofocus>
                     @if ($errors->has('search'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('search' ) }}</strong>
@@ -61,7 +61,7 @@
                     <td>{{ $member->firstName }} {{ $member->lastName }}</td>
                     <td>{{ $member->id_number }}</td>
                     <td>{{ $member->email }}</td>
-                    <td>{{ $member->membership }} {{ $member->start }}</td>
+                    <td>Livstid {{ $member->membership }}</td>
                     <td>
                         <a href="{{ url( 'member/' . $member->id . '/edit') }}" class="btn btn-link">
                             Redigera

@@ -8,7 +8,6 @@ $factory->define(App\Member::class, function (Faker $faker) {
         'lastName' => $faker->lastName,
         'id_number' => $faker->macAddress,
         'email' => $faker->safeEmail,
-        'membership' => 'Livstid',
-        'start' => date( "Y" ),
+        'membership' => date( 'Y' ),
     ];
 });

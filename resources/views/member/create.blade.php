@@ -92,24 +92,12 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="membership" class="text-muted">Medlemskap</label>
-            <select class="form-control" id="membership" name="membership" required>
-                <option value="Livstid">Livstid</option>
-                <option value="Tillfälligt">Tillfälligt</option>
-            </select>
-            @if ($errors->has('membership'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('membership') }}</strong>
-                </span>
-            @endif
-        </div>
-        <div class="form-group row">
-            <label for="start" class="">Startår</label>
-            <input id="start" type="text" placeholder="Startår" class="form-control{{ $errors->has('start') ? ' is-invalid' : '' }}" name="start" value="{{ date( 'Y' ) }}" required>
+            <label for="membership" class="">Startår</label>
+            <input id="membership" type="text" placeholder="Startår" class="form-control{{ $errors->has('membership') ? ' is-invalid' : '' }}" name="membership" value="{{ date( 'Y' ) }}" required>
 
-            @if ($errors->has('start'))
+            @if ($errors->has('membership'))
             <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('start' ) }}</strong>
+                <strong>{{ $errors->first('membership' ) }}</strong>
             </span>
             @endif
         </div>

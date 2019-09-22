@@ -19,9 +19,8 @@ class CreateMembersTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('id_number')->unique()->nullable()->default(NULL);
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('membership')->nullable()->default('none');
-            $table->integer('start')->default( '0' );
             $table->timestamps();
         });
     }
