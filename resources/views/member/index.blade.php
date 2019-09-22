@@ -23,23 +23,25 @@
         <h2>Medlemmar</h2>
         <hr>
         <a class="btn btn-primary m-1" href="{{ route( 'member.create' ) }}">Lägg till medlem</a>
-        <form class="col-md-8 offset-md-2 mt-2" action="{{ '/member' }}" method="get">
-            @csrf
+        @if( !$members->isEmpty() )
+            <form class="col-md-8 offset-md-2 mt-2" action="{{ '/member' }}" method="get">
+                @csrf
 
-            <div class="form-group row">
-                <div class="input-group">
-                    <input id="search" type="text" placeholder="Sök.." class="form-control{{ $errors->has('search') ? ' is-invalid' : '' }}" name="search" value="{{ isset( $search ) ? $search : "" }}" autofocus>
-                    @if ($errors->has('search'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('search' ) }}</strong>
-                        </span>
-                    @endif
-                    <div class="input-group-append">
-                        <button type="submit" name="button" class="btn btn-primary btn-file">Sök</button>
+                <div class="form-group row">
+                    <div class="input-group">
+                        <input id="search" type="text" placeholder="Sök.." class="form-control{{ $errors->has('search') ? ' is-invalid' : '' }}" name="search" value="{{ isset( $search ) ? $search : "" }}" autofocus>
+                        @if ($errors->has('search'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('search' ) }}</strong>
+                            </span>
+                        @endif
+                        <div class="input-group-append">
+                            <button type="submit" name="button" class="btn btn-primary btn-file">Sök</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        @endif
     </div>
     @if( isset( $search ) )
         <h4>Du sökte på: <i>{{ $search }}</i></h4>
