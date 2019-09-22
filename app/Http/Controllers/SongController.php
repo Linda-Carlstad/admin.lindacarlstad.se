@@ -13,7 +13,7 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
         $total = Song::all()->count();
         if( isset( $request->search ) )
