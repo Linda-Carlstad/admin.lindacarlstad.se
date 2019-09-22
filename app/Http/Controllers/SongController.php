@@ -15,7 +15,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        $songs = Song::all();
+        $total = Song::all()->count();
         $songs = Song::orderBy('title', 'desc')->paginate( 20 );
 
         return view( 'song.index' )->with( 'songs', $songs );
