@@ -24,7 +24,7 @@
         <p>
             <b>Formattering enligt följande</b>
             <br>
-            Förnamn | Efternamn | Personnummer | Email | Medlemskap | Startår
+            Förnamn | Efternamn | Personnummer | Email | Medlemsår | Startår
         </p>
     </div>
     <br>

@@ -51,7 +51,7 @@
                 <th>Namn</th>
                 <th>Personnummer</th>
                 <th>Email</th>
-                <th>Medlemskap</th>
+                <th>Medlemsår</th>
                 <th>#</th>
             </tr>
         </thead>
