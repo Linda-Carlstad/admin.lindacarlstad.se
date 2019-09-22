@@ -15,6 +15,8 @@ class MemberController extends Controller
      */
     public function index( Request $request )
     {
+        $total = Member::all()->count();
+
         if( isset( $request->search ) )
         {
             $search = $request->search;
@@ -25,11 +27,11 @@ class MemberController extends Controller
                 ->orWhere( 'email', 'LIKE', '%' . $search . '%' )
                 ->paginate( 20 );
 
-            return view( 'member.index' )->with( 'members', $members )->with( 'search', $search );
+            return view( 'member.index' )->with( 'members', $members )->with( 'search', $search )->with( 'total', $total );
         }
 
         $members = Member::orderBy('id', 'desc')->paginate( 20 );
-        return view( 'member.index' )->with( 'members', $members );
+        return view( 'member.index' )->with( 'members', $members )->with( 'total', $total );
     }
 
     /**

@@ -44,7 +44,7 @@
     @if( isset( $search ) )
         <h4>Du sökte på: <i>{{ $search }}</i></h4>
     @endif
-    <h4 class="text-center">Antal: {{ $members->count() }}</h4>
+    <h4 class="text-center">Antal: {{ $total }}</h4>
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
