@@ -29,11 +29,12 @@
         <div class="d-block row d-md-flex justify-content-center">
             @foreach( $overalls as $overall )
                 <div class="col-12 col-md-4 text-center">
-                    <input type="text" name="{{ $overall->size }}" value="{{ $overall->quantity }}" class="overall-input form-control">
-                    <br>
-                    <p class="overall-size-{{ $overall->size }}">
-                        {{ $overall->size }}
-                    </p>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="{{ $overall->size }}">{{ $overall->size }}</span>
+                        </div>
+                        <input type="text" name="{{ $overall->size }}" value="{{ $overall->quantity }}" class="overall-input form-control">
+                    </div>
                 </div>
             @endforeach
         </div>
