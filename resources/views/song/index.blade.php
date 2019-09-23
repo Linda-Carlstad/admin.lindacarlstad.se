@@ -45,6 +45,7 @@
     </div>
     @if( isset( $search ) )
         <h4>Du sökte på: <i>{{ $search }}</i></h4>
+        <h5>Antal resultat: <i>{{ $search->count() }}</i></h5>
     @endif
     @if( $songs->isEmpty() )
         <p class="text-center">

@@ -45,6 +45,7 @@
     </div>
     @if( isset( $search ) )
         <h4>Du sökte på: <i>{{ $search }}</i></h4>
+        <h5>Antal resultat: <i>{{ $members->count() }}</i></h5>
     @endif
     <h4 class="text-center">Antal: {{ $total }}</h4>
     <table class="table table-hover">
