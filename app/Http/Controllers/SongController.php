@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Song;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class SongController extends Controller
 {
@@ -13,11 +13,24 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
-        $songs = Song::all();
+        $total = Song::all()->count();
+        if( isset( $request->search ) )
+        {
+            $search = $request->search;
 
-        return view( 'song.index' )->with( 'songs', $songs );
+            $songs = Song::where( 'title', 'LIKE', '%' . $search . '%' )
+                ->orWhere( 'melody', 'LIKE', '%' . $search . '%' )
+                ->orWhere( 'text', 'LIKE', '%' . $search . '%' )
+                ->paginate( 20 );
+
+            return view( 'song.index' )->with( 'songs', $songs )->with( 'search', $search )->with( 'total', $total );
+        }
+
+        $songs = Song::orderBy('title', 'desc')->paginate( 20 );
+
+        return view( 'song.index' )->with( 'songs', $songs )->with( 'total', $total );
     }
 
     /**

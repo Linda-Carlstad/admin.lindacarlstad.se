@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Partner;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class PartnerController extends Controller
 {
@@ -13,11 +13,25 @@ class PartnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
-        $partners = Partner::all();
+        $total = Partner::all()->count();
 
-        return view( 'partner.index' )->with( 'partners', $partners );
+        if( isset( $request->search ) )
+        {
+            $search = $request->search;
+
+            $partners = Partner::where( 'name', 'LIKE', '%' . $search . '%' )
+                ->orWhere( 'type', 'LIKE', '%' . $search . '%' )
+                ->orWhere( 'phone', 'LIKE', '%' . $search . '%' )
+                ->orWhere( 'email', 'LIKE', '%' . $search . '%' )
+                ->paginate( 20 );
+
+            return view( 'partner.index' )->with( 'partners', $partners )->with( 'search', $search )->with( 'total', $total );
+        }
+
+        $partners = Partner::orderBy( 'id', 'desc' )->paginate( 20 );
+        return view( 'partner.index' )->with( 'partners', $partners )->with( 'total', $total );
     }
 
     /**
