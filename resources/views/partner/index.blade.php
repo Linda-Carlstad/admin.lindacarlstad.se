@@ -23,7 +23,7 @@
         <h1>Partners</h1>
         <hr>
         <a class="btn btn-primary m-1" href="{{ route( 'partner.create' ) }}">Lägg till partner</a>
-        @if( !$partners->isEmpty() )
+        @if( !$partners->isEmpty() || isset( $search ) )
             <form class="col-md-8 offset-md-2 mt-2" action="{{ '/partner' }}" method="get">
                 @csrf
 

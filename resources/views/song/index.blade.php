@@ -23,7 +23,7 @@
         <h2>Sånger</h2>
         <hr>
         <a class="btn btn-primary m-1" href="{{ route( 'song.create' ) }}">Lägg till sång</a>
-        @if( !$songs->isEmpty() )
+        @if( !$songs->isEmpty() || isset( $search ) )
             <form class="col-md-8 offset-md-2 mt-2" action="{{ '/song' }}" method="get">
                 @csrf
 
