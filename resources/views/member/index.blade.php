@@ -58,7 +58,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($members as $member)
+            @foreach( $members as $member )
                 <tr>
                     <td>{{ $member->firstName }} {{ $member->lastName }}</td>
                     <td>{{ $member->id_number }}</td>
