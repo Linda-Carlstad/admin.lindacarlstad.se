@@ -77,4 +77,11 @@
         </table>
     @endif
 
+    @if( isset( $search ) )
+        <hr>
+        <div class="text-center">
+            <a class="btn btn-primary" href="{{ route( 'song.index' ) }}">Visa alla</a>
+        </div>
+    @endif
+
 @endsection
