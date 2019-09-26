@@ -28,7 +28,7 @@ class SongController extends Controller
             return view( 'song.index' )->with( 'songs', $songs )->with( 'search', $search )->with( 'total', $total );
         }
 
-        $songs = Song::orderBy('title', 'desc')->paginate( 20 );
+        $songs = Song::orderBy('title', 'asc')->paginate( 20 );
 
         return view( 'song.index' )->with( 'songs', $songs )->with( 'total', $total );
     }
