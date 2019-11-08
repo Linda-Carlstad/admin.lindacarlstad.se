@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Partner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
 
 class PartnerController extends Controller
@@ -24,10 +25,16 @@ class PartnerController extends Controller
             $partners = Partner::where( 'name', 'LIKE', '%' . $search . '%' )
                 ->orWhere( 'type', 'LIKE', '%' . $search . '%' )
                 ->orWhere( 'phone', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'email', 'LIKE', '%' . $search . '%' )
-                ->paginate( 20 );
+                ->orWhere( 'email', 'LIKE', '%' . $search . '%' );
 
-            return view( 'partner.index' )->with( 'partners', $partners )->with( 'search', $search )->with( 'total', $total );
+          $totalSearch = $partners->count();
+          $partners = $partners->paginate( 20 );
+
+            return view( 'partner.index' )
+                ->with( 'partners', $partners->appends( Input::except( 'page' ) ) )
+                ->with( 'search', $search )
+                ->with( 'total', $total )
+                ->with( 'totalSearch', $totalSearch );
         }
 
         $partners = Partner::orderBy( 'id', 'desc' )->paginate( 20 );

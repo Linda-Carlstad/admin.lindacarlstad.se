@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
 
 class MemberController extends Controller
@@ -24,10 +25,16 @@ class MemberController extends Controller
             $members = Member::where( 'firstName', 'LIKE', '%' . $search . '%' )
                 ->orWhere( 'lastName', 'LIKE', '%' . $search . '%' )
                 ->orWhere( 'id_number', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'email', 'LIKE', '%' . $search . '%' )
-                ->paginate( 20 );
+                ->orWhere( 'email', 'LIKE', '%' . $search . '%' );
 
-            return view( 'member.index' )->with( 'members', $members )->with( 'search', $search )->with( 'total', $total );
+            $totalSearch = $members->count();
+            $members = $members->paginate( 20 );
+
+            return view( 'member.index' )
+                ->with( 'members', $members->appends( Input::except( 'page' ) ) )
+                ->with( 'search', $search )
+                ->with( 'total', $total )
+                ->with( 'totalSearch', $totalSearch );
         }
 
         $members = Member::orderBy('id', 'desc')->paginate( 20 );

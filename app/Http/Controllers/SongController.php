@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
 
 class SongController extends Controller
@@ -22,10 +23,16 @@ class SongController extends Controller
 
             $songs = Song::where( 'title', 'LIKE', '%' . $search . '%' )
                 ->orWhere( 'melody', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'text', 'LIKE', '%' . $search . '%' )
-                ->paginate( 20 );
+                ->orWhere( 'text', 'LIKE', '%' . $search . '%' );
 
-            return view( 'song.index' )->with( 'songs', $songs )->with( 'search', $search )->with( 'total', $total );
+            $totalSearch = $songs->count();
+            $songs = $songs->paginate( 20 );
+
+            return view( 'song.index' )
+                ->with( 'songs', $songs->appends( Input::except( 'page' ) ) )
+                ->with( 'search', $search )
+                ->with( 'total', $total )
+                ->with( 'totalSearch', $totalSearch );
         }
 
         $songs = Song::orderBy('title', 'asc')->paginate( 20 );
