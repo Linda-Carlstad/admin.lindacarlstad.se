@@ -1,24 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-    @if( session()->has( 'success' ) )
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session()->get( 'success' ) }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-
-    @if( session()->has( 'error' ) )
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session()->get( 'error' ) }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-
     <div class="text-center mb-2">
         <h2>Medlemmar</h2>
         <hr>
@@ -45,7 +27,7 @@
     </div>
     @if( isset( $search ) )
         <h4>Du sökte på: <i>{{ $search }}</i></h4>
-        <h5>Antal resultat: <i>{{ $members->count() }}</i></h5>
+        <h5>Antal resultat: <i>{{ $totalSearch }}</i></h5>
     @endif
     <h4 class="text-center">Antal: {{ $total }}</h4>
     <table class="table table-hover">
