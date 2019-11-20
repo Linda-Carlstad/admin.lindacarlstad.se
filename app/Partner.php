@@ -32,20 +32,18 @@ class Partner extends Model
     public static function updateInfo( Partner $partner, Request $request )
     {
         Partner::validateRequest( $request );
-        if( empty( $partner->image ) )
+
+        if( $request->image )
         {
-            if( empty( $request->image ) )
-            {
-                $image = '/img/logo.png';
-            }
-            else
-            {
-                $image = Partner::setImageName( $request );
-            }
+            $image = Partner::setImageName( $request );
+        }
+        else if( $partner->image )
+        {
+            $image = $partner->image;
         }
         else
         {
-            $image = $partner->image;
+            $image = '/img/logo.png';
         }
 
         Partner::addValuesToObject( $partner, $request, $image );

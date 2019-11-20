@@ -25,20 +25,18 @@ class BoardMember extends Model
     public static function updateInfo( BoardMember $boardMember, Request $request )
     {
         BoardMember::validateRequest( $request );
-        if( empty( $boardMember->image ) )
+
+        if( $request->image )
         {
-            if( empty( $request->image ) )
-            {
-                $image = '/img/logo.png';
-            }
-            else
-            {
-                $image = BoardMember::setImageName( $request );
-            }
+            $image = BoardMember::setImageName( $request );
+        }
+        else if( $boardMember->image )
+        {
+            $image = $boardMember->image;
         }
         else
         {
-            $image = $boardMember->image;
+            $image = '/img/logo.png';
         }
 
         BoardMember::addValuesToObject( $boardMember, $request, $image );
