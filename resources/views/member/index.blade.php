@@ -46,7 +46,7 @@
                     <td>{{ $member->firstName }} {{ $member->lastName }}</td>
                     <td>{{ $member->id_number }}</td>
                     <td>{{ $member->email }}</td>
-                    <td>Livstid {{ $member->membership }}</td>
+                    <td>Livstid {{ $member->membership != null ? $member->membership : '' }}</td>
                     <td>
                         <a href="{{ url( 'member/' . $member->id . '/edit') }}" class="btn btn-link">
                             Redigera
