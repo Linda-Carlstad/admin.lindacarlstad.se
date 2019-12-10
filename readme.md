@@ -36,7 +36,7 @@ Install all NPM dependencies:
 npm install
 ```
 
-Create and seed database (admin panel):
+Create and seed database:
 ```
 php artisan migrate:refresh --seed
 ```
