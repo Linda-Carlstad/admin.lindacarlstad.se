@@ -78,7 +78,7 @@
         </div>
     </form>
     <hr>
-    <form action="{{ '/board/' . $boardMember->id }}" method="post">
+    <form onSubmit="return confirm('Är su säker på att du vill ta bort den här styrelsepositionen? Denna åtgärd är permanent.');" action="{{ '/board/' . $boardMember->id }}" method="post">
         @csrf
         {{ method_field( 'delete' ) }}
             <div class="text-center">

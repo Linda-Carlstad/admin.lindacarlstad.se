@@ -61,7 +61,7 @@
         </div>
     </form>
     <hr>
-    <form action="{{ '/person/' . $keyPerson->id }}" method="post">
+    <form onSubmit="return confirm('Är su säker på att du vill ta bort den här personen? Denna åtgärd är permanent.');" action="{{ '/person/' . $keyPerson->id }}" method="post">
         @csrf
         {{ method_field( 'delete' ) }}
         <div class="text-center">

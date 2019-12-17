@@ -75,7 +75,7 @@
         </div>
     </form>
     <hr>
-    <form action="{{ '/initiation/' . $initiationDay->id }}" method="post">
+    <form onSubmit="return confirm('Är su säker på att du vill ta bort den här dagen? Denna åtgärd är permanent.');" action="{{ '/initiation/' . $initiationDay->id }}" method="post">
         @csrf
         {{ method_field( 'delete' ) }}
             <div class="text-center">

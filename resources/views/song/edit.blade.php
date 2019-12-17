@@ -47,7 +47,7 @@
         </div>
     </form>
     <hr>
-    <form action="{{ '/song/' . $song->id }}" method="post">
+    <form onSubmit="return confirm('Är su säker på att du vill ta bort den här sången? Denna åtgärd är permanent.');" action="{{ '/song/' . $song->id }}" method="post">
         @csrf
         {{ method_field( 'delete' ) }}
         <div class="text-center">
