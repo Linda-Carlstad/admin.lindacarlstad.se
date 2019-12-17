@@ -14,30 +14,10 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Request $request )
+    public function index()
     {
-        $total = Song::all()->count();
-        if( isset( $request->search ) )
-        {
-            $search = $request->search;
-
-            $songs = Song::where( 'title', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'melody', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'text', 'LIKE', '%' . $search . '%' );
-
-            $totalSearch = $songs->count();
-            $songs = $songs->paginate( 20 );
-
-            return view( 'song.index' )
-                ->with( 'songs', $songs->appends( Input::except( 'page' ) ) )
-                ->with( 'search', $search )
-                ->with( 'total', $total )
-                ->with( 'totalSearch', $totalSearch );
-        }
-
-        $songs = Song::orderBy('title', 'asc')->paginate( 20 );
-
-        return view( 'song.index' )->with( 'songs', $songs )->with( 'total', $total );
+        $songs = Song::all();
+        return view( 'song.index' )->with( 'songs', $songs );
     }
 
     /**

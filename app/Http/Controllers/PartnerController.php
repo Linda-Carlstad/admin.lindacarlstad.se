@@ -14,31 +14,10 @@ class PartnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Request $request )
+    public function index()
     {
-        $total = Partner::all()->count();
-
-        if( isset( $request->search ) )
-        {
-            $search = $request->search;
-
-            $partners = Partner::where( 'name', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'type', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'phone', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'email', 'LIKE', '%' . $search . '%' );
-
-          $totalSearch = $partners->count();
-          $partners = $partners->paginate( 20 );
-
-            return view( 'partner.index' )
-                ->with( 'partners', $partners->appends( Input::except( 'page' ) ) )
-                ->with( 'search', $search )
-                ->with( 'total', $total )
-                ->with( 'totalSearch', $totalSearch );
-        }
-
-        $partners = Partner::orderBy( 'id', 'desc' )->paginate( 20 );
-        return view( 'partner.index' )->with( 'partners', $partners )->with( 'total', $total );
+        $partners = Partner::all();
+        return view( 'partner.index' )->with( 'partners', $partners );
     }
 
     /**

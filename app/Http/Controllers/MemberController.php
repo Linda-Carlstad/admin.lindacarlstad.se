@@ -14,31 +14,10 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Request $request )
+    public function index()
     {
-        $total = Member::all()->count();
-
-        if( isset( $request->search ) )
-        {
-            $search = $request->search;
-
-            $members = Member::where( 'firstName', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'lastName', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'id_number', 'LIKE', '%' . $search . '%' )
-                ->orWhere( 'email', 'LIKE', '%' . $search . '%' );
-
-            $totalSearch = $members->count();
-            $members = $members->paginate( 20 );
-
-            return view( 'member.index' )
-                ->with( 'members', $members->appends( Input::except( 'page' ) ) )
-                ->with( 'search', $search )
-                ->with( 'total', $total )
-                ->with( 'totalSearch', $totalSearch );
-        }
-
-        $members = Member::orderBy('id', 'desc')->paginate( 20 );
-        return view( 'member.index' )->with( 'members', $members )->with( 'total', $total );
+        $members = Member::all();
+        return view( 'member.index' )->with( 'members', $members );
     }
 
     /**

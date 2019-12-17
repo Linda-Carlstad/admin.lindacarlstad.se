@@ -5,36 +5,13 @@
         <h2>Sånger</h2>
         <hr>
         <a class="btn btn-primary m-1" href="{{ route( 'song.create' ) }}">Lägg till sång</a>
-        @if( !$songs->isEmpty() || isset( $search ) )
-            <form class="col-md-8 offset-md-2 mt-2" action="{{ '/song' }}" method="get">
-                @csrf
-
-                <div class="form-group row">
-                    <div class="input-group">
-                        <input id="search" type="text" placeholder="Sök.." class="form-control{{ $errors->has('search') ? ' is-invalid' : '' }}" name="search" value="{{ isset( $search ) ? $search : "" }}" autofocus>
-                        @if ($errors->has('search'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('search' ) }}</strong>
-                            </span>
-                        @endif
-                        <div class="input-group-append">
-                            <button type="submit" name="button" class="btn btn-primary btn-file">Sök</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        @endif
     </div>
-    @if( isset( $search ) )
-        <h4>Du sökte på: <i>{{ $search }}</i></h4>
-        <h5>Antal resultat: <i>{{ $totalSearch }}</i></h5>
-    @endif
     @if( $songs->isEmpty() )
         <p class="text-center">
             Inga sånger tillagda, lägg till en nu!
         </p>
     @else
-        <h4 class="text-center">Antal: {{ $total }}</h4>
+        <h4 class="text-center">Antal: {{ $songs->count() }}</h4>
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -58,13 +35,6 @@
                 @endforeach
             </tbody>
         </table>
-    @endif
-
-    @if( isset( $search ) )
-        <hr>
-        <div class="text-center">
-            <a class="btn btn-primary" href="{{ route( 'song.index' ) }}">Visa alla</a>
-        </div>
     @endif
 
 @endsection
