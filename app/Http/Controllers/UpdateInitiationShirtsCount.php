@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Overall;
+use App\InitiationShirts;
 use Illuminate\Http\Request;
 
-class UpdateOverallCount extends Controller
+class UpdateInitiationShirtsCount extends Controller
 {
     /**
      * Handle the incoming request.
@@ -15,7 +15,7 @@ class UpdateOverallCount extends Controller
      */
     public function __invoke(Request $request)
     {
-        $overalls = Overall::all();
+        $overalls = InitiationShirts::all();
         $inputs = $request->all();
 
         $request->validate( [
@@ -38,6 +38,6 @@ class UpdateOverallCount extends Controller
             }
         }
 
-        return redirect()->back()->with( 'success', 'Overaller uppdaterade!' );
+        return redirect()->back()->with( 'success', 'Nolletröjor uppdaterade!' );
     }
 }

@@ -43,7 +43,7 @@
                             <a class="nav-link" href="{{ route( 'member.index' ) }}">Medlemmar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'overalls' ) }}">Overaller</a>
+                            <a class="nav-link" href="{{ route( 'clothes' ) }}">Kläder</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route( 'initiationHandle' ) }}">Nollning</a>

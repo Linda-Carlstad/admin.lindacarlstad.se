@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Overall;
+use App\InitiationShirts;
 use Illuminate\Http\Request;
 
-class FetchOveralls extends Controller
+class FetchClothes extends Controller
 {
     /**
      * Handle the incoming request.
@@ -16,7 +17,8 @@ class FetchOveralls extends Controller
     public function __invoke(Request $request)
     {
         $overalls = Overall::all();
+        $shirts = InitiationShirts::all();
 
-        return view( 'overall.index' )->with( 'overalls', $overalls );
+        return view( 'clothes.index' )->with( 'overalls', $overalls )->with( 'shirts', $shirts );
     }
 }
