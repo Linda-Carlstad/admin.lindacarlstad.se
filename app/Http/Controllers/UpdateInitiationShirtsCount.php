@@ -15,7 +15,7 @@ class UpdateInitiationShirtsCount extends Controller
      */
     public function __invoke(Request $request)
     {
-        $overalls = InitiationShirts::all();
+        $shirts = InitiationShirts::all();
         $inputs = $request->all();
 
         $request->validate( [
@@ -26,14 +26,14 @@ class UpdateInitiationShirtsCount extends Controller
             'XXL' => 'required|integer|min:0',
         ] );
 
-        foreach( $overalls as $overall )
+        foreach( $shirts as $shirt )
         {
             foreach( $inputs as $key => $value )
             {
-                if( $overall->size == $key )
+                if( $shirt->size == $key )
                 {
-                    $overall->quantity = $value;
-                    $overall->save();
+                    $shirt->quantity = $value;
+                    $shirt->save();
                 }
             }
         }
