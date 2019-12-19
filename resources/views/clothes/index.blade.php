@@ -4,7 +4,7 @@
     <div class="text-center">
         <h2>Overaller</h2>
     </div>
-    <hr>
+    <br>
     <form class="" action="{{ 'updateOveralls' }}" method="post">
         @csrf
         {{ method_field( 'patch' ) }}
@@ -28,7 +28,7 @@
     <div class="text-center">
         <h2>Nolletröjor</h2>
     </div>
-    <hr>
+    <br>
     <form class="" action="{{ 'updateShirts' }}" method="post">
         @csrf
         {{ method_field( 'patch' ) }}

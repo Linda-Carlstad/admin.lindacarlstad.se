@@ -5,7 +5,7 @@
         <h2>Lägg till dag</h2>
         <br>
     </div>
-    <form class="col-md-6 offset-md-3" action="{{ '/initiation' }}" method="post">
+    <form action="{{ '/initiation' }}" method="post">
         @csrf
         <div class="form-group row">
             <label for="title" class="">Titel</label>
