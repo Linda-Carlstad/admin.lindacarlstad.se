@@ -2802,7 +2802,6 @@ flatpickr('#date', {
   dateFormat: "d M",
   locale: Swedish
 });
-xs;
 
 /***/ }),
 

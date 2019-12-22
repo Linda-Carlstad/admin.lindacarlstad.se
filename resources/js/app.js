@@ -12,4 +12,4 @@ flatpickr( '#date', {
     altFormat: "F j",
     dateFormat: "d M",
     locale: Swedish,
-} );xs
+} );
