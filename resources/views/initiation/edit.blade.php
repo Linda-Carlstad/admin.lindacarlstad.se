@@ -29,7 +29,7 @@
         </div>
         <div class="form-group row">
             <label for="date">Datum</label>
-            <input id="date" type="text" placeholder="e.x 12 augusti" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ $initiationDay->date }}">
+            <input id="date" type="text" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ $initiationDay->date }}">
 
             @if ($errors->has('date'))
                 <span class="invalid-feedback" role="alert">

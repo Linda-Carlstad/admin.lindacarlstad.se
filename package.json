@@ -22,5 +22,8 @@
         "sass-loader": "^7.1.0",
         "vue-template-compiler": "^2.6.11"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@chenfengyuan/datepicker": "^1.0.9",
+        "flatpickr": "^4.6.3"
+    }
 }
