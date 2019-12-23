@@ -7,7 +7,7 @@
         <hr>
     </div>
 
-    <form class="col-md-6 offset-md-3" action="{{ '/member/' . $member->id }}" method="post">
+    <form action="{{ '/member/' . $member->id }}" method="post">
         @csrf
         {{ method_field( 'patch' ) }}
         <input type="text" name="type" value="manual" hidden>
