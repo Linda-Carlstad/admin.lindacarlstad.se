@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class InitiationKeyPeopleTable extends Migration
+class CreateInitiationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class InitiationKeyPeopleTable extends Migration
      */
     public function up()
     {
-        Schema::create('initiation_key_people', function (Blueprint $table) {
+        Schema::create('initiations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('rank');
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
-            $table->integer('initiation_id');
+            $table->string('year');
+            $table->longText('description')->nullable();
+            $table->integer('price')->nullable();
+            $table->boolean('show_price')->nullable();
+            $table->string('facebook_group')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class InitiationKeyPeopleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('initiation_key_people');
+        Schema::dropIfExists('initiations');
     }
 }
