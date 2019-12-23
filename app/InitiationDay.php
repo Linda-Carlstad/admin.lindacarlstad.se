@@ -15,6 +15,10 @@ class InitiationDay extends Model
     protected $table = 'initiation_days';
     //
 
+    public function initiation() {
+        return $this->hasOne('App\Initiation');
+    }
+
     public static function create( Request $request )
     {
         InitiationDay::validateRequest( $request );
@@ -32,12 +36,13 @@ class InitiationDay extends Model
     {
         $request->validate( [
             'title' => 'string|required',
-            'description' => 'string',
-            'extra' => 'nullable|string',
-            'date' => 'string',
-            'time' => 'string',
-            'location' => 'string',
-            'order' => 'integer',
+            'description' => 'string|nullable',
+            'extra' => 'string|nullable',
+            'date' => 'string|nullable',
+            'time' => 'string|nullable',
+            'location' => 'string|nullable',
+            'order' => 'integer|nullable',
+            'initiation_id' => 'integer|required',
         ] );
     }
 
@@ -50,6 +55,7 @@ class InitiationDay extends Model
         $day->time = $request->time;
         $day->location = $request->location;
         $day->order = $request->order;
+        $day->initiation_id = $request->initiation_id;
         $day->save();
     }
 

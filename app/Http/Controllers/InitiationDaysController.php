@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Initiation;
 use App\InitiationDay;
-use App\InitiationKeyPerson;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class InitiationDaysController extends Controller
     {
         $days = InitiationDay::orderBy('order', 'desc')->get();
 
-        return view( 'initiation.index' )->with( 'days', $days );
+        return view( 'day.index' )->with( 'days', $days );
     }
 
     /**
@@ -28,7 +28,8 @@ class InitiationDaysController extends Controller
      */
     public function create()
     {
-        return view( 'initiation.create' );
+       $initiations = Initiation::all();
+       return view( 'day.create' )->with( 'initiations', $initiations );
     }
 
     /**
@@ -40,7 +41,7 @@ class InitiationDaysController extends Controller
     public function store( Request $request )
     {
         InitiationDay::create( $request );
-        return redirect( 'initiation' )->with( 'success', 'Ny dag skapad!' );
+        return redirect( 'day' )->with( 'success', 'Ny dag skapad!' );
     }
 
     /**
@@ -63,9 +64,10 @@ class InitiationDaysController extends Controller
     public function edit($id)
     {
         $initiationDay = InitiationDay::findOrFail( $id );
+        $initiations = Initiation::all();
 
-        return view( 'initiation.edit' )
-            ->with( 'initiationDay', $initiationDay  );
+        return view( 'day.edit' )
+            ->with( 'initiationDay', $initiationDay )->with( 'initiations', $initiations );
     }
 
     /**
@@ -80,7 +82,7 @@ class InitiationDaysController extends Controller
         $day = InitiationDay::findOrFail( $id );
         InitiationDay::updateInfo( $day, $request );
 
-        return redirect( 'initiation' )->with( 'success', 'Nollningsdag uppdaterad.' );
+        return redirect( 'day' )->with( 'success', 'Nollningsdag uppdaterad.' );
     }
 
     /**
@@ -94,6 +96,6 @@ class InitiationDaysController extends Controller
         $day = InitiationDay::findOrFail( $id );
         $day->delete();
 
-        return redirect( 'initiation' )->with( 'success', 'Dag borttagen.' );
+        return redirect( 'day' )->with( 'success', 'Dag borttagen.' );
     }
 }
