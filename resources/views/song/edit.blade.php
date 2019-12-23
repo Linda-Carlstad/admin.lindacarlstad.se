@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="text-center">
-        <h2>Lägg till ny sång</h2>
+        <h2>Uppdatera sången {{ $song->title }}</h2>
         <hr>
     </div>
 
@@ -40,15 +40,15 @@
             @endif
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="secret" name="secret" value="{{ $song->secret }}">
+            <input type="checkbox" class="form-check-input" id="secret" name="secret" value="1" {{ $song->secret ? 'checked' : '' }}>
             <label class="form-check-label" for="secret">
                 Hemlig sång
                 <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Klicka i för att göra sången hemlig"></i>
             </label>
 
-            @if ($errors->has('hidden'))
+            @if ($errors->has('secret'))
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('hidden' ) }}</strong>
+                    <strong>{{ $errors->first('secret' ) }}</strong>
                 </span>
             @endif
         </div>

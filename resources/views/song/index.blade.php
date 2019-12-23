@@ -17,6 +17,7 @@
                 <tr>
                     <th>Namn</th>
                     <th>Melodi</th>
+                    <th>Hemlig?</th>
                     <th>#</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <tr>
                         <td>{{ $song->title }}</td>
                         <td>{{ $song->melody }}</td>
+                        <td>{{ $song->secret ? 'Ja' : 'Nej' }}</td>
                         <td>
                             <a href="{{ url( 'song/' . $song->id . '/edit') }}" class="btn btn-link">
                                 Redigera

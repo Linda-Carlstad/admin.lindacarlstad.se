@@ -33,7 +33,7 @@ class Song extends Model
             'title'  => 'required|string',
             'text'   => 'required|string',
             'melody' => 'required|string',
-            'secret' => 'nullable|boolean'
+            'secret' => 'nullable'
         ] );
     }
 
@@ -42,7 +42,7 @@ class Song extends Model
         $song->title = $request->title;
         $song->text = $request->text;
         $song->melody = $request->melody;
-        $song->secret = $request->secret;
+        $song->secret = $request->secret ? '1' : '0';
         $song->save();
     }
 

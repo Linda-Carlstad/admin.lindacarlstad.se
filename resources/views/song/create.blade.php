@@ -10,7 +10,7 @@
         @csrf
         <div class="form-group row">
             <label for="title">Namn</label>
-            <input id="title" type="text" placeholder="Namn" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old( 'title' ) }}" required autofocus>
+            <input id="title" type="text" placeholder="Namn" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old( 'title' ) }}" required autofocus>
 
             @if ($errors->has('title'))
                 <span class="invalid-feedback" role="alert">
@@ -20,7 +20,7 @@
         </div>
         <div class="form-group row">
             <label for="text">Text</label>
-            <textarea name="text" id="text" rows="8" class="form-control{{ $errors->has('text') ? ' is-invalid' : '' }}" required></textarea>
+            <textarea name="text" id="text" rows="8" class="form-control {{ $errors->has('text') ? ' is-invalid' : '' }}" required>{{ old( 'text' ) }}</textarea>
 
             @if ($errors->has('text'))
                 <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
         </div>
         <div class="form-group row">
             <label for="melody">Melodi</label>
-            <input id="melody" type="text" placeholder="Melodi" class="form-control{{ $errors->has('melody') ? ' is-invalid' : '' }}" name="melody" value="{{ old( 'melody' ) }}" required>
+            <input id="melody" type="text" placeholder="Melodi" class="form-control {{ $errors->has('melody') ? ' is-invalid' : '' }}" name="melody" value="{{ old( 'melody' ) }}" required>
 
             @if ($errors->has('melody'))
                 <span class="invalid-feedback" role="alert">
@@ -39,15 +39,15 @@
             @endif
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="secret" name="secret" value="{{ old( 'secret' ) }}">
+            <input type="checkbox" class="form-check-input {{ $errors->has('secret') ? ' is-invalid' : '' }}" id="secret" name="secret" value="1" {{ old( 'secret' ) ? 'checked' : '' }}>
             <label class="form-check-label" for="secret">
                 Hemlig sång
                 <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Klicka i för att göra sången hemlig"></i>
             </label>
 
-            @if ($errors->has('hidden'))
+            @if ($errors->has('secret'))
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('hidden' ) }}</strong>
+                    <strong>{{ $errors->first('secret' ) }}</strong>
                 </span>
             @endif
         </div>
