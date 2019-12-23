@@ -32,7 +32,8 @@ class Song extends Model
         $request->validate( [
             'title'  => 'required|string',
             'text'   => 'required|string',
-            'melody'  => 'required|string',
+            'melody' => 'required|string',
+            'secret' => 'nullable|boolean'
         ] );
     }
 
@@ -41,6 +42,7 @@ class Song extends Model
         $song->title = $request->title;
         $song->text = $request->text;
         $song->melody = $request->melody;
+        $song->secret = $request->secret;
         $song->save();
     }
 

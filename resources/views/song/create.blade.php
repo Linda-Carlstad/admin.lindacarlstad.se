@@ -6,7 +6,7 @@
         <hr>
     </div>
 
-    <form class="col-md-6 offset-md-3" action="{{ '/song' }}" method="post">
+    <form action="{{ '/song' }}" method="post">
         @csrf
         <div class="form-group row">
             <label for="title">Namn</label>
@@ -30,11 +30,24 @@
         </div>
         <div class="form-group row">
             <label for="melody">Melodi</label>
-            <input id="melody" type="text" placeholder="Melodi" class="form-control{{ $errors->has('melody') ? ' is-invalid' : '' }}" name="melody" value="{{ old( 'melody' ) }}">
+            <input id="melody" type="text" placeholder="Melodi" class="form-control{{ $errors->has('melody') ? ' is-invalid' : '' }}" name="melody" value="{{ old( 'melody' ) }}" required>
 
             @if ($errors->has('melody'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('melody' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="secret" name="secret" value="{{ old( 'secret' ) }}">
+            <label class="form-check-label" for="secret">
+                Hemlig sång
+                <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Klicka i för att göra sången hemlig"></i>
+            </label>
+
+            @if ($errors->has('hidden'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('hidden' ) }}</strong>
                 </span>
             @endif
         </div>

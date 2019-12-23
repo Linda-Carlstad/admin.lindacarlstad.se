@@ -6,7 +6,7 @@
         <hr>
     </div>
 
-    <form class="col-md-6 offset-md-3" action="{{ '/song/' . $song->id }}" method="post">
+    <form action="{{ '/song/' . $song->id }}" method="post">
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
@@ -36,6 +36,19 @@
             @if ($errors->has('melody'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('melody' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="secret" name="secret" value="{{ $song->secret }}">
+            <label class="form-check-label" for="secret">
+                Hemlig sång
+                <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Klicka i för att göra sången hemlig"></i>
+            </label>
+
+            @if ($errors->has('hidden'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('hidden' ) }}</strong>
                 </span>
             @endif
         </div>

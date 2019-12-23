@@ -19,6 +19,7 @@ class SongsTable extends Migration
             $table->string( 'slug' );
             $table->longText( 'text' );
             $table->string( 'melody' );
+            $table->boolean( 'secret' )->nullable();
             $table->timestamps();
         });
     }
