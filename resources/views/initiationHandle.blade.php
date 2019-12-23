@@ -6,9 +6,9 @@
         <p>
             Nu vill jag hantera...
         </p>
-        <a class="btn btn-primary m-1" href="{{ route( 'initiation.index' ) }}">Dagar</a>
+        <a class="btn btn-primary m-1" href="{{ route( 'initiation.index' ) }}">Nollningar</a>
+        <a class="btn btn-primary m-1" href="{{ route( 'day.index' ) }}">Dagar</a>
         <a class="btn btn-primary m-1" href="{{ route( 'person.index' ) }}">Nyckelpersoner</a>
-        <a class="btn btn-primary m-1" href="{{ route( 'information.edit' ) }}">Information</a>
     </div>
 
 @endsection
