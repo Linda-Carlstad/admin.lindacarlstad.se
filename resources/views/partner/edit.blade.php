@@ -5,7 +5,7 @@
         <h2>{{ $partner->name }}</h2>
         <br>
     </div>
-    <form class="col-md-6 offset-md-3" action="{{ '/partner/' . $partner->id }}" method="post" enctype="multipart/form-data">
+    <form action="{{ '/partner/' . $partner->id }}" method="post" enctype="multipart/form-data">
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">

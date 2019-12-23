@@ -6,7 +6,7 @@
         <hr>
     </div>
 
-    <form class="col-md-6 offset-md-3" action="{{ '/board/' . $boardMember->id }}" method="post"  enctype="multipart/form-data">
+    <form action="{{ '/board/' . $boardMember->id }}" method="post"  enctype="multipart/form-data">
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">

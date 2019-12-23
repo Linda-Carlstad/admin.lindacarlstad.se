@@ -5,7 +5,7 @@
         <h2>Lägg till partner</h2>
         <br>
     </div>
-    <form class="col-md-6 offset-md-3" action="{{ '/partner' }}" method="post" enctype="multipart/form-data">
+    <form action="{{ '/partner' }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
             <label for="name" class="">Namn</label>

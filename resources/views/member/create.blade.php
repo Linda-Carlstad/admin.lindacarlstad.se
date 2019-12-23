@@ -10,7 +10,7 @@
         </p>
     </div>
     <br>
-    <form class="col-md-6 offset-md-3" action="{{ '/member' }}" method="post">
+    <form action="{{ '/member' }}" method="post">
         @csrf
         <input type="text" name="type" value="file" hidden>
         <div class="form-group row">
