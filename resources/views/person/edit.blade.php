@@ -45,11 +45,24 @@
         </div>
         <div class="form-group row">
             <label for="phone">Telefonnummer</label>
-            <input id="phone" type="phone" placeholder="Telefonnummer" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $keyPerson->phone }}" >
+            <input id="phone" type="tel" placeholder="Telefonnummer" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $keyPerson->phone }}" >
 
             @if ($errors->has('phone'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('phone' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group row">
+            <label for="initiation_id">Nollning</label>
+            <select class="form-control" id="initiation_id" name="initiation_id" required>
+                @foreach( $initiations as $initiation )
+                    <option value="{{ $initiation->id  }}" {{ $initiation->id == $keyPerson->initiation_id ? 'selected' : '' }}>{{ $initiation->year }}</option>
+                @endforeach
+            </select>
+            @if ($errors->has('initiation_id'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('initiation_id' ) }}</strong>
                 </span>
             @endif
         </div>

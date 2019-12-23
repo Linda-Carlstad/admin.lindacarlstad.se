@@ -5,7 +5,7 @@
         <h2>Lägg till nyckelperson</h2>
         <br>
     </div>
-    <form class="col-md-6 offset-md-3" action="{{ '/person' }}" method="post">
+    <form action="{{ '/person' }}" method="post">
         @csrf
         <div class="form-group row">
             <label for="name" class="">Namn</label>
@@ -49,6 +49,20 @@
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('phone' ) }}</strong>
             </span>
+            @endif
+        </div>
+        <div class="form-group row">
+            <label for="initiation_id">Nollning</label>
+            <select class="form-control" id="initiation_id" name="initiation_id" required>
+                <option disabled selected>Välj ett nollningsår</option>
+                @foreach( $initiations as $initiation )
+                    <option value="{{ $initiation->id  }}">{{ $initiation->year }}</option>
+                @endforeach
+            </select>
+            @if ($errors->has('initiation_id'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('initiation_id' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
