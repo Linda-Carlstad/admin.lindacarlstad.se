@@ -6,9 +6,9 @@
         <hr>
         <a class="btn btn-primary m-1" href="{{ route( 'member.create' ) }}">Lägg till medlem</a>
     </div>
-    @if( $partners->isEmpty() )
+    @if( $members->isEmpty() )
         <p class="text-center">
-            Inga partner tillagda, lägg till en nu!
+            Inga medlemmar tillagda, lägg till en nu!
         </p>
     @else
         <h4 class="text-center">Antal: {{ $members->count() }}</h4>
