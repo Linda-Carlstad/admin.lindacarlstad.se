@@ -79,7 +79,7 @@
 
     <main class="container py-4">
         <div class="content d-flex align-items-center justify-content-center">
-            <div class="col-md-10 col-lg-8">
+            <div class="col-md-10 col-lg-8 col-xl-6">
                 @if( session()->has( 'success' ) )
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session()->get( 'success' ) }}
