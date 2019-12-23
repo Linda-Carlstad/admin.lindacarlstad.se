@@ -24,6 +24,7 @@ class InitiationDaysTable extends Migration
             $table->string('time')->nullable();;
             $table->longText('location')->nullable();;
             $table->string('order')->nullable();;
+            $table->integer('initiation_id')->unsigned();
             $table->timestamps();
         });
     }
