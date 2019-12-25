@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -14,6 +15,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
+        return view( 'event.index' )->with( 'events', $events );
     }
 
     /**
@@ -23,7 +25,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view( 'event.create' );
     }
 
     /**
@@ -34,7 +36,8 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Event::create( $request );
+        return redirect( 'event' )->with( 'success', 'Nytt event tillagt!' );
     }
 
     /**
@@ -45,7 +48,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        abort( 404 );
     }
 
     /**
@@ -56,7 +59,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view( 'event.edit' );
     }
 
     /**
@@ -68,7 +71,9 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event = Event::findOrFail( $id );
+        Event::updateInfo( $event, $request );
+        return redirect( 'event' )->with( 'success', 'Event uppdaterat.' );
     }
 
     /**
@@ -79,6 +84,9 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::findOrFail( $id );
+        $event->delete();
+        return redirect( 'event' )->with( 'success', 'Event borttaget.' );
+
     }
 }
