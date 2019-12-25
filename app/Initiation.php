@@ -39,6 +39,7 @@ class Initiation extends Model
             'price' => 'integer|nullable',
             'show_price' => 'boolean|nullable',
             'facebook_group' => 'string|nullable',
+            'playlist' => 'string|nullable'
         ] );
     }
 
@@ -49,6 +50,7 @@ class Initiation extends Model
         $initiation->price = $request->price;
         $initiation->show_price = $request->show_price;
         $initiation->facebook_group = $request->facebook_group;
+        $initiation->playlist = $request->playlist;
         $initiation->save();
     }
 }

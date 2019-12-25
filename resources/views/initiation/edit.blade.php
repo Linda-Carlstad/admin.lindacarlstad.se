@@ -59,6 +59,16 @@
             @endif
         </div>
         <div class="form-group row">
+            <label for="playlist">Spellista</label>
+            <input id="playlist" type="text" placeholder="Länk till spellista" class="form-control{{ $errors->has('playlist') ? ' is-invalid' : '' }}" name="playlist" value="{{ $initiation->playlist }}">
+
+            @if ($errors->has('playlist'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('playlist' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group row">
             <a class="btn btn-secondary mr-1" href="{{ route( 'initiation.index' ) }}">Avbryt</a>
             <button type="submit" class="btn btn-primary ml-0">
                 Spara

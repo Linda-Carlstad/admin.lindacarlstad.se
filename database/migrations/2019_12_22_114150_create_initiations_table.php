@@ -20,6 +20,7 @@ class CreateInitiationsTable extends Migration
             $table->integer('price')->nullable();
             $table->boolean('show_price')->nullable();
             $table->string('facebook_group')->nullable();
+            $table->string('playlist')->nullable();
             $table->timestamps();
         });
     }
