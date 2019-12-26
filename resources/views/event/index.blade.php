@@ -18,7 +18,7 @@
             <thead class="thead-dark">
             <tr>
                 <th>Titel</th>
-                <th>Typ</th>
+                <th>Aktiv</th>
                 <th>Länk</th>
                 <th>#</th>
             </tr>
@@ -27,7 +27,13 @@
             @foreach ($events as $event)
                 <tr>
                     <td>{{ $event->title }}</td>
-                    <td>{{ $event->type }}</td>
+                    <td>
+                        @if( $event->active )
+                            Ja
+                        @else
+                            Nej
+                        @endif
+                    </td>
                     <td>
                         @if( $event->link )
                             <a href="{{ $event->link }}">{{ $event->link_text }}</a>
