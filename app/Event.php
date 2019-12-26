@@ -26,18 +26,20 @@ class Event extends Model
     {
         $request->validate( [
             'title' => 'string|required',
+            'text' => 'string|required',
             'link' => 'string|nullable',
             'link_title' => 'string|nullable',
-            'type' => 'string|nullable',
+            'active' => 'string|required',
         ] );
     }
 
     public static function addValuesToObject( Event $event, Request $request )
     {
         $event->title = $request->title;
+        $event->text = $request->text;
         $event->link = $request->link;
         $event->link_title = $request->link_title;
-        $event->type = $request->type;
+        $event->active = $request->active;
         $event->save();
     }
 }

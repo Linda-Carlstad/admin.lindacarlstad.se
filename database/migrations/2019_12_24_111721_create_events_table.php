@@ -16,9 +16,10 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string( 'title' );
-            $table->string( 'link' );
-            $table->string( 'link_title' );
-            $table->enum( 'type', [ 'error', 'notice', 'success' ] );
+            $table->string( 'text' );
+            $table->string( 'link' )->nullable();
+            $table->string( 'link_title' )->nullable();
+            $table->boolean( 'active' )->default( 0 );
             $table->timestamps();
         });
     }
