@@ -59,7 +59,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        return view( 'event.edit' );
+        $event = Event::findOrFail( $id );
+        return view( 'event.edit' )->with( 'event', $event );
     }
 
     /**
