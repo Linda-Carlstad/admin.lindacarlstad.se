@@ -49,7 +49,7 @@
             @endif
         </div>
         <div class="form-group form-check">
-            <input {{ $event->active ? 'checked' : '' }} type="checkbox" class="form-check-input" id="active" name="active" value="1">
+            <input {{ $event->active ? 'checked' : '' }} type="checkbox" class="form-check-input" id="active" name="active" value="{{ $event->active }}">
             <label class="form-check-label" for="active">Aktiv?</label>
 
             @if ($errors->has('active'))

@@ -29,7 +29,6 @@ class Event extends Model
             'text' => 'string|required',
             'link' => 'string|nullable',
             'link_title' => 'string|nullable',
-            'active' => 'string|required',
         ] );
     }
 
@@ -39,7 +38,7 @@ class Event extends Model
         $event->text = $request->text;
         $event->link = $request->link;
         $event->link_title = $request->link_title;
-        $event->active = $request->active;
+        $event->active = $request->active ? 1 : 0;
         $event->save();
     }
 }
