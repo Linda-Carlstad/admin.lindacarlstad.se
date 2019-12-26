@@ -36,7 +36,7 @@
                     </td>
                     <td>
                         @if( $event->link )
-                            <a href="{{ $event->link }}">{{ $event->link_text }}</a>
+                            <a target="_blank" href="{{ $event->link }}">{{ $event->link_title }}</a>
                         @else
                             Ingen länk
                         @endif

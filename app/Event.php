@@ -34,11 +34,16 @@ class Event extends Model
 
     public static function addValuesToObject( Event $event, Request $request )
     {
+        if( $request->active === null )
+        {
+            $request->active = 0;
+        }
+        
         $event->title = $request->title;
         $event->text = $request->text;
         $event->link = $request->link;
         $event->link_title = $request->link_title;
-        $event->active = $request->active ? 1 : 0;
+        $event->active = $request->active;
         $event->save();
     }
 }

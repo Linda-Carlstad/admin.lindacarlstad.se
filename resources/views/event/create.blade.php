@@ -48,7 +48,7 @@
             @endif
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="active" name="active" value="{{ old( 'active' ) }}">
+            <input type="checkbox" class="form-check-input" id="active" name="active" value="1" {{ old( 'active' ) ? 'checked' : '' }}>
             <label class="form-check-label" for="active">Aktiv?</label>
 
             @if ($errors->has('active'))
