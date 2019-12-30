@@ -32,8 +32,6 @@ Route::group( [ 'middleware' => 'auth' ], function ()
     Route::get( '/kläder', 'FetchClothes' )->name( 'clothes' );
     Route::patch( 'updateOveralls', 'UpdateOverallCount' );
     Route::patch( 'updateShirts', 'UpdateInitiationShirtsCount' );
-    Route::get( '/initiation/information', 'FetchInitiationInformation' )->name( 'information.edit' );
-    Route::patch( 'informationUpdate', 'UpdateInitiationInformation' );
 
     Route::resources([
         'song' => 'SongController',
@@ -41,7 +39,8 @@ Route::group( [ 'middleware' => 'auth' ], function ()
         'event' => 'EventController',
         'member' => 'MemberController',
         'partner' => 'PartnerController',
-        'initiation' => 'InitiationDaysController',
+        'initiation' => 'InitiationController',
+        'day' => 'InitiationDaysController',
         'person' => 'InitiationKeyPeopleController',
 
     ]);

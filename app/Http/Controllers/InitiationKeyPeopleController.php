@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Initiation;
 use App\InitiationKeyPerson;
 
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class InitiationKeyPeopleController extends Controller
      */
     public function create()
     {
-        return view( 'person.create' );
+        $initiations = Initiation::all();
+        return view( 'person.create' )->with( 'initiations', $initiations );
     }
 
     /**
@@ -63,9 +65,10 @@ class InitiationKeyPeopleController extends Controller
     public function edit($id)
     {
         $keyPerson = InitiationKeyPerson::findOrFail( $id );
+        $initiations = Initiation::all();
 
         return view( 'person.edit' )
-            ->with( 'keyPerson', $keyPerson  );
+            ->with( 'keyPerson', $keyPerson  )->with( 'initiations', $initiations );
     }
 
     /**

@@ -6,7 +6,7 @@
         <p>
             <b>Formattering enligt följande</b>
             <br>
-            Förnamn | Efternamn | Personnummer | Email | Medlemsår | Startår
+            Förnamn | Efternamn | Personnummer | Email | Startår
         </p>
     </div>
     <br>
@@ -30,7 +30,7 @@
     <div class="text-center">
         <h2>Lägg till manuellt</h2>
     </div>
-    <form class="col-md-6 offset-md-3" action="{{ '/member' }}" method="post">
+    <form action="{{ '/member' }}" method="post">
         @csrf
         <input type="text" name="type" value="manual" hidden>
         <div class="form-group row">

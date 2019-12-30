@@ -1,15 +1,31 @@
-const flatpickr = require("flatpickr");
-const Swedish = require("flatpickr/dist/l10n/sv.js").default.sv;
+const flatpickr = require( 'flatpickr' );
+const Swedish = require( 'flatpickr/dist/l10n/sv.js' ).default.sv;
 
 
-$('.table').DataTable( {
+$('.table').DataTable(
+{
     'lengthChange': false,
     'info': false
 } );
 
-flatpickr( '#date', {
-    altInput: true,
-    altFormat: "F j",
-    dateFormat: "d M",
+flatpickr( '#date',
+{
+    dateFormat: "d F",
+    weekNumbers: true,
     locale: Swedish,
+} );
+
+flatpickr( '#year',
+    {
+        dateFormat: "Y",
+        minDate: Date.now(),
+        weekNumbers: true,
+        allowInput: true,
+        locale: Swedish,
+    } );
+
+
+$( function ()
+{
+    $( '[ data-toggle="tooltip" ]' ).tooltip()
 } );

@@ -3,22 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Initiation;
-use App\InitiationDay;
-
 use Illuminate\Http\Request;
 
-class InitiationDaysController extends Controller
+class InitiationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $days = InitiationDay::orderBy('order', 'desc')->get();
+        $initiations = Initiation::orderBy('year', 'desc')->get();
 
-        return view( 'day.index' )->with( 'days', $days );
+        return view( 'initiation.index' )->with( 'initiations', $initiations );
     }
 
     /**
@@ -28,8 +21,7 @@ class InitiationDaysController extends Controller
      */
     public function create()
     {
-       $initiations = Initiation::all();
-       return view( 'day.create' )->with( 'initiations', $initiations );
+        return view( 'initiation.create' );
     }
 
     /**
@@ -40,8 +32,8 @@ class InitiationDaysController extends Controller
      */
     public function store( Request $request )
     {
-        InitiationDay::create( $request );
-        return redirect( 'day' )->with( 'success', 'Ny dag skapad!' );
+        Initiation::create( $request );
+        return redirect( 'initiation' )->with( 'success', 'Ny nollning skapad!' );
     }
 
     /**
@@ -52,7 +44,13 @@ class InitiationDaysController extends Controller
      */
     public function show($id)
     {
-        abort( 404 );
+        $initiation = Initiation::findOrFail( $id );
+        $persons = $initiation->persons;
+        $days = $initiation->days;
+
+
+        return view( 'initiation.show' )
+            ->with( 'initiation', $initiation  )->with( 'persons', $persons )->with( 'days', $days );
     }
 
     /**
@@ -63,11 +61,10 @@ class InitiationDaysController extends Controller
      */
     public function edit($id)
     {
-        $initiationDay = InitiationDay::findOrFail( $id );
-        $initiations = Initiation::all();
+        $initiation = Initiation::findOrFail( $id );
 
-        return view( 'day.edit' )
-            ->with( 'initiationDay', $initiationDay )->with( 'initiations', $initiations );
+        return view( 'initiation.edit' )
+            ->with( 'initiation', $initiation  );
     }
 
     /**
@@ -79,10 +76,10 @@ class InitiationDaysController extends Controller
      */
     public function update( Request $request, $id )
     {
-        $day = InitiationDay::findOrFail( $id );
-        InitiationDay::updateInfo( $day, $request );
+        $initiation = Initiation::findOrFail( $id );
+        Initiation::updateInfo( $initiation, $request );
 
-        return redirect( 'day' )->with( 'success', 'Nollningsdag uppdaterad.' );
+        return redirect( 'initiation' )->with( 'success', 'Nollningsdag uppdaterad.' );
     }
 
     /**
@@ -93,9 +90,9 @@ class InitiationDaysController extends Controller
      */
     public function destroy( $id )
     {
-        $day = InitiationDay::findOrFail( $id );
-        $day->delete();
+        $initiation = Initiation::findOrFail( $id );
+        $initiation->delete();
 
-        return redirect( 'day' )->with( 'success', 'Dag borttagen.' );
+        return redirect( 'initiation' )->with( 'success', 'Dag borttagen.' );
     }
 }

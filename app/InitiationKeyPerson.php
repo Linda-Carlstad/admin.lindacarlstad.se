@@ -9,6 +9,10 @@ class InitiationKeyPerson extends Model
 {
     protected $table = 'initiation_key_people';
 
+    public function initiation() {
+        return $this->hasOne('App\Initiation');
+    }
+
     public static function create( Request $request )
     {
         InitiationKeyPerson::validateRequest( $request );
@@ -27,8 +31,9 @@ class InitiationKeyPerson extends Model
         $request->validate( [
             'name' => 'string|required',
             'rank' => 'string|required',
-            'email' => 'email',
-            'phone' => 'string',
+            'email' => 'email|nullable',
+            'phone' => 'string|nullable',
+            'initiation_id' => 'integer|required'
         ] );
     }
 
@@ -38,6 +43,7 @@ class InitiationKeyPerson extends Model
         $person->rank = $request->rank;
         $person->email = $request->email;
         $person->phone = $request->phone;
+        $person->initiation_id = $request->initiation_id;
         $person->save();
     }
 }

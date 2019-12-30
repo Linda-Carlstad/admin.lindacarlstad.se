@@ -2797,10 +2797,19 @@ $('.table').DataTable({
   'info': false
 });
 flatpickr('#date', {
-  altInput: true,
-  altFormat: "F j",
-  dateFormat: "d M",
+  dateFormat: "d F",
+  weekNumbers: true,
   locale: Swedish
+});
+flatpickr('#year', {
+  dateFormat: "Y",
+  minDate: Date.now(),
+  weekNumbers: true,
+  allowInput: true,
+  locale: Swedish
+});
+$(function () {
+  $('[ data-toggle="tooltip" ]').tooltip();
 });
 
 /***/ }),

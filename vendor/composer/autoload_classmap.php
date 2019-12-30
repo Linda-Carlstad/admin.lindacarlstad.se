@@ -36,6 +36,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Initiation' => $baseDir . '/app/Initiation.php',
     'App\\InitiationDay' => $baseDir . '/app/InitiationDay.php',
     'App\\InitiationInformation' => $baseDir . '/app/InitiationInformation.php',
     'App\\InitiationKeyPerson' => $baseDir . '/app/InitiationKeyPerson.php',

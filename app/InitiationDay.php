@@ -15,16 +15,22 @@ class InitiationDay extends Model
     protected $table = 'initiation_days';
     //
 
+    public function initiation() {
+        return $this->hasOne('App\Initiation');
+    }
+
     public static function create( Request $request )
     {
         InitiationDay::validateRequest( $request );
         $day = new InitiationDay;
+        $request->location = InitiationDay::parseGoogleMapsLink( $request->location );
         InitiationDay::addValuesToObject( $day, $request );
     }
 
     public static function updateInfo( InitiationDay $day, Request $request )
     {
         InitiationDay::validateRequest( $request );
+        $request->location = InitiationDay::parseGoogleMapsLink( $request->location );
         InitiationDay::addValuesToObject( $day, $request );
     }
 
@@ -32,12 +38,13 @@ class InitiationDay extends Model
     {
         $request->validate( [
             'title' => 'string|required',
-            'description' => 'string',
-            'extra' => 'nullable|string',
-            'date' => 'string',
-            'time' => 'string',
-            'location' => 'string',
-            'order' => 'integer',
+            'description' => 'string|nullable',
+            'extra' => 'string|nullable',
+            'date' => 'string|nullable',
+            'time' => 'string|nullable',
+            'location' => 'string|nullable',
+            'order' => 'integer|nullable',
+            'initiation_id' => 'integer|required',
         ] );
     }
 
@@ -50,7 +57,21 @@ class InitiationDay extends Model
         $day->time = $request->time;
         $day->location = $request->location;
         $day->order = $request->order;
+        $day->initiation_id = $request->initiation_id;
         $day->save();
+    }
+
+    public static function parseGoogleMapsLink( $link )
+    {
+        $temp = explode('"', $link);
+        if( count($temp) === 1 )
+        {
+            return $temp[0];
+        }
+        else
+        {
+            return $temp[1];
+        }
     }
 
     public function getSlugOptions() : SlugOptions

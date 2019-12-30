@@ -17,8 +17,9 @@ class InitiationKeyPeopleTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('rank');
-            $table->string('email');
-            $table->string('phone');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->integer('initiation_id');
             $table->timestamps();
         });
     }

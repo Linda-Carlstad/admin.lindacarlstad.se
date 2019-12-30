@@ -2,34 +2,43 @@
 @section('content')
 
     <div class="text-center mb-2">
-        <h2>Nollning - Dagar</h2>
+        <h2>Nollningar</h2>
         <hr>
-        <a class="btn btn-primary m-1" href="{{ route( 'initiation.create' ) }}">Lägg till dag</a>
+        <a class="btn btn-primary m-1" href="{{ route( 'initiation.create' ) }}">Lägg till nollning</a>
     </div>
 
-    @if( $days->isEmpty() )
+    @if( $initiations->isEmpty() )
         <p class="text-center">
-            Inga dagar skapade, skapa en nu!
+            Inga nollningar skapade, skapa en nu!
         </p>
     @else
-        <h4 class="text-center">Dagar: {{ $days->count() }}</h4>
+        <h4 class="text-center">Nollnignar: {{ $initiations->count() }}</h4>
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>Titel</th>
-                    <th>Datum</th>
-                    <th>Order</th>
+                    <th>År</th>
+                    <th>Pris</th>
+                    <th>Beskrivning</th>
                     <th>#</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($days as $day)
+                @foreach ($initiations as $initiation)
                     <tr>
-                        <td>{{ $day->title }}</td>
-                        <td>{{ $day->date }}</td>
-                        <td>{{ $day->order }}</td>
+                        <td>{{ $initiation->year }}</td>
                         <td>
-                            <a href="{{ url( 'initiation/' . $day->id . '/edit') }}" class="btn btn-link">
+                            {{ $initiation->price }}
+                            @if( $initiation->show_price )
+                                <i data-toggle="tooltip" data-placement="top" title="Pris visas på webbsidan" class="fas fa-check"></i>
+                            @endif
+                        </td>
+                        <td>{{ \Illuminate\Support\Str::limit($initiation->description, 50, $end='...') }}</td>
+                        <td>
+                            <a href="{{ url( 'initiation/' . $initiation->id ) }}">
+                                Visa
+                            </a>
+                            /
+                            <a href="{{ url( 'initiation/' . $initiation->id . '/edit') }}" class="btn btn-link">
                                 Redigera
                             </a>
                         </td>
