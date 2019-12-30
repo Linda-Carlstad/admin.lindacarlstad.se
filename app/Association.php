@@ -5,8 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
 class Association extends Model
 {
+    use HasSlug;
+
+    protected $table = 'associations';
+
     public static function create( Request $request )
     {
         Association::validateRequest( $request );
@@ -57,7 +64,7 @@ class Association extends Model
     public static function setImageName( Request $request )
     {
         $name = str_slug( $request->title ) . '-' . time() . '.' . $request->image->getClientOriginalExtension();
-        $folder = '/img/board/';
+        $folder = '/img/association/';
         $request->image->move( public_path( $folder ), $name );
         $image = $folder . $name;
         return $image;
@@ -71,5 +78,19 @@ class Association extends Model
         $association->email = $request->email;
         $association->description = $request->description;
         $association->save();
+    }
+
+
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom( 'name' )
+            ->saveSlugsTo( 'slug' )
+            ->usingSeparator('-');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

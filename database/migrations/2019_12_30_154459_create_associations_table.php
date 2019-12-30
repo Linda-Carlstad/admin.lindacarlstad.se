@@ -21,6 +21,7 @@ class CreateAssociationsTable extends Migration
             $table->string('image')->nullable();
             $table->string('email')->nullable();
             $table->longText('description')->nullable();
+            $table->string( 'slug' )->unique();
             $table->timestamps();
         });
     }
