@@ -29,7 +29,7 @@ Route::group( [ 'middleware' => 'auth' ], function ()
         return view( 'documents' );
     })->name( 'documents' );
 
-    Route::get( '/kläder', 'FetchClothes' )->name( 'clothes' );
+    Route::get( '/clothes', 'FetchClothes' )->name( 'clothes' );
     Route::patch( 'updateOveralls', 'UpdateOverallCount' );
     Route::patch( 'updateShirts', 'UpdateInitiationShirtsCount' );
 
@@ -39,9 +39,9 @@ Route::group( [ 'middleware' => 'auth' ], function ()
         'event' => 'EventController',
         'member' => 'MemberController',
         'partner' => 'PartnerController',
-        'initiation' => 'InitiationController',
+        'association' => 'AssociationController',
         'day' => 'InitiationDaysController',
+        'initiation' => 'InitiationController',
         'person' => 'InitiationKeyPeopleController',
-
     ]);
 });
