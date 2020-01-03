@@ -76,6 +76,7 @@ class Association extends Model
         $association->slogan = $request->slogan;
         $association->image = $image;
         $association->email = $request->email;
+        $association->link = $request->link;
         $association->description = $request->description;
         $association->save();
     }
