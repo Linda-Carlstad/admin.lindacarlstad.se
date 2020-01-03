@@ -17,8 +17,8 @@
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>Position</th>
                     <th>Namn</th>
+                    <th>Slogan</th>
                     <th>Email</th>
                     <th>#</th>
                 </tr>
@@ -27,7 +27,13 @@
                 @foreach ($associations as $association)
                     <tr>
                         <td>{{ $association->name }}</td>
-                        <td>{{ $association->nickname }}</td>
+                        <td>
+                            @if( $association->slogan )
+                                {{ $association->slogan }}
+                            @else
+                                Ingen slogan
+                            @endif
+                        </td>
                         <td>
                             @if( $association->email )
                                 <a href="{{ $association->email }}">{{ $association->email }}</a>
