@@ -16,14 +16,14 @@ class InitiationDaysTable extends Migration
         Schema::dropIfExists('initiation_days');
         Schema::create('initiation_days', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->unique();
-            $table->string('slug')->unique();
+            $table->string('title');
+            $table->string('slug');
             $table->longText('description')->nullable();
-            $table->string('extra')->nullable();;
-            $table->string('date')->nullable();;
-            $table->string('time')->nullable();;
-            $table->longText('location')->nullable();;
-            $table->string('order')->nullable();;
+            $table->string('extra')->nullable();
+            $table->string('date')->nullable();
+            $table->string('time')->nullable();
+            $table->longText('location')->nullable();
+            $table->string('order');
             $table->integer('initiation_id')->unsigned();
             $table->timestamps();
         });

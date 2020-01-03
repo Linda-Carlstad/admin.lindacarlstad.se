@@ -19,12 +19,12 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="nickname">Kort namn</label>
-            <input id="nickname" type="text" placeholder="Kort namn" class="form-control{{ $errors->has('nickname') ? ' is-invalid' : '' }}" name="nickname" value="{{ old( 'nickname' ) }}">
+            <label for="slogan">Slogan</label>
+            <input id="slogan" type="text" placeholder="Kort namn" class="form-control{{ $errors->has('slogan') ? ' is-invalid' : '' }}" name="slogan" value="{{ old( 'slogan' ) }}">
 
-            @if ($errors->has('nickname'))
+            @if ($errors->has('slogan'))
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('nickname' ) }}</strong>
+                    <strong>{{ $errors->first('slogan' ) }}</strong>
                 </span>
             @endif
         </div>

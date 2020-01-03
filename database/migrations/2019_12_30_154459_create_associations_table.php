@@ -16,7 +16,7 @@ class CreateAssociationsTable extends Migration
         Schema::create('associations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('nickname')->nullable();
+            $table->string('slogan')->nullable();
             $table->string('link')->nullable();
             $table->string('image')->nullable();
             $table->string('email')->nullable();
