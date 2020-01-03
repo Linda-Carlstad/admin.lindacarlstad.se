@@ -53,7 +53,7 @@ class Association extends Model
     {
         $request->validate( [
             'name' => 'required|string',
-            'nickname' => 'nullable|string',
+            'slogan' => 'nullable|string',
             'link' => 'nullable|string',
             'description' => 'nullable|string',
             'email' => 'nullable|email',
@@ -73,7 +73,7 @@ class Association extends Model
     public static function addValuesToObject( Association $association, Request $request, $image )
     {
         $association->name = $request->name;
-        $association->nickname = $request->nickname;
+        $association->slogan = $request->slogan;
         $association->image = $image;
         $association->email = $request->email;
         $association->description = $request->description;
