@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="text-center">
-        <h2>Lägg till ny styrelsetitle</h2>
+        <h2>Lägg till ny förening</h2>
         <hr>
     </div>
 
@@ -20,7 +20,7 @@
         </div>
         <div class="form-group row">
             <label for="slogan">Slogan</label>
-            <input id="slogan" type="text" placeholder="Kort namn" class="form-control{{ $errors->has('slogan') ? ' is-invalid' : '' }}" name="slogan" value="{{ old( 'slogan' ) }}">
+            <input id="slogan" type="text" placeholder="Slogan" class="form-control{{ $errors->has('slogan') ? ' is-invalid' : '' }}" name="slogan" value="{{ old( 'slogan' ) }}">
 
             @if ($errors->has('slogan'))
                 <span class="invalid-feedback" role="alert">
