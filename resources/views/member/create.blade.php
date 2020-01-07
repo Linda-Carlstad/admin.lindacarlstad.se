@@ -29,6 +29,7 @@
 
     <div class="text-center">
         <h2>Lägg till manuellt</h2>
+        <p><b>Alla fält är obligatoriska.</b></p>
     </div>
     <form action="{{ '/member' }}" method="post">
         @csrf

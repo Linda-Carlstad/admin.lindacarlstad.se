@@ -3,6 +3,7 @@
 
     <div class="text-center">
         <h2>{{ $keyPerson->name }}</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
         <hr>
     </div>
 
@@ -10,7 +11,7 @@
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
-            <label for="name">Namn</label>
+            <label for="name">Namn *</label>
             <input id="name" type="text" placeholder="Namn" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $keyPerson->name }}" required autofocus>
 
             @if ($errors->has('name'))
@@ -20,8 +21,8 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="rank">Rank</label>
-            <select class="form-control" id="rank" name="rank" required>
+            <label for="rank">Rank *</label>
+            <select class="form-control{{ $errors->has('rank') ? ' is-invalid' : '' }}" id="rank" name="rank" required>
                 <option value="General" {{ old( 'rank', $keyPerson->rank ) == 'General' ? 'selected' : '' }}>General</option>
                 <option value="Kapten" {{ old( 'rank', $keyPerson->rank ) == 'Kapten' ? 'selected' : '' }}>Kapten</option>
                 <option value="Vice kapten" {{ old( 'rank', $keyPerson->rank ) == 'Vice kapten' ? 'selected' : '' }}>Vice kapten</option>
@@ -30,6 +31,19 @@
             @if ($errors->has('rank'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('rank' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group row">
+            <label for="initiation_id">Nollningsår *</label>
+            <select class="form-control{{ $errors->has('initiation_id') ? ' is-invalid' : '' }}" id="initiation_id" name="initiation_id" required>
+                @foreach( $initiations as $initiation )
+                    <option value="{{ $initiation->id  }}" {{ $initiation->id == $keyPerson->initiation_id ? 'selected' : '' }}>{{ $initiation->year }}</option>
+                @endforeach
+            </select>
+            @if ($errors->has('initiation_id'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('initiation_id' ) }}</strong>
                 </span>
             @endif
         </div>
@@ -50,19 +64,6 @@
             @if ($errors->has('phone'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('phone' ) }}</strong>
-                </span>
-            @endif
-        </div>
-        <div class="form-group row">
-            <label for="initiation_id">Nollning</label>
-            <select class="form-control" id="initiation_id" name="initiation_id" required>
-                @foreach( $initiations as $initiation )
-                    <option value="{{ $initiation->id  }}" {{ $initiation->id == $keyPerson->initiation_id ? 'selected' : '' }}>{{ $initiation->year }}</option>
-                @endforeach
-            </select>
-            @if ($errors->has('initiation_id'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('initiation_id' ) }}</strong>
                 </span>
             @endif
         </div>

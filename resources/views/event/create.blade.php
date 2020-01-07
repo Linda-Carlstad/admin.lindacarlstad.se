@@ -3,12 +3,13 @@
 
     <div class="text-center mb-2">
         <h2>Lägg till ett event</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
     </div>
     <hr>
     <form action="{{ '/event' }}" method="post">
         @csrf
         <div class="form-group row">
-            <label for="title" class="">Titel</label>
+            <label for="title" class="">Titel *</label>
             <input id="title" type="text" placeholder="Titel" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title' ) }}" >
 
             @if ($errors->has('title'))
@@ -18,7 +19,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="text" class="">Text</label>
+            <label for="text" class="">Text *</label>
             <textarea rows="4" id="text" placeholder="Text till eventet" type="text" class="form-control{{ $errors->has('text') ? ' is-invalid' : '' }}" name="text">{{ old('text' ) }}</textarea>
 
             @if ($errors->has('text'))

@@ -3,7 +3,8 @@
 
 
     <div class="text-center">
-        <h2>{{ $member->firstName }} {{ $member->lastName }}</h2>
+        <h2>Redigera upgifter för {{ $member->firstName }} {{ $member->lastName }}</h2>
+        <p><u>Alla fält är obligatoriska.</u></p>
         <hr>
     </div>
 

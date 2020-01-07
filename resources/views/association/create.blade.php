@@ -3,13 +3,14 @@
 
     <div class="text-center">
         <h2>Lägg till ny förening</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
         <hr>
     </div>
 
     <form action="{{ '/association' }}" method="post"  enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
-            <label for="name">Namn</label>
+            <label for="name">Namn *</label>
             <input id="name" type="text" placeholder="Namn" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old( 'name' ) }}" required>
 
             @if ($errors->has('name'))

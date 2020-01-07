@@ -2,7 +2,8 @@
 @section('content')
 
     <div class="text-center">
-        <h2>{{ $initiationDay->title }}</h2>
+        <h2>Redigera {{ $initiationDay->title }}</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
         <hr>
     </div>
 
@@ -10,7 +11,7 @@
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
-            <label for="title">Title *</label>
+            <label for="title">Titel *</label>
             <input id="title" type="text" placeholder="Position" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $initiationDay->title }}" required autofocus>
             @if ($errors->has('title'))
                 <span class="invalid-feedback" role="alert">
@@ -19,7 +20,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="initiation_id">Nollning *</label>
+            <label for="initiation_id">Nollningsår *</label>
             <select class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" id="initiation_id" name="initiation_id" required>
                 @foreach( $initiations as $initiation )
                     <option value="{{ $initiation->id  }}" {{ $initiation->id == $initiationDay->initiation_id ? 'selected' : '' }}>{{ $initiation->year }}</option>
@@ -33,7 +34,7 @@
         </div>
         <div class="form-group row">
             <label for="date">Datum *</label>
-            <input id="date" type="text" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ $initiationDay->date }}">
+            <input id="date" type="text" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ $initiationDay->date }}" required>
 
             @if ($errors->has('date'))
                 <span class="invalid-feedback" role="alert">

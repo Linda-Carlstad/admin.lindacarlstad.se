@@ -2,7 +2,8 @@
 @section('content')
 
     <div class="text-center">
-        <h2>{{ $boardMember->title }}</h2>
+        <h2>Redigera {{ $boardMember->title }}</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
         <hr>
     </div>
 
@@ -10,7 +11,7 @@
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
-            <label for="title">Position</label>
+            <label for="title">Position *</label>
             <input id="title" type="text" placeholder="Position" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $boardMember->title }}" required autofocus>
 
             @if ($errors->has('title'))
@@ -20,7 +21,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="name">Namn</label>
+            <label for="name">Namn *</label>
             <input id="name" type="text" placeholder="Namn" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $boardMember->name }}" required>
 
             @if ($errors->has('name'))
@@ -40,7 +41,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="email">Email</label>
+            <label for="email">Email *</label>
             <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $boardMember->email }}" >
 
             @if ($errors->has('email'))
@@ -50,7 +51,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="description">Beskrivning</label>
+            <label for="description">Beskrivning *</label>
             <textarea rows="3" id="description" type="text" placeholder="{{ $boardMember->description }}" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ $boardMember->description }}</textarea>
 
             @if ($errors->has('description'))
@@ -61,7 +62,7 @@
         </div>
 
         <div class="form-group row">
-            <label for="order">Order</label>
+            <label for="order">Order *</label>
             <input id="order" type="number" placeholder="Order" class="form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ $boardMember->order }}" >
 
             @if ($errors->has('order'))
