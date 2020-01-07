@@ -33,6 +33,21 @@ class Initiation extends Model
 
     public static function validateRequest( Request $request )
     {
+        if( $request->playlist )
+        {
+            if( substr( $request->playlist, 0, 8 ) === 'spotify:' )
+            {
+                $link = explode(":", $request->playlist);
+                $request->playlist = 'https://open.spotify.com/embed/playlist/' . $link[2];
+            }
+            else
+            {
+                $link = explode("?", $request->playlist);
+                $request->playlist = $link[0];
+                $request->playlist = substr_replace($request->playlist, '/embed', 24, 0);
+            }
+        }
+
         $request->validate( [
             'year' => 'string|required',
             'description' => 'string|nullable',
