@@ -16,7 +16,7 @@ class InitiationDaysController extends Controller
      */
     public function index()
     {
-        $days = InitiationDay::orderBy('order', 'desc')->get();
+        $days = InitiationDay::orderBy('date', 'asc')->get();
 
         return view( 'day.index' )->with( 'days', $days );
     }

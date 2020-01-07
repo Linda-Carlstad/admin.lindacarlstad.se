@@ -28,7 +28,7 @@
                         <td>{{ $day->title }}</td>
                         <td>
                             @if( $day->date )
-                                {{ $day->date }}
+                                {{ date_format( date_create( $day->date ), 'd M' ) }}
                             @else
                                 Inget datum valt
                             @endif

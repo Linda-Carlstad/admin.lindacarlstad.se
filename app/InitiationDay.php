@@ -36,14 +36,18 @@ class InitiationDay extends Model
 
     public static function validateRequest( Request $request )
     {
+        if( $request->date )
+        {
+            $request->date = date_format( date_create( $request->date ), 'Y-m-d H:i:s' );
+        }
+
         $request->validate( [
             'title' => 'string|required',
             'description' => 'string|nullable',
             'extra' => 'string|nullable',
-            'date' => 'string|nullable',
+            'date' => 'date|nullable',
             'time' => 'string|nullable',
             'location' => 'string|nullable',
-            'order' => 'integer|nullable',
             'initiation_id' => 'integer|required',
         ] );
     }
@@ -56,7 +60,6 @@ class InitiationDay extends Model
         $day->date = $request->date;
         $day->time = $request->time;
         $day->location = $request->location;
-        $day->order = $request->order;
         $day->initiation_id = $request->initiation_id;
         $day->save();
     }

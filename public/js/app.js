@@ -2797,7 +2797,9 @@ $('.table').DataTable({
   'info': false
 });
 flatpickr('#date', {
-  dateFormat: "d F",
+  dateFormat: "Y-m-d",
+  altInput: true,
+  altFormat: "d F Y",
   weekNumbers: true,
   locale: Swedish
 });
