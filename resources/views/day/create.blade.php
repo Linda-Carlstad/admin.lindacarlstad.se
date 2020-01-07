@@ -2,8 +2,9 @@
 @section('content')
 
     <div class="text-center">
-        <h2>Lägg till nollning</h2>
-        <br>
+        <h2>Lägg till nollningsdag</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
+        <hr>
     </div>
     <form action="{{ '/day' }}" method="post">
         @csrf
@@ -18,7 +19,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="initiation_id">Nollning *</label>
+            <label for="initiation_id">Nollningsår *</label>
             <select class="form-control{{ $errors->has('initiation_id') ? ' is-invalid' : '' }}" id="initiation_id" name="initiation_id" required>
                 <option disabled selected>Välj ett nollningsår</option>
                 @foreach( $initiations as $initiation )
@@ -33,7 +34,7 @@
         </div>
         <div class="form-group row">
             <label for="date" class="">Datum *</label>
-            <input id="date" type="text" placeholder="Välj ett datum" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ old('date' ) }}">
+            <input id="date" type="text" placeholder="Välj ett datum" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ old('date' ) }}" required>
 
             @if ($errors->has('date'))
                 <span class="invalid-feedback" role="alert">

@@ -2,13 +2,14 @@
 @section('content')
 
     <div class="text-center">
-        <h2>Lägg till nollning</h2>
-        <br>
+        <h2>Lägg till nollningsår</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
+        <hr>
     </div>
     <form action="{{ '/initiation' }}" method="post">
         @csrf
         <div class="form-group row">
-            <label for="year">År</label>
+            <label for="year">År *</label>
             <input id="year" type="text" placeholder="Välj datum" class="form-control{{ $errors->has('year') ? ' is-invalid' : '' }}" name="year" value="{{ old( 'year' ) }}" required autofocus>
 
             @if ($errors->has('year'))

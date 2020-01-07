@@ -3,13 +3,14 @@
 
     <div class="text-center">
         <h2>Lägg till ny sång</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
         <hr>
     </div>
 
     <form action="{{ '/song' }}" method="post">
         @csrf
         <div class="form-group row">
-            <label for="title">Namn</label>
+            <label for="title">Namn *</label>
             <input id="title" type="text" placeholder="Namn" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old( 'title' ) }}" required autofocus>
 
             @if ($errors->has('title'))
@@ -19,7 +20,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="text">Text</label>
+            <label for="text">Text *</label>
             <textarea name="text" id="text" rows="8" class="form-control {{ $errors->has('text') ? ' is-invalid' : '' }}" required>{{ old( 'text' ) }}</textarea>
 
             @if ($errors->has('text'))
@@ -29,7 +30,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="melody">Melodi</label>
+            <label for="melody">Melodi *</label>
             <input id="melody" type="text" placeholder="Melodi" class="form-control {{ $errors->has('melody') ? ' is-invalid' : '' }}" name="melody" value="{{ old( 'melody' ) }}" required>
 
             @if ($errors->has('melody'))

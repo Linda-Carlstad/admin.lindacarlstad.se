@@ -3,6 +3,7 @@
 
     <div class="text-center">
         <h2>{{ $association->title }}</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
         <hr>
     </div>
 
@@ -10,7 +11,7 @@
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
-            <label for="name">Namn</label>
+            <label for="name">Namn *</label>
             <input id="name" type="text" placeholder="Namn" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $association->name }}" required>
 
             @if ($errors->has('name'))

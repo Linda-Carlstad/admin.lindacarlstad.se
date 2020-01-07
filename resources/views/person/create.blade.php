@@ -3,12 +3,13 @@
 
     <div class="text-center">
         <h2>Lägg till nyckelperson</h2>
-        <br>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
+        <hr>
     </div>
     <form action="{{ '/person' }}" method="post">
         @csrf
         <div class="form-group row">
-            <label for="name" class="">Namn</label>
+            <label for="name" class="">Namn *</label>
             <input id="name" type="text" placeholder="Namn" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name' ) }}" required autofocus>
 
             @if ($errors->has('name'))
@@ -18,8 +19,8 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="rank" class="">Rank</label>
-            <select class="form-control" id="rank" name="rank" required>
+            <label for="rank" class="">Rank *</label>
+            <select class="form-control{{ $errors->has('rank') ? ' is-invalid' : '' }}" id="rank" name="rank" required>
                 <option value="General">General</option>
                 <option value="Kapten">Kapten</option>
                 <option value="Vice kapten">Vice kapten</option>
@@ -29,6 +30,20 @@
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('rank' ) }}</strong>
             </span>
+            @endif
+        </div>
+        <div class="form-group row">
+            <label for="initiation_id">Nollningsår *</label>
+            <select class="form-control{{ $errors->has('initiation_id') ? ' is-invalid' : '' }}" id="initiation_id" name="initiation_id" required>
+                <option disabled selected>Välj ett nollningsår</option>
+                @foreach( $initiations as $initiation )
+                    <option value="{{ $initiation->id  }}">{{ $initiation->year }}</option>
+                @endforeach
+            </select>
+            @if ($errors->has('initiation_id'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('initiation_id' ) }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group row">
@@ -49,20 +64,6 @@
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('phone' ) }}</strong>
             </span>
-            @endif
-        </div>
-        <div class="form-group row">
-            <label for="initiation_id">Nollning</label>
-            <select class="form-control" id="initiation_id" name="initiation_id" required>
-                <option disabled selected>Välj ett nollningsår</option>
-                @foreach( $initiations as $initiation )
-                    <option value="{{ $initiation->id  }}">{{ $initiation->year }}</option>
-                @endforeach
-            </select>
-            @if ($errors->has('initiation_id'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('initiation_id' ) }}</strong>
-                </span>
             @endif
         </div>
         <div class="form-group row">

@@ -3,12 +3,13 @@
 
     <div class="text-center">
         <h2>Lägg till partner</h2>
-        <br>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
+        <hr>
     </div>
     <form action="{{ '/partner' }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
-            <label for="name" class="">Namn</label>
+            <label for="name" class="">Namn *</label>
             <input id="name" type="text" placeholder="Namn" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name' ) }}" required autofocus>
 
             @if ($errors->has('name'))
@@ -35,7 +36,7 @@
 
         </div>
         <div class="form-group row">
-            <label for="type" class="">Typ</label>
+            <label for="type" class="">Typ *</label>
             <select class="form-control" id="type" name="type" required>
                 <option value="" selected disabled hidden>-- Välj --</option>
                 <option value="Sponsor">Sponsor</option>
@@ -48,7 +49,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="started" class="">Startår</label>
+            <label for="started" class="">Startår *</label>
             <input id="started" type="number" placeholder="Startår" class="form-control{{ $errors->has('started') ? ' is-invalid' : '' }}" name="started" value="{{ old( 'started' ) }}">
 
             @if ($errors->has('started'))
@@ -58,7 +59,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="frontPage" class="">Framsidan</label>
+            <label for="frontPage" class="">Framsidan *</label>
             <select class="form-control" id="frontPage" name="frontPage" required>
                 <option value="1">Ja</option>
                 <option value="0" selected>Nej</option>

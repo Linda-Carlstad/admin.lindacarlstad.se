@@ -2,14 +2,15 @@
 @section('content')
 
     <div class="text-center">
-        <h2>Lägg till ny styrelsetitle</h2>
+        <h2>Lägg till ny styrelseposition</h2>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
         <hr>
     </div>
 
     <form action="{{ '/board' }}" method="post"  enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
-            <label for="title">Position</label>
+            <label for="title">Position *</label>
             <input id="title" type="text" placeholder="Position" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old( 'title' ) }}" required autofocus>
 
             @if ($errors->has('title'))
@@ -19,7 +20,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="name">Namn</label>
+            <label for="name">Namn *</label>
             <input id="name" type="text" placeholder="Namn" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old( 'name' ) }}" required>
 
             @if ($errors->has('name'))
@@ -39,7 +40,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="email">Email</label>
+            <label for="email">Email *</label>
             <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old( 'email' ) }}" required>
 
             @if ($errors->has('email'))
@@ -49,7 +50,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="description">Beskrivning</label>
+            <label for="description">Beskrivning *</label>
             <textarea rows="3" type="text" placeholder="Beskrivning" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="{{ old( 'description' ) }}" ></textarea>
 
             @if ($errors->has('description'))
@@ -59,7 +60,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="order">Order</label>
+            <label for="order">Order *</label>
             <input id="order" type="number" placeholder="Order" class="form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ old( 'order' ) }}" >
 
             @if ($errors->has('order'))

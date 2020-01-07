@@ -3,13 +3,14 @@
 
     <div class="text-center">
         <h2>{{ $partner->name }}</h2>
-        <br>
+        <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
+        <hr>
     </div>
     <form action="{{ '/partner/' . $partner->id }}" method="post" enctype="multipart/form-data">
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
-            <label for="name" class="">Namn</label>
+            <label for="name" class="">Namn *</label>
             <input id="name" type="text" placeholder="Namn" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $partner->name }}" required autofocus>
 
             @if ($errors->has('name'))
@@ -39,8 +40,8 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="type" class="">Typ</label>
-            <select class="form-control" id="type" name="type" required>
+            <label for="type" class="">Typ *</label>
+            <select class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" id="type" name="type" required>
                 <option value="Sponsor" {{ old( 'type', $partner->type ) == 'Sponsor' ? 'selected' : '' }}>Sponsor</option>
                 <option value="Samarbetspartner" {{ old( 'type', $partner->type ) == 'Samarbetspartner' ? 'selected' : '' }}>Samarbetspartner</option>
             </select>
@@ -51,7 +52,7 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="started" class="">Startår</label>
+            <label for="started" class="">Startår *</label>
             <input id="started" type="number" placeholder="Startår" class="form-control{{ $errors->has('started') ? ' is-invalid' : '' }}" name="started" value="{{ $partner->started }}">
 
             @if ($errors->has('started'))
@@ -61,8 +62,8 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="frontPage" class="">Framsidan</label>
-            <select class="form-control" id="frontPage" name="frontPage" required>
+            <label for="frontPage" class="">Framsidan *</label>
+            <select class="form-control{{ $errors->has('frontPage') ? ' is-invalid' : '' }}" id="frontPage" name="frontPage" required>
                 <option value="1" {{ old( 'type', $partner->frontPage ) == '1' ? 'selected' : '' }}>Ja</option>
                 <option value="0" {{ old( 'type', $partner->frontPage ) == '0' ? 'selected' : '' }}>Nej</option>
             </select>
