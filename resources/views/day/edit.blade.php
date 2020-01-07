@@ -10,12 +10,45 @@
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="form-group row">
-            <label for="title">Title</label>
+            <label for="title">Title *</label>
             <input id="title" type="text" placeholder="Position" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $initiationDay->title }}" required autofocus>
+            @if ($errors->has('title'))
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('title' ) }}</strong>
+            </span>
+            @endif
+        </div>
+        <div class="form-group row">
+            <label for="initiation_id">Nollning *</label>
+            <select class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" id="initiation_id" name="initiation_id" required>
+                @foreach( $initiations as $initiation )
+                    <option value="{{ $initiation->id  }}" {{ $initiation->id == $initiationDay->initiation_id ? 'selected' : '' }}>{{ $initiation->year }}</option>
+                @endforeach
+            </select>
+            @if ($errors->has('initiation_id'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('initiation_id' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group row">
+            <label for="date">Datum *</label>
+            <input id="date" type="text" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ $initiationDay->date }}">
+
+            @if ($errors->has('date'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('date' ) }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group row">
             <label for="description">Beskrivning</label>
             <textarea rows="4" id="description" type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ $initiationDay->description }}</textarea>
+            @if ($errors->has('description'))
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('description' ) }}</strong>
+            </span>
+            @endif
         </div>
         <div class="form-group row">
             <label for="extra" class="">Extra information</label>
@@ -25,16 +58,6 @@
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('extra' ) }}</strong>
             </span>
-            @endif
-        </div>
-        <div class="form-group row">
-            <label for="date">Datum</label>
-            <input id="date" type="text" class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" value="{{ $initiationDay->date }}">
-
-            @if ($errors->has('date'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('date' ) }}</strong>
-                </span>
             @endif
         </div>
         <div class="form-group row">
@@ -54,29 +77,6 @@
             @if ($errors->has('location'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('location' ) }}</strong>
-                </span>
-            @endif
-        </div>
-        <div class="form-group row">
-            <label for="order">Order</label>
-            <input id="order" type="number" placeholder="Order" class="form-control{{ $errors->has('order') ? ' is-invalid' : '' }}" name="order" value="{{ $initiationDay->order }}">
-
-            @if ($errors->has('order'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('order' ) }}</strong>
-                </span>
-            @endif
-        </div>
-        <div class="form-group row">
-            <label for="initiation_id">Nollning</label>
-            <select class="form-control" id="initiation_id" name="initiation_id" required>
-                @foreach( $initiations as $initiation )
-                    <option value="{{ $initiation->id  }}" {{ $initiation->id == $initiationDay->initiation_id ? 'selected' : '' }}>{{ $initiation->year }}</option>
-                @endforeach
-            </select>
-            @if ($errors->has('initiation_id'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('initiation_id' ) }}</strong>
                 </span>
             @endif
         </div>
