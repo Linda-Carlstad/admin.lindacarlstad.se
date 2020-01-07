@@ -9,13 +9,13 @@
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="d-block row d-md-flex justify-content-center">
-            @foreach( $shirts as $shirt )
+            @foreach( $overalls as$overall )
                 <div class="col-12 col-md-4 text-center">
                     <div class="input-group mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="{{ $shirt->size }}">{{ $shirt->size }}</span>
+                            <span class="input-group-text" id="{{$overall->size }}">{{$overall->size }}</span>
                         </div>
-                        <input type="text" name="{{ $shirt->size }}" value="{{ $shirt->quantity }}" class="shirt-input form-control">
+                        <input type="text" name="{{$overall->size }}" value="{{$overall->quantity }}" class="shirt-input form-control">
                     </div>
                 </div>
             @endforeach
