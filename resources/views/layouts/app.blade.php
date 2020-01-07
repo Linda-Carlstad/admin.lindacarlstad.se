@@ -83,7 +83,7 @@
         </div>
     @endauth
 
-    <main class="container py-4">
+    <main class="container py-2">
         <div class="content d-flex align-items-center justify-content-center">
             <div class="col-md-10 col-lg-8">
                 @if( session()->has( 'success' ) )
