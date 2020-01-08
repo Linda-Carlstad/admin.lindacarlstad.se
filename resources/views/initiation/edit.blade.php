@@ -42,6 +42,9 @@
                     </div>
                 </div>
                 <input id="price" type="number" placeholder="Pris" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" value="{{ $initiation->price }}">
+                <div class="input-group-append">
+                    <span class="input-group-text">kr</span>
+                </div>
             </div>
             @if ($errors->has('price'))
                 <span class="invalid-feedback" role="alert">
