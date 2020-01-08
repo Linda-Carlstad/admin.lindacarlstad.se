@@ -35,16 +35,19 @@ class Initiation extends Model
     {
         if( $request->playlist )
         {
-            if( substr( $request->playlist, 0, 8 ) === 'spotify:' )
+            if( !strpos( $request->playlist, '/embed/' ) )
             {
-                $link = explode(":", $request->playlist);
-                $request->playlist = 'https://open.spotify.com/embed/playlist/' . $link[2];
-            }
-            else
-            {
-                $link = explode("?", $request->playlist);
-                $request->playlist = $link[0];
-                $request->playlist = substr_replace($request->playlist, '/embed', 24, 0);
+                if( substr( $request->playlist, 0, 8 ) === 'spotify:' )
+                {
+                    $link = explode(":", $request->playlist);
+                    $request->playlist = 'https://open.spotify.com/embed/playlist/' . $link[2];
+                }
+                else
+                {
+                    $link = explode("?", $request->playlist);
+                    $request->playlist = $link[0];
+                    $request->playlist = substr_replace($request->playlist, '/embed', 24, 0);
+                }
             }
         }
 
