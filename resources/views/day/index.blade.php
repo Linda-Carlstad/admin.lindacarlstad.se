@@ -18,7 +18,7 @@
                 <tr>
                     <th>Titel</th>
                     <th>Datum</th>
-                    <th>Order</th>
+                    <th>Nollningsår</th>
                     <th>#</th>
                 </tr>
             </thead>
@@ -27,18 +27,13 @@
                     <tr>
                         <td>{{ $day->title }}</td>
                         <td>
-                            @if( $day->date )
-                                {{ date_format( date_create( $day->date ), 'd M' ) }}
-                            @else
-                                Inget datum valt
+                            {{ date_format( date_create( $day->date ), 'd/m/y' ) }}
+                            @if( $day->time )
+                                {{ $day->time }}
                             @endif
                         </td>
                         <td>
-                            @if( $day->order )
-                                {{ $day->order }}
-                            @else
-                                Inget ordning vald
-                            @endif
+                            {{ $day->initiation->year }}
                         </td>
                         <td>
                             <a href="{{ url( 'day/' . $day->id . '/edit') }}" class="btn btn-link">
