@@ -2810,6 +2810,12 @@ flatpickr('#year', {
   allowInput: true,
   locale: Swedish
 });
+flatpickr('#time', {
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i",
+  time_24hr: true
+});
 $(function () {
   $('[ data-toggle="tooltip" ]').tooltip();
 });

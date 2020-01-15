@@ -18,14 +18,20 @@ flatpickr( '#date',
 } );
 
 flatpickr( '#year',
-    {
-        dateFormat: "Y",
-        minDate: Date.now(),
-        weekNumbers: true,
-        allowInput: true,
-        locale: Swedish,
-    } );
+{
+    dateFormat: "Y",
+    minDate: Date.now(),
+    weekNumbers: true,
+    allowInput: true,
+    locale: Swedish,
+} );
 
+flatpickr( '#time', {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true
+} );
 
 $( function ()
 {
