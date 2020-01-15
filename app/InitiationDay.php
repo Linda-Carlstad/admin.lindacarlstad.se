@@ -16,7 +16,7 @@ class InitiationDay extends Model
     //
 
     public function initiation() {
-        return $this->hasOne('App\Initiation');
+        return $this->belongsTo('App\Initiation');
     }
 
     public static function create( Request $request )
