@@ -17,7 +17,8 @@ class FetchClothes extends Controller
     public function __invoke(Request $request)
     {
         $overalls = Overall::all();
-        $shirts = InitiationShirts::all();
+        $shirts[ 'fadder' ] = InitiationShirts::where( 'type', 'fadder' )->get();
+        $shirts[ 'nolla' ] = InitiationShirts::where( 'type', 'nolla' )->get();
 
         return view( 'clothes.index' )->with( 'overalls', $overalls )->with( 'shirts', $shirts );
     }
