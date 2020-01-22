@@ -32,6 +32,7 @@
     <form class="" action="{{ 'updateShirts' }}" method="post">
         @csrf
         {{ method_field( 'patch' ) }}
+        <input type="hidden" name="type" value="fadder">
         <div class="d-block row d-md-flex justify-content-center">
             @foreach( $shirts[ 'fadder' ] as $shirt )
                 <div class="col-12 col-md-4 text-center">
@@ -56,6 +57,7 @@
     <form class="" action="{{ 'updateShirts' }}" method="post">
         @csrf
         {{ method_field( 'patch' ) }}
+        <input type="hidden" name="type" value="nolla">
         <div class="d-block row d-md-flex justify-content-center">
             @foreach( $shirts[ 'nolla' ] as $shirt )
                 <div class="col-12 col-md-4 text-center">
