@@ -9,5 +9,6 @@ $factory->define(App\InitiationShirts::class, function (Faker $faker) {
     return [
         'size' => 'X',
         'quantity' => 5,
+        'type' => 'fadder'
     ];
 });

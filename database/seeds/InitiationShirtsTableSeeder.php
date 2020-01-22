@@ -14,22 +14,53 @@ class InitiationShirtsTableSeeder extends Seeder
         DB::table('initiation_shirts')->insert([
             'size' => 'S',
             'quantity' => 10,
+            'type' => 'fadder'
         ]);
         DB::table('initiation_shirts')->insert([
             'size' => 'M',
             'quantity' => 10,
+            'type' => 'fadder'
         ]);
         DB::table('initiation_shirts')->insert([
             'size' => 'L',
             'quantity' => 10,
+            'type' => 'fadder'
         ]);
         DB::table('initiation_shirts')->insert([
             'size' => 'XL',
             'quantity' => 10,
+            'type' => 'fadder'
         ]);
         DB::table('initiation_shirts')->insert([
             'size' => 'XXL',
             'quantity' => 10,
+            'type' => 'fadder'
+        ]);
+
+        DB::table('initiation_shirts')->insert([
+            'size' => 'S',
+            'quantity' => 10,
+            'type' => 'nolla'
+        ]);
+        DB::table('initiation_shirts')->insert([
+            'size' => 'M',
+            'quantity' => 10,
+            'type' => 'nolla'
+        ]);
+        DB::table('initiation_shirts')->insert([
+            'size' => 'L',
+            'quantity' => 10,
+            'type' => 'nolla'
+        ]);
+        DB::table('initiation_shirts')->insert([
+            'size' => 'XL',
+            'quantity' => 10,
+            'type' => 'nolla'
+        ]);
+        DB::table('initiation_shirts')->insert([
+            'size' => 'XXL',
+            'quantity' => 10,
+            'type' => 'nolla'
         ]);
     }
 }
