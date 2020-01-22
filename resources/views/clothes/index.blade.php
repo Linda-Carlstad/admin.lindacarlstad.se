@@ -2,6 +2,16 @@
 @section('content')
 
     <div class="text-center">
+        <h1>Kläder</h1>
+        <p>
+            Här kan du uppdatera inventariet av kläder.
+            <br>
+            <u class="text-danger">
+                Alla formulär uppdateras var för sig. Fyll endast i ett formulär i taget för att inte förlora dina ändringar.
+            </u>
+        </p>
+    </div>
+    <div class="text-center">
         <h2>Overaller</h2>
     </div>
     <br>
