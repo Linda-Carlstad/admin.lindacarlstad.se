@@ -3,7 +3,7 @@
 # Linda Carlstad
 
 ## Description
-This app is used to handle the content on [Linda Carsltad](https://lindacarlstad.se)([Github](https://github.com/Linda-Carlstad/lindacarlstad.se)). It is a fully custom CMS system using techniques like CRUD and MVC to handle objects and events.
+This app is used to handle the content on [Linda Carsltad](https://lindacarlstad.se) ([Github](https://github.com/Linda-Carlstad/lindacarlstad.se)). It is a fully custom CMS system using techniques like CRUD and MVC to handle objects and events. The main use of the web appcliation is to handle the yearly initatiation, by creating and handling the information published to [Linda Carsltad](https://lindacarlstad.se).
 
 ## Installation
 

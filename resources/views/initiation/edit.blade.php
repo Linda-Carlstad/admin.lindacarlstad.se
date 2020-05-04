@@ -84,7 +84,7 @@
         @csrf
         {{ method_field( 'delete' ) }}
             <div class="text-center">
-                <h4>Ta bort nollningem</h4>
+                <h4>Ta bort nollningen</h4>
                 <p>Denna åtgärd är permanent.</p>
                 <button type="submit" class="btn btn-danger">
                     Ta bort
