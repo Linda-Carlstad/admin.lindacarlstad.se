@@ -33,7 +33,7 @@ class InitiationController extends Controller
     public function store( Request $request )
     {
         Initiation::create( $request );
-        return redirect( 'initiation' )->with( 'success', 'Ny nollning skapad!' );
+        return redirect( 'initiation' )->with( 'success', 'Nytt nollningsår skapat!' );
     }
 
     /**
@@ -79,7 +79,7 @@ class InitiationController extends Controller
         $initiation = Initiation::findOrFail( $id );
         Initiation::updateInfo( $initiation, $request );
 
-        return redirect( 'initiation' )->with( 'success', 'Nollningsdag uppdaterad.' );
+        return redirect( 'initiation' )->with( 'success', 'Nollningsår uppdaterad.' );
     }
 
     /**
@@ -93,6 +93,6 @@ class InitiationController extends Controller
         $initiation = Initiation::findOrFail( $id );
         $initiation->delete();
 
-        return redirect( 'initiation' )->with( 'success', 'Dag borttagen.' );
+        return redirect( 'initiation' )->with( 'success', 'Nollningsår borttaget.' );
     }
 }
