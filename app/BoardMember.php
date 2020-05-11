@@ -2,11 +2,22 @@
 
 namespace App;
 
+use Alkhachatryan\LaravelLoggable\Loggable;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
 class BoardMember extends Model
 {
+    protected $table = 'board_members';
+
+    use Loggable;
+
+    /** Specified actions for this model */
+    public $loggable_actions = [ 'edit', 'create', 'delete' ];
+
+    /** Specified fields for this model */
+    public $loggable_fields  = [ 'title', 'name', 'image', 'email', 'description', 'order' ];
+
     public function create( Request $request )
     {
         BoardMember::validateRequest( $request );

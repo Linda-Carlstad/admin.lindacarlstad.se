@@ -2,12 +2,21 @@
 
 namespace App;
 
+use Alkhachatryan\LaravelLoggable\Loggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class Event extends Model
 {
     protected $table = 'events';
+
+    use Loggable;
+
+    /** Specified actions for this model */
+    public $loggable_actions = [ 'edit', 'create', 'delete' ];
+
+    /** Specified fields for this model */
+    public $loggable_fields  = [ 'title', 'text', 'link', 'link_title' ];
 
     public static function create( Request $request )
     {
@@ -38,7 +47,7 @@ class Event extends Model
         {
             $request->active = 0;
         }
-        
+
         $event->title = $request->title;
         $event->text = $request->text;
         $event->link = $request->link;

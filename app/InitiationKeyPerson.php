@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Alkhachatryan\LaravelLoggable\Loggable;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +13,14 @@ class InitiationKeyPerson extends Model
     public function initiation() {
         return $this->hasOne('App\Initiation');
     }
+
+    use Loggable;
+
+    /** Specified actions for this model */
+    public $loggable_actions = [ 'edit', 'create', 'delete' ];
+
+    /** Specified fields for this model */
+    public $loggable_fields  = [ 'name', 'rank', 'email', 'phone', 'initiation_id' ];
 
     public static function create( Request $request )
     {

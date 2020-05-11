@@ -2,13 +2,15 @@
 
 namespace App;
 
+use Alkhachatryan\LaravelLoggable\Loggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class Initiation extends Model
 {
+    use Loggable;
+
     protected $table = 'initiations';
-    //
 
     public function days(){
         return $this->hasMany('App\InitiationDay');
@@ -17,6 +19,12 @@ class Initiation extends Model
     public function persons(){
         return $this->hasMany('App\InitiationKeyPerson');
     }
+
+    /** Specified actions for this model */
+    public $loggable_actions = [ 'edit', 'create', 'delete' ];
+
+    /** Specified fields for this model */
+    public $loggable_fields  = [ 'year', 'description', 'price', 'show_price', 'facebook_group', 'playlist' ];
 
     public static function create( Request $request )
     {

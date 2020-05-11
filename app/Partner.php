@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Alkhachatryan\LaravelLoggable\Loggable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -13,6 +14,13 @@ class Partner extends Model
     protected $table = 'partners';
 
     use HasSlug;
+    use Loggable;
+
+    /** Specified actions for this model */
+    public $loggable_actions = [ 'edit', 'create', 'delete' ];
+
+    /** Specified fields for this model */
+    public $loggable_fields  = [ 'name', 'description', 'link', 'image', 'type', 'frontPage', 'phone', 'email', 'started' ];
 
     public static function create( Request $request )
     {

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Alkhachatryan\LaravelLoggable\Loggable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -10,9 +11,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    use HasSlug;
-
     protected $table = 'songs';
+
+    use HasSlug;
+    use Loggable;
+
+    /** Specified actions for this model */
+    public $loggable_actions = [ 'edit', 'create', 'delete' ];
+
+    /** Specified fields for this model */
+    public $loggable_fields  = [ 'title', 'text', 'melody', 'secret' ];
 
     public static function create( Request $request )
     {

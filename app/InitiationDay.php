@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Alkhachatryan\LaravelLoggable\Loggable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -13,7 +14,14 @@ class InitiationDay extends Model
     use HasSlug;
 
     protected $table = 'initiation_days';
-    //
+
+    use Loggable;
+
+    /** Specified actions for this model */
+    public $loggable_actions = [ 'edit', 'create', 'delete' ];
+
+    /** Specified fields for this model */
+    public $loggable_fields  = [ 'title', 'description', 'extra', 'date', 'time', 'location', 'initiation_id' ];
 
     public function initiation() {
         return $this->belongsTo('App\Initiation');

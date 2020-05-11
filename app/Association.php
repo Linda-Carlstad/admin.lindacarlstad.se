@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Alkhachatryan\LaravelLoggable\Loggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,14 @@ class Association extends Model
     use HasSlug;
 
     protected $table = 'associations';
+
+    use Loggable;
+
+    /** Specified actions for this model */
+    public $loggable_actions = [ 'edit', 'create', 'delete' ];
+
+    /** Specified fields for this model */
+    public $loggable_fields  = [ 'name', 'slogan', 'link', 'description', 'email', 'image' ];
 
     public static function create( Request $request )
     {
