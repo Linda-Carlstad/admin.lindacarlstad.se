@@ -20,7 +20,7 @@ class InitiationKeyPerson extends Model
     public $loggable_actions = [ 'edit', 'create', 'delete' ];
 
     /** Specified fields for this model */
-    public $loggable_fields  = [ 'name', 'rank', 'email', 'phone', 'initiation_id' ];
+    public $loggable_fields  = [ 'name', 'rank', 'email', 'phone' ];
 
     public static function create( Request $request )
     {

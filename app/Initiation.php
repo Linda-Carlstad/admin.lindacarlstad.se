@@ -24,7 +24,7 @@ class Initiation extends Model
     public $loggable_actions = [ 'edit', 'create', 'delete' ];
 
     /** Specified fields for this model */
-    public $loggable_fields  = [ 'year', 'description', 'price', 'show_price', 'facebook_group', 'playlist' ];
+    public $loggable_fields  = [ 'description', 'price', 'facebook_group', 'playlist' ];
 
     public static function create( Request $request )
     {

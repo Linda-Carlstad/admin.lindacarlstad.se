@@ -21,7 +21,7 @@ class InitiationDay extends Model
     public $loggable_actions = [ 'edit', 'create', 'delete' ];
 
     /** Specified fields for this model */
-    public $loggable_fields  = [ 'title', 'description', 'extra', 'date', 'time', 'location', 'initiation_id' ];
+    public $loggable_fields  = [ 'title', 'description', 'extra', 'date', 'time', 'location' ];
 
     public function initiation() {
         return $this->belongsTo('App\Initiation');
