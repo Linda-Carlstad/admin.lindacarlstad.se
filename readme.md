@@ -52,6 +52,9 @@ The website uses the information filled in using the custom-build CMS system, [A
 (add pictures of app)
 
 ## Contributing
+
+Can also be found here - [Contributing to Linda Carlstad](https://github.com/Linda-Carlstad/admin-lindacarlstad.se/blob/master/CONTRIBUTING.md)
+
 #### - Issues
 - Screenshot the problem
 - Open a new issue
