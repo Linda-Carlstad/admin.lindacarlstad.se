@@ -2,15 +2,15 @@
 @section('content')
 
     <div class="text-center mb-2">
-        <h2>Events</h2>
+        <h2>Notiser</h2>
         <hr>
         @if( $events->isEmpty() )
             <p>
-                Inga event skapade, skapa en nu!
+                Inga notiser skapade, skapa en nu!
             </p>
         @endif
 
-        <a class="btn btn-primary m-1" href="{{ route( 'event.create' ) }}">Lägg till event</a>
+        <a class="btn btn-primary m-1" href="{{ route( 'event.create' ) }}">Lägg till en notis</a>
     </div>
     @if( !$events->isEmpty() )
         <h4 class="text-center">Antal: {{ $events->count() }}</h4>

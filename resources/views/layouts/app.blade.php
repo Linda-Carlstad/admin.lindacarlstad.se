@@ -57,7 +57,7 @@
                             <a class="nav-link" href="{{ route( 'association.index' ) }}">Föreningar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'event.index' ) }}">Event</a>
+                            <a class="nav-link" href="{{ route( 'event.index' ) }}">Notis</a>
                         </li>
                         <!--<li class="nav-item">
                             <a class="nav-link" href="{{ route( 'documents' ) }}">Dokument</a>

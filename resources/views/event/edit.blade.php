@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="text-center mb-2">
-        <h2>Redigera event</h2>
+        <h2>Redigera notisen</h2>
         <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
     </div>
     <hr>
@@ -21,7 +21,7 @@
         </div>
         <div class="form-group row">
             <label for="text" class="">Text *</label>
-            <textarea rows="4" id="text" placeholder="Text till eventet" type="text" class="form-control{{ $errors->has('text') ? ' is-invalid' : '' }}" name="text">{{ $event->text }}</textarea>
+            <textarea rows="4" id="text" placeholder="Text till notisen" type="text" class="form-control{{ $errors->has('text') ? ' is-invalid' : '' }}" name="text">{{ $event->text }}</textarea>
 
             @if ($errors->has('text'))
                 <span class="invalid-feedback" role="alert">
@@ -68,11 +68,11 @@
     </form>
 
     <hr>
-    <form onSubmit="return confirm('Är su säker på att du vill ta bort det här eventet? Denna åtgärd är permanent.');" action="{{ '/event/' . $event->id }}" method="post">
+    <form onSubmit="return confirm('Är su säker på att du vill ta bort den här notisen? Denna åtgärd är permanent.');" action="{{ '/event/' . $event->id }}" method="post">
         @csrf
         {{ method_field( 'delete' ) }}
         <div class="text-center">
-            <h4>Ta bort event</h4>
+            <h4>Ta bort notis</h4>
             <p>Denna åtgärd är permanent.</p>
             <button type="submit" class="btn btn-danger">
                 Ta bort

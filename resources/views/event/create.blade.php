@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="text-center mb-2">
-        <h2>Lägg till ett event</h2>
+        <h2>Lägg till en notis</h2>
         <p>Alla fält markerade med <strong>*</strong> är obligatoriska.</p>
     </div>
     <hr>
@@ -20,7 +20,7 @@
         </div>
         <div class="form-group row">
             <label for="text" class="">Text *</label>
-            <textarea rows="4" id="text" placeholder="Text till eventet" type="text" class="form-control{{ $errors->has('text') ? ' is-invalid' : '' }}" name="text">{{ old('text' ) }}</textarea>
+            <textarea rows="4" id="text" placeholder="Text till notisen" type="text" class="form-control{{ $errors->has('text') ? ' is-invalid' : '' }}" name="text">{{ old('text' ) }}</textarea>
 
             @if ($errors->has('text'))
                 <span class="invalid-feedback" role="alert">
