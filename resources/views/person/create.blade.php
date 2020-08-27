@@ -47,8 +47,9 @@
             @endif
         </div>
         <div class="form-group row">
-            <label for="email" class="">Email</label>
+            <label for="email">Email</label>
             <input id="email" type="email" placeholder="Email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email' ) }}">
+            <small class="text-muted">Tänk på att dessa publiceras online, rekommenderas att endast anävnda adresser med "@lindacarlstad.se".</small>
 
             @if ($errors->has('email'))
             <span class="invalid-feedback" role="alert">
