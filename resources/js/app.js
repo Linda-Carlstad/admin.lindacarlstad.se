@@ -5,7 +5,15 @@ const Swedish = require( 'flatpickr/dist/l10n/sv.js' ).default.sv;
 $('.table').DataTable(
 {
     'lengthChange': false,
-    'info': false
+    'info': false,
+    'language': {
+        'search': 'Sök:',
+        'paginate': {
+            'previous': 'Bakåt',
+            'next': 'Nästa'
+        }
+    }
+
 } );
 
 flatpickr( '#date',
