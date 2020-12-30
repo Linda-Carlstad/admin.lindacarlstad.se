@@ -18,12 +18,12 @@
         "lodash": "^4.17.20",
         "popper.js": "^1.16.1",
         "resolve-url-loader": "^3.1.2",
-        "sass": "^1.29.0",
+        "sass": "^1.32.0",
         "sass-loader": "^7.1.0",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
         "@chenfengyuan/datepicker": "^1.0.10",
-        "flatpickr": "^4.6.6"
+        "flatpickr": "^4.6.9"
     }
 }
