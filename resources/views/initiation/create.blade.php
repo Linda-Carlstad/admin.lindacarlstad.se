@@ -71,6 +71,18 @@
             @endif
         </div>
         <div class="form-group row">
+            <label for="active" class="">Aktiv? *</label>
+            <select class="form-control" id="active" name="active" required>
+                <option value="1" selected>Ja</option>
+                <option value="0">Nej</option>
+            </select>
+            @if ($errors->has('hidden'))
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('hidden' ) }}</strong>
+            </span>
+            @endif
+        </div>
+        <div class="form-group row">
             <a class="btn btn-secondary mr-1" href="{{ route( 'initiation.index' ) }}">Avbryt</a>
             <button type="submit" class="btn btn-primary ml-0">
                 Spara

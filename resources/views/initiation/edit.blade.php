@@ -73,6 +73,18 @@
             @endif
         </div>
         <div class="form-group row">
+            <label for="active" class="">Aktiv? *</label>
+            <select class="form-control{{ $errors->has('active') ? ' is-invalid' : '' }}" id="active" name="active" required>
+                <option value="1" {{ old( 'active', $initiation->active ) == '1' ? 'selected' : '' }}>Ja</option>
+                <option value="0" {{ old( 'active', $initiation->active ) == '0' ? 'selected' : '' }}>Nej</option>
+            </select>
+            @if ($errors->has('active'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('active' ) }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group row">
             <a class="btn btn-secondary mr-1" href="{{ route( 'initiation.index' ) }}">Avbryt</a>
             <button type="submit" class="btn btn-primary ml-0">
                 Spara
