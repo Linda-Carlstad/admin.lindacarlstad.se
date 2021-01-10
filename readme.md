@@ -36,6 +36,8 @@ Install all NPM dependencies:
 npm install
 ```
 
+Now it is time create the database. Firstly you need to have MySQL database. The name of the database is dependent of what you have named the datbase in the `.env` file. Default name is `homestead`. Username and password should be changed to what you use on your local web servers database manager. 
+
 Create and seed database:
 ```
 php artisan migrate:refresh --seed
