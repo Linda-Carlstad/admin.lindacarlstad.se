@@ -46,7 +46,7 @@ Edit the `.env` file with your database credidentials.
 Here is an example:
 ```
 DB_PORT=3306
-DB_DATABASE=tentahub
+DB_DATABASE=adminpanel
 DB_USERNAME=root
 DB_PASSWORD=root
 ```
