@@ -18,9 +18,13 @@ Follow this excellent guide to run a Laravel project on your Windows based compu
 [Codementor guide](https://www.codementor.io/magarrent/how-to-install-laravel-5-xampp-windows-du107u9ji)
 
 
+Fetch the project to your machine, either using the GUI or the command below.  
 
+```
+git clone https://github.com/Linda-Carlstad/admin.lindacarlstad.se.git
+```
 
-When steps above are done, do these steps to get going.
+Locate the project on your machine via the terminal and follow the steps below. 
 
 Install all composer dependencies: 
 ```
