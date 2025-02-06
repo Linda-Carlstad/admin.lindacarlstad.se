@@ -7,6 +7,12 @@ This app is used to handle the content on [Linda Carsltad](https://lindacarlstad
 
 ## Installation
 
+#### - Docker
+
+```sh
+docker-compose build
+```
+
 #### - Unix
 Follow the official Laravel documentation for a detailed walkthrough using any Unix system, like macOS or any distribution on Linux.
 
@@ -31,6 +37,37 @@ git clone https://github.com/Linda-Carlstad/admin.lindacarlstad.se.git
 
 Locate the project on your machine via the terminal and follow the steps below. 
 
+Initialize the projects environment file
+```sh
+cp .env.example .env
+```
+
+Create a database in MySQL on your computer. (Only `.env` part needed when using docker)
+
+> The name of the database is dependent of what you have named the datbase in the `.env` file. Default name is `homestead`. Username and password should be changed to what you use on your local web servers database manager. See example below. 
+
+Edit the `.env` file with your database credidentials. 
+Here is an example:
+```
+DB_PORT=3306
+DB_DATABASE=adminpanel
+DB_USERNAME=user
+DB_PASSWORD=my_secure_password
+```
+
+#### - Optional docker setup
+*Start the docker instances*
+```sh
+docker-compose up -d
+```
+*Enter a bash shell within the php docker image (`exit` to end the session)*
+```sh
+docker exec -it linda_admin_frontend /bin/bash
+```
+
+## Installation part 2
+You can either follow the remaining instructions through our docker compose setup, or directly on your system.
+
 Install all composer dependencies: 
 ```
 composer install
@@ -41,26 +78,12 @@ Install all NPM dependencies:
 npm install
 ```
 
-Copy and generate application key: 
+Generate application key: 
 ```
-cp .env.example .env
 php artisan key:generate
 ```
 
-Create a database in MySQL on your computer. 
-
-> The name of the database is dependent of what you have named the datbase in the `.env` file. Default name is `homestead`. Username and password should be changed to what you use on your local web servers database manager. See example below. 
-
-Edit the `.env` file with your database credidentials. 
-Here is an example:
-```
-DB_PORT=3306
-DB_DATABASE=adminpanel
-DB_USERNAME=root
-DB_PASSWORD=root
-```
-
-Create and seed database:
+Seed the database:
 ```
 php artisan migrate:refresh --seed
 ```
