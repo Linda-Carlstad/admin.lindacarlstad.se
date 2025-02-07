@@ -27,7 +27,7 @@
                     required>
 
                 <div class="input-group-append">
-                    <button type="button" id="togglePassword" class="btn btn-outline-secondary">👁️</button>
+                    <button type="button" id="togglePassword" class="btn btn-outline-secondary far fa-eye"></button>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     required>
 
                 <div class="input-group-append">
-                    <button type="button" id="toggleNewPassword" class="btn btn-outline-secondary">👁️</button>
+                    <button type="button" id="toggleNewPassword" class="btn btn-outline-secondary far fa-eye"></button>
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
                     required>
 
                 <div class="input-group-append">
-                    <button type="button" id="toggleConfirmPassword" class="btn btn-outline-secondary">👁️</button>
+                    <button type="button" id="toggleConfirmPassword" class="btn btn-outline-secondary far fa-eye"></button>
                 </div>
             </div>
 
@@ -100,8 +100,10 @@
                 const input = document.getElementById(inputId);
                 const toggle = document.getElementById(toggleId);
                 toggle.addEventListener("click", () => {
-                    input.type = input.type === "password" ? "text" : "password";
-                    toggle.textContent = input.type === "password" ? "👁️" : "🙈";
+                    const is_password = input.type === "password";
+                    input.type = is_password ? "text" : "password";
+                    toggle.classList.toggle("fa-eye", !is_password);
+                    toggle.classList.toggle("fa-eye-slash", is_password);
                 });
             };
 
