@@ -1,0 +1,49 @@
+services:
+  mariadb:
+    image: mariadb:10-ubi
+    container_name: linda_admin_mariaDB
+    ports:
+      - $DB_PORT:$DB_PORT
+    env_file: ".env"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: linda_admin_phpmyadmin
+    env_file:
+      - path: ".env"
+        required: true
+    ports:
+      - "8090:80"
+    environment:
+      PMA_HOST: mariadb
+      PMA_CONTROLPORT: $DB_PORT
+    depends_on:
+      - mariadb
+
+  frontend:
+    build: ./
+    network_mode: host
+    command: /bin/bash
+    container_name: linda_admin_frontend
+    env_file: ".env"
+    volumes:
+      - website_volume:/website
+    working_dir: /website
+    stdin_open: true
+    tty: true
+    depends_on:
+      - mariadb
+      - phpmyadmin
+
+volumes:
+  website_volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}
+      o: bind
