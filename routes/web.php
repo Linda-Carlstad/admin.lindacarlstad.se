@@ -11,23 +11,23 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
 Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
 Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
-Route::group( [ 'middleware' => 'auth' ], function ()
-{
-    Route::get( '/', function () {
-        return view( 'index' );
-    });
+// Redirect root path
+Route::get('/', function () {
+    return auth()->check() ? view('index') : redirect('/login');
+});
 
+// Protect routes with authentication middleware
+Route::middleware(['auth'])->group(function () {
     Route::get( '/initiation-handler', function() {
         return view( 'initiationHandle' );
     } )->name( 'initiationHandle' );
-
-    Route::get( '/document', function () {
-        return view( 'documents' );
-    })->name( 'documents' );
 
     Route::get( '/clothes', 'FetchClothes' )->name( 'clothes' );
     Route::patch( 'updateOveralls', 'UpdateOverallCount' );
@@ -46,3 +46,9 @@ Route::group( [ 'middleware' => 'auth' ], function ()
         'admins' => 'AdminsController',
     ]);
 });
+
+// Logout route (POST request required)
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
