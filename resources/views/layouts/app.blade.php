@@ -69,12 +69,9 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'logout' ) }}" onclick="event.preventDefault();
-                                               document.getElementById( 'logout-form' ).submit();">
-                                Logga ut
-                            </a>
-                            <form id="logout-form" action="{{ route( 'logout' ) }}" method="POST" style="display: none;">
+                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                 @csrf
+                                <button type="submit" class="nav-link btn btn-link">Logga ut</button>
                             </form>
                         </li>
                     </ul>
