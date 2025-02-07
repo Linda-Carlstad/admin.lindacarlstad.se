@@ -43,5 +43,6 @@ Route::group( [ 'middleware' => 'auth' ], function ()
         'day' => 'InitiationDaysController',
         'initiation' => 'InitiationController',
         'person' => 'InitiationKeyPeopleController',
+        'admins' => 'AdminsController',
     ]);
 });
