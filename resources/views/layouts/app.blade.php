@@ -35,37 +35,34 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url( '/' ) }}">Start</a>
+                        <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/') }}">Start</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'member.index' ) }}">Medlemmar</a>
+                        <li class="nav-item {{ request()->routeIs('member.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('member.index') }}">Medlemmar</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'clothes' ) }}">Kläder</a>
+                        <li class="nav-item {{ request()->routeIs('clothes') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('clothes') }}">Kläder</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'initiationHandle' ) }}">Nollning</a>
+                        <li class="nav-item {{ request()->routeIs('initiationHandle') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('initiationHandle') }}">Nollning</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'board.index' ) }}">Styrelsen</a>
+                        <li class="nav-item {{ request()->routeIs('board.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('board.index') }}">Styrelsen</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'partner.index' ) }}">Partners</a>
+                        <li class="nav-item {{ request()->routeIs('partner.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('partner.index') }}">Partners</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'association.index' ) }}">Föreningar</a>
+                        <li class="nav-item {{ request()->routeIs('association.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('association.index') }}">Föreningar</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'event.index' ) }}">Notis</a>
+                        <li class="nav-item {{ request()->routeIs('event.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('event.index') }}">Notis</a>
                         </li>
-                        <!--<li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'documents' ) }}">Dokument</a>
-                        </li>-->
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->routeIs('song.index') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('song.index') }}">Sånger</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->routeIs('admins.index') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('admins.index') }}">Admins</a>
                         </li>
                     </ul>
