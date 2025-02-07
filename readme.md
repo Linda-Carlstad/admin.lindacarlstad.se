@@ -64,6 +64,10 @@ docker compose up -d
 ```sh
 docker exec -it linda_admin_frontend /bin/bash
 ```
+*To stop the docker instances, run the command below in a new terminal session:*
+```sh
+docker compose stop
+```
 
 ## Installation part 2
 You can either follow the remaining instructions through our docker compose setup, or directly on your system.
