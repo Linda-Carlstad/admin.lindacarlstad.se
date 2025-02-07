@@ -63,10 +63,10 @@
                             <a class="nav-link" href="{{ route( 'documents' ) }}">Dokument</a>
                         </li>-->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'song.index' ) }}">Sånger</a>
+                            <a class="nav-link" href="{{ route('song.index') }}">Sånger</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route( 'admins.index' ) }}">Admins</a>
+                            <a class="nav-link" href="{{ route('admins.index') }}">Admins</a>
                         </li>
                     </ul>
 

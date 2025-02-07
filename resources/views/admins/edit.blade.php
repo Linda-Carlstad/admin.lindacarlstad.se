@@ -19,12 +19,15 @@
             <label for="password">Nuvarande lösenord</label>
             <input
                 id="password"
-                type="text"
+                type="password"
                 placeholder="Lösenord"
                 class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                 name="password"
-                value=""
-                required autofocus>
+                required>
+
+            <div class="input-group-append">
+                <button type="button" id="togglePassword" class="btn btn-outline-secondary">👁️</button>
+            </div>
 
             @if ($errors->has('password'))
                 <span class="invalid-feedback" role="alert">
@@ -38,12 +41,15 @@
             <label for="new_password">Nya lösenordet</label>
             <input
                 id="new_password"
-                type="text"
+                type="password"
                 placeholder="Lösenord"
                 class="form-control{{ $errors->has('new_password') ? ' is-invalid' : '' }}"
                 name="new_password"
-                value=""
-                required autofocus>
+                required>
+
+            <div class="input-group-append">
+                <button type="button" id="toggleNewPassword" class="btn btn-outline-secondary">👁️</button>
+            </div>
 
             @if ($errors->has('new_password'))
                 <span class="invalid-feedback" role="alert">
@@ -57,12 +63,15 @@
             <label for="new_password_confirmation">Repetera nya lösenordet</label>
             <input
                 id="new_password_confirmation"
-                type="text"
+                type="password"
                 placeholder="Lösenord"
                 class="form-control{{ $errors->has('new_password_confirmation') ? ' is-invalid' : '' }}"
                 name="new_password_confirmation"
-                value=""
-                required autofocus>
+                required>
+
+            <div class="input-group-append">
+                <button type="button" id="toggleConfirmPassword" class="btn btn-outline-secondary">👁️</button>
+            </div>
 
             @if ($errors->has('new_password_confirmation'))
                 <span class="invalid-feedback" role="alert">
@@ -78,5 +87,22 @@
             </button>
         </div>
     </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const togglePassword = (inputId, toggleId) => {
+                const input = document.getElementById(inputId);
+                const toggle = document.getElementById(toggleId);
+                toggle.addEventListener("click", () => {
+                    input.type = input.type === "password" ? "text" : "password";
+                    toggle.textContent = input.type === "password" ? "👁️" : "🙈";
+                });
+            };
+
+            togglePassword("password", "togglePassword");
+            togglePassword("new_password", "toggleNewPassword");
+            togglePassword("new_password_confirmation", "toggleConfirmPassword");
+        });
+    </script>
 
 @endsection

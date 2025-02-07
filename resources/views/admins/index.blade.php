@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{ $admin->email }}</td>
                         <td>
-                            <a href="{{ url( 'admins/' . $admin->id . '/edit') }}" class="btn btn-primary">
+                            <a href="{{ route('admins.edit', $admin->id) }}" class="btn btn-primary">
                                 Ändra lösenord
                             </a>
                         </td>

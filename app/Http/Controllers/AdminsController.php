@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminsController extends Controller
 {
@@ -30,11 +31,21 @@ class AdminsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( Request $request )
+    public function store(Request $request)
     {
-        Admin::create( $request );
-        return redirect( 'admins' )->with( 'success', 'Ny Admin skapat!' );
+        $validated = $request->validate([
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed'
+        ]);
+
+        $admin = new Admin();
+        $admin->email = $validated['email'];
+        $admin->password = Hash::make($validated['password']);
+        $admin->save();
+
+        return redirect('admins')->with('success', 'Ny Admin skapat!');
     }
+
 
     /**
      * Display the specified resource.
@@ -68,11 +79,9 @@ class AdminsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Admin $admin)
     {
-        $admin = Admin::findOrFail( $id );
-        Admin::updateInfo( $admin, $request );
-
+        Admin::updateInfo($admin, $request);
         return redirect('admins')->with('success', 'Admin uppdaterad.');
     }
 
@@ -82,14 +91,13 @@ class AdminsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id )
+    public function destroy(Admin $admin)
     {
         if (Admin::count() <= 1) {
             return redirect('admins')->with("error", "Can't delete the last admin!");
         }
-        $admin = Admin::findOrFail( $id );
-        $admin->delete();
 
+        $admin->delete();
         return redirect('admins')->with('success', 'Admin borttaget.');
     }
 }

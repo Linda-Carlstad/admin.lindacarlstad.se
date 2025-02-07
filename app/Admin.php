@@ -29,7 +29,9 @@ class Admin extends Model
 
     public static function updateInfo(Admin $admin, Request $request)
     {
-        Admin::validateRequest_update($admin, $request);
+        self::validateRequest_update($admin, $request);
+        $admin->password = Hash::make($request->new_password);
+        $admin->save();
     }
 
     public static function validateRequest_update(Admin $admin, Request $request)
@@ -44,10 +46,19 @@ class Admin extends Model
                     }
                 },
             ],
-            'new_password' => 'string|required|max:64|min:8|different:password|confirmed'
+            'new_password' => [
+                'string',
+                'required',
+                'max:64',
+                'min:8',
+                'different:password',
+                'confirmed',
+                function ($attribute, $value, $fail) use ($admin) {
+                    if (Hash::check($value, $admin->password)) {
+                        $fail("New password must be different from the previous one!");
+                    }
+                },
+            ]
         ]);
-
-        $admin->password = Hash::make($request->new_password);
-        $admin->save();
     }
 }
