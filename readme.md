@@ -103,6 +103,13 @@ php artisan serve
 ```
 
 ## Usage
+
+Ports if docker is used:
+
+- phpmyadmin: 8090
+- MariaDB: $DB_PORT (default is 3306)
+- laravel: 8000
+
 (add pictures of app)
 
 ## Contributing
