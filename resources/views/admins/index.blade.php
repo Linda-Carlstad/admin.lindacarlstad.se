@@ -24,10 +24,25 @@
                 @foreach ($admins as $admin)
                     <tr>
                         <td>{{ $admin->email }}</td>
-                        <td>
-                            <a href="{{ route('admins.edit', $admin->id) }}" class="btn btn-primary">
+                        <td
+                            class="d-flex flex-row justify-content-end align-items-start flex-wrap"
+                            style="gap: 1em;">
+                            <a
+                                href="{{ route('admins.edit', $admin->id) }}"
+                                class="btn btn-primary d-inline-block">
                                 Ändra lösenord
                             </a>
+                            <form
+                                class="d-inline-block"
+                                onSubmit="return confirm('Är su säker på att du vill ta bort den här adminen? Denna åtgärd är permanent.');"
+                                action="{{ route('admins.destroy', $admin) }}"
+                                method="post">
+                                @csrf
+                                {{ method_field( 'delete' ) }}
+                                <button type="submit" class="btn btn-danger">
+                                    Ta bort
+                                </button>
+                            </form>
                         </td>
                     </tr>
 

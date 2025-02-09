@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminsController extends Controller
@@ -88,7 +89,7 @@ class AdminsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Admin  $admin
      * @return \Illuminate\Http\Response
      */
     public function destroy(Admin $admin)
@@ -97,7 +98,17 @@ class AdminsController extends Controller
             return redirect('admins')->with("error", "Can't delete the last admin!");
         }
 
+        $user = Auth::user();
+        $delete_self = $user && $user->id == $admin->id;
+
+        // Make the variable mutable, otherwise errors out
+        $admin = Admin::findOrFail($admin->id);
         $admin->delete();
+
+        if ($delete_self) {
+            Auth::logout();
+            return redirect('/login');
+        }
         return redirect('admins')->with('success', 'Admin borttaget.');
     }
 }
