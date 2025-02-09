@@ -19,6 +19,21 @@ class Admin extends Model
     /** Specified fields for this model */
     public $loggable_fields  = [ 'email' ];
 
+    public static function get_password_validation(Admin $admin = null) {
+        return [
+            'string',
+            'required',
+            'max:64',
+            'min:8',
+            'confirmed',
+            function ($attribute, $value, $fail) use ($admin) {
+                if ($admin && Hash::check($value, $admin->password)) {
+                    $fail("New password must be different from the previous one!");
+                }
+            }
+        ];
+    }
+
     public static function updateInfo(Admin $admin, Request $request)
     {
         self::validateRequest_update($admin, $request);
@@ -38,19 +53,7 @@ class Admin extends Model
                     }
                 },
             ],
-            'new_password' => [
-                'string',
-                'required',
-                'max:64',
-                'min:8',
-                'different:password',
-                'confirmed',
-                function ($attribute, $value, $fail) use ($admin) {
-                    if (Hash::check($value, $admin->password)) {
-                        $fail("New password must be different from the previous one!");
-                    }
-                },
-            ]
+            'new_password' => array_merge(Admin::get_password_validation($admin), ['different:password']),
         ]);
     }
 }

@@ -4,6 +4,7 @@
     <div class="text-center mb-2">
         <h2>Admin konton</h2>
         <hr>
+        <a class="btn btn-primary m-1" href="{{ route('admins.create') }}">Lägg till admin</a>
     </div>
 
     @if( $admins->isEmpty() )

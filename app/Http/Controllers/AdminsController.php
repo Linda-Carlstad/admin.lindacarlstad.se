@@ -22,7 +22,7 @@ class AdminsController extends Controller
      */
     public function create()
     {
-        abort(404);
+        return view('admins.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class AdminsController extends Controller
     {
         $validated = $request->validate([
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed'
+            'password' => Admin::get_password_validation(),
         ]);
 
         $admin = new Admin();
