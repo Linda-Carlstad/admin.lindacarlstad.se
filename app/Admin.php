@@ -13,14 +13,6 @@ class Admin extends Model
 
     protected $table = 'users';
 
-    public function days(){
-        return $this->hasMany('App\InitiationDay');
-    }
-
-    public function persons(){
-        return $this->hasMany('App\InitiationKeyPerson');
-    }
-
     /** Specified actions for this model */
     public $loggable_actions = [ 'edit', 'create', 'delete' ];
 

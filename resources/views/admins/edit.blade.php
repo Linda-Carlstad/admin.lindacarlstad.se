@@ -12,7 +12,6 @@
         {{ method_field( 'patch' ) }}
 
         <h3>Ändra lösenord</h3>
-        <!-- TODO: Type password and add a show password eye button -->
 
         <!-- Current password -->
         <div class="form-group row">
