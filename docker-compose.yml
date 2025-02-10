@@ -27,7 +27,8 @@ services:
 
   frontend:
     build: ./
-    network_mode: host
+    ports:
+      - "8000:8000"
     command: /bin/bash
     container_name: linda_admin_frontend
     env_file: ".env"
