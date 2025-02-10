@@ -98,7 +98,10 @@ npm run dev
 ```
 
 Run the local development server: 
-```
+```sh
+# Windows through docker:
+php artisan serve --host 0.0.0.0
+# All other cases (including docker on all other OSes):
 php artisan serve
 ```
 
