@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\ModelLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -94,6 +95,11 @@ class AdminsController extends Controller
      */
     public function destroy(Admin $admin)
     {
+        // Don't remove user if there's a log attached to said user
+        if (ModelLogs::all()->where("user_id", $admin->id)->count() > 0) {
+            return redirect('admins')->with("error", "Can't remove user...");
+        }
+
         if (Admin::count() <= 1) {
             return redirect('admins')->with("error", "Can't delete the last admin!");
         }
@@ -101,8 +107,6 @@ class AdminsController extends Controller
         $user = Auth::user();
         $delete_self = $user && $user->id == $admin->id;
 
-        // Make the variable mutable, otherwise errors out
-        $admin = Admin::findOrFail($admin->id);
         $admin->delete();
 
         if ($delete_self) {
