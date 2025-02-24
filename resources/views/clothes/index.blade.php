@@ -19,7 +19,7 @@
         @csrf
         {{ method_field( 'patch' ) }}
         <div class="d-block row d-md-flex justify-content-center">
-            @foreach( $overalls as$overall )
+            @foreach( $overalls as $overall )
                 <div class="col-12 col-md-4 text-center">
                     <div class="input-group mb-4">
                         <div class="input-group-prepend">
