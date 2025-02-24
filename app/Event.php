@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Alkhachatryan\LaravelLoggable\Loggable;
+use LindaCarlstad\LaravelLoggable\Loggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 

@@ -11,7 +11,7 @@ return [
      * To use the file type - check the files path, feel free to change it.
      * To use both types - run the migration and check files path.
      *
-     * @see https://github.com/alkhachatryan/laravel-loggable/blob/master/readme.md
+     * @see https://github.com/Linda-Carlstad/laravel-loggable/blob/master/README.md
      */
 
     // If you want to use the database and file drivers,
