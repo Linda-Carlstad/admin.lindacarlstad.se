@@ -28,7 +28,6 @@ Follow this simple guide to run a Laravel (8.x) project on your Windows based co
 
 [Felix Wetell's guide](https://gist.github.com/felixwetell/9e09136af52766dab4be7f616e39a5b2)
 
-
 Fetch the project to your machine, either using the GUI or the command below.  
 
 ```
@@ -48,6 +47,9 @@ Create a database in MySQL on your computer. (Only `.env` part needed when using
 
 Edit the `.env` file with your database credidentials. 
 Here is an example:
+
+*Note: If using Docker on Windows, DB_HOST will need to be set to the containers gateway adress:*
+`docker inspect linda_admin_frontend | jq ".[0].NetworkSettings.Networks.host.Gateway"`
 ```
 DB_PORT=3306
 DB_DATABASE=adminpanel
@@ -82,7 +84,8 @@ Install all NPM dependencies:
 npm install
 ```
 
-Generate application key: 
+Generate application key:
+*Note: The docker containers need to be restarted after this*
 ```
 php artisan key:generate
 ```
