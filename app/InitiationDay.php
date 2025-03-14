@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Alkhachatryan\LaravelLoggable\Loggable;
+use LindaCarlstad\LaravelLoggable\Loggable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
