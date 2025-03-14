@@ -9,7 +9,9 @@ RUN apt install -y \
         libxml2-dev\
         libzip-dev \
         unzip \
-        zip
+        zip \
+        sassc \
+        webpack
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
