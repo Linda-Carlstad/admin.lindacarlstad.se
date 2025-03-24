@@ -2,14 +2,17 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use LindaCarlstad\LaravelLoggable\Loggable;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use Database\Factories\MemberFactory;
 
 class Member extends Model
 {
     protected $table = 'members';
 
+    use HasFactory;
     use Loggable;
 
     /** Specified actions for this model */
