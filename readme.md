@@ -48,9 +48,8 @@ Create a database in MySQL on your computer. (Only `.env` part needed when using
 Edit the `.env` file with your database credidentials. 
 Here is an example:
 
-*Note: If using Docker on Windows, DB_HOST will need to be set to the containers gateway adress:*
-`docker inspect linda_admin_frontend | jq ".[0].NetworkSettings.Networks.host.Gateway"`
 ```
+DB_HOST=mariadb
 DB_PORT=3306
 DB_DATABASE=adminpanel
 DB_USERNAME=user
@@ -71,8 +70,7 @@ docker exec -it linda_admin_frontend /bin/bash
 docker compose stop
 ```
 
-## Installation part 2
-You can either follow the remaining instructions through our docker compose setup, or directly on your system.
+## Installation part 2 (non-docker users)
 
 Install all composer dependencies: 
 ```
@@ -85,7 +83,6 @@ npm install
 ```
 
 Generate application key:
-*Note: The docker containers need to be restarted after this*
 ```
 php artisan key:generate
 ```
@@ -102,9 +99,6 @@ npm run dev
 
 Run the local development server: 
 ```sh
-# Windows through docker:
-php artisan serve --host 0.0.0.0
-# All other cases (including docker on all other OSes):
 php artisan serve
 ```
 
