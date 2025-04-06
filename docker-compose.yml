@@ -2,10 +2,11 @@ services:
   mariadb:
     image: mariadb:10-ubi
     container_name: linda_admin_mariaDB
+    env_file: ".env"
     ports:
       - $DB_PORT:$DB_PORT
     networks:
-      - internal
+      - proxy-network
     environment:
       MARIADB_DATABASE: ${DB_DATABASE}
       MARIADB_USER: ${DB_USERNAME}
@@ -21,7 +22,7 @@ services:
     ports:
       - "8090:80"
     networks:
-      - internal
+      - proxy-network
     environment:
       PMA_HOST: mariadb
       PMA_CONTROLPORT: $DB_PORT
@@ -33,7 +34,7 @@ services:
     ports:
       - "8000:8000"
     networks:
-      - internal
+      - proxy-network
     container_name: linda_admin_frontend
     env_file: ".env"
     command: /bin/bash ./entrypoint.sh
@@ -55,5 +56,5 @@ volumes:
       o: bind
 
 networks:
-  internal:
-    driver: bridge
+  proxy-network:
+    name: custom_network
