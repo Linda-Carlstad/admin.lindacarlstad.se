@@ -2,14 +2,16 @@ services:
   mariadb:
     image: mariadb:10-ubi
     container_name: linda_admin_mariaDB
+    env_file: ".env"
     ports:
       - $DB_PORT:$DB_PORT
-    env_file: ".env"
+    networks:
+      - proxy-network
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -19,6 +21,8 @@ services:
         required: true
     ports:
       - "8090:80"
+    networks:
+      - proxy-network
     environment:
       PMA_HOST: mariadb
       PMA_CONTROLPORT: $DB_PORT
@@ -27,10 +31,13 @@ services:
 
   frontend:
     build: ./
-    network_mode: host
-    command: /bin/bash
+    ports:
+      - "8000:8000"
+    networks:
+      - proxy-network
     container_name: linda_admin_frontend
     env_file: ".env"
+    command: /bin/bash ./entrypoint.sh
     volumes:
       - website_volume:/website
     working_dir: /website
@@ -47,3 +54,7 @@ volumes:
       type: none
       device: ${PWD}
       o: bind
+
+networks:
+  proxy-network:
+    name: custom_network
