@@ -7,11 +7,9 @@ This app is used to handle the content on [Linda Carsltad](https://lindacarlstad
 
 ## Installation
 
-#### - Docker
+#### - Docker (Recommended)
 
-```sh
-docker compose build
-```
+Install Docker on your system and follow the docker steps below.
 
 #### - Unix
 Follow the official Laravel documentation for a detailed walkthrough using any Unix system, like macOS or any distribution on Linux.
@@ -56,11 +54,15 @@ DB_USERNAME=user
 DB_PASSWORD=my_secure_password
 ```
 
-#### - Optional docker setup
-*Start the docker instances*
+#### - Docker setup
+
+*Start the docker instances and the website*
 ```sh
 docker compose up -d
 ```
+
+##### - Useful commands
+
 *Enter a bash shell within the php docker image (`exit` to end the session)*
 ```sh
 docker exec -it linda_admin_frontend /bin/bash
