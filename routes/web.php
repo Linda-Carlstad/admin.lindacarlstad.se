@@ -23,11 +23,18 @@ Route::get('/', function () {
     return auth()->check() ? view('index') : redirect('/login');
 });
 
+// Route for iCal events, unauthenticated since we want user to be able to pull the events 
+Route::get('ical-events', 'ICalController@getEventsICalObject')->name('ical.events');
+
 // Protect routes with authentication middleware
 Route::middleware(['auth'])->group(function () {
     Route::get( '/initiation-handler', function() {
         return view( 'initiationHandle' );
     } )->name( 'initiationHandle' );
+
+    // Flatpickr calender routes
+    Route::get('/flatpickr', [FlatpickrController::class, 'showForm']);
+    Route::post('/save-date', [FlatpickrController::class, 'saveDate'])->name('save.date');
 
     Route::get( '/clothes', 'FetchClothes' )->name( 'clothes' );
     Route::patch( 'updateOveralls', 'UpdateOverallCount' );
@@ -44,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
         'initiation' => 'InitiationController',
         'person' => 'InitiationKeyPeopleController',
         'admins' => 'AdminsController',
+        'linda_events' => 'LindaEventsController',
     ]);
 });
 

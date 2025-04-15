@@ -21,6 +21,8 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-filestyle/2.1.0/bootstrap-filestyle.min.js"></script>
     <script defer type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <script defer src="{{ asset( 'js/app.js' ) }}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body>
@@ -64,6 +66,9 @@
                         </li>
                         <li class="nav-item {{ request()->routeIs('admins.index') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('admins.index') }}">Admins</a>
+                        </li>
+                        <li class="nav-item {{ request()->routeIs('linda_events.index') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('linda_events.index') }}">Evenemang</a>
                         </li>
                     </ul>
 
