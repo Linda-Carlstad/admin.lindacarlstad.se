@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 // Route for iCal events, unauthenticated since we want user to be able to pull the events 
-Route::get('ical-events', 'ICalController@getEventsICalObject')->name('ical.events');
+Route::get('ical-events', 'LindaEventsController@getEventsICalObject')->name('ical.events');
 
 // Protect routes with authentication middleware
 Route::middleware(['auth'])->group(function () {
