@@ -26,7 +26,7 @@ class LindaEventsController extends Controller
         $icalObject = "BEGIN:VCALENDAR
         VERSION:2.0
         METHOD:PUBLISH
-        PRODID:-//Charles Oduk//Tech Events//EN\n";
+        PRODID:-//Linda Carlstad//Linda Events//SE\n";
 
         foreach ($events as $event) {
             $icalObject .=
