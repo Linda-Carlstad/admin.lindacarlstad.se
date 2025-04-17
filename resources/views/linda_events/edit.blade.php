@@ -21,7 +21,7 @@
         </div>
         <div class="form-group row">
             <label for="starts" class="">Starttid *</label>
-            <input id="starts" type="datetime-local" placeholder="Starttid" class="form-control{{ $errors->has('starts') ? ' is-invalid' : '' }}" name="starts" value="{{ \Carbon\Carbon::parse($event->starts)->format('Y-m-d\TH:i') }}">
+            <input id="datepicker" type="datetime-text" placeholder="Starttid" class="form-control{{ $errors->has('starts') ? ' is-invalid' : '' }}" name="starts" value="{{ $event->starts }}">
 
             @if ($errors->has('starts'))
                 <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group row">
             <label for="ends" class="">Sluttid *</label>
-            <input id="ends" type="datetime-local" placeholder="Sluttid" class="form-control{{ $errors->has('ends') ? ' is-invalid' : '' }}" name="ends" value="{{ \Carbon\Carbon::parse($event->ends)->format('Y-m-d\TH:i') }}">
+            <input id="datepicker" type="text" placeholder="Sluttid" class="form-control{{ $errors->has('ends') ? ' is-invalid' : '' }}" name="ends" value="{{ $event->ends }}">
 
             @if ($errors->has('ends'))
                 <span class="invalid-feedback" role="alert">
@@ -87,5 +87,12 @@
         Ta bort
     </button>
 </form>
+
+<script>
+        flatpickr("#datepicker", {
+            enableTime: true, 
+            dateFormat: "Y-m-d H:i", 
+        });
+    </script>
 
 @endsection
