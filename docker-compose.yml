@@ -2,16 +2,16 @@ services:
   mariadb:
     image: mariadb:10-ubi
     container_name: linda_admin_mariaDB
+    env_file: ".env"
     ports:
       - $DB_PORT:$DB_PORT
     networks:
-      - linda_admin_network
-    env_file: ".env"
+      - proxy-network
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -22,7 +22,7 @@ services:
     ports:
       - "8090:80"
     networks:
-      - linda_admin_network
+      - proxy-network
     environment:
       PMA_HOST: mariadb
       PMA_CONTROLPORT: $DB_PORT
@@ -33,15 +33,13 @@ services:
     build: ./
     ports:
       - "8000:8000"
-    command: /bin/bash
+    networks:
+      - proxy-network
     container_name: linda_admin_frontend
     env_file: ".env"
-    environment:
-      - DB_HOST=172.28.5.254 # Fixes issues on Windows...
+    command: /bin/bash ./entrypoint.sh
     volumes:
       - website_volume:/website
-    networks:
-      - linda_admin_network
     working_dir: /website
     stdin_open: true
     tty: true
@@ -58,9 +56,5 @@ volumes:
       o: bind
 
 networks:
-  linda_admin_network:
-    ipam:
-      config:
-        - subnet: 172.28.0.0/16
-          ip_range: 172.28.5.0/24
-          gateway: 172.28.5.254 # Fixes issues on Windows...
+  proxy-network:
+    name: custom_network

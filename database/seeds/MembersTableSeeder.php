@@ -1,6 +1,5 @@
 <?php
 
-use App\Member;
 use Illuminate\Database\Seeder;
 
 class MembersTableSeeder extends Seeder
@@ -12,6 +11,6 @@ class MembersTableSeeder extends Seeder
      */
     public function run()
     {
-        $members = factory( Member::class, 100 )->create();
+        $members = App\Member::factory()->times(100)->create();
     }
 }
