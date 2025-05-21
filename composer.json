@@ -15,11 +15,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2.27",
-        "linda-carlstad/laravel-loggable": "dev-master",
         "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^11.0",
+        "laravel/helpers": "^1.7",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^4.6",
+        "linda-carlstad/laravel-loggable": "dev-master",
         "spatie/laravel-sluggable": "^3.0"
     },
     "require-dev": {
